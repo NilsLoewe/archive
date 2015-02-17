@@ -1,0 +1,17 @@
+
+
+/* Landscape phone to portrait table */
+@media (max-width: 1200px) {
+  .bio-image {
+    visibility: hidden;
+    height: 10px;
+  }
+
+  .bio-text {
+    visibility: hidden;
+    height: 10px;
+  }
+}
+/* Landscape phones and down */
+@media (max-width: 480px) {
+}

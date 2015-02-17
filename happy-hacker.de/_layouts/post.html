@@ -1,0 +1,30 @@
+---
+layout: default
+---
+
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+
+    <div class="post-heading"><h3>{{ page.title }}</h3></div>
+    <div class="post-meta">{{ page.date | date: "%b %-d, %Y" }}</div>
+    <div class="post-content">{{ content }}</div>
+
+  </div>
+</div>
+
+<div class="row">
+  <div class="post-links col-sm-4 col-sm-offset-2">
+    {{ if page.previous != nil }}
+      <h6>previous article</h6>
+      <a href="{{ page.previous.url }}">{{ page.previous.title }}</a>
+    {{ endif }}
+  </div>
+
+  {{ if page.next != nil }}
+    <div class="post-links col-sm-4 col-sm-offset-2">
+      <h6>next article</h6>
+      <a href="{{ page.next.url }}">{{ page.next.title }}</a>
+    </div>
+  {{ endif }}
+</div>
+

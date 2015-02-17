@@ -1,0 +1,15 @@
+
+<img src="/img/nils.png" class="bio-image">
+
+<div class="bio-text">
+  Some words about me
+</div>
+
+<div class="sidebar-posts">
+  <h3> Latest Posts </h3>
+  <ul>
+    {% for post in site.posts %}
+      <li><a href="{{post.url}}">{{ post.title }}</a></li>
+    {% endfor %} 
+  </ul>
+</div>

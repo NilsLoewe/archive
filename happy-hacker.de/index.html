@@ -1,0 +1,30 @@
+---
+layout: default
+---
+
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    <div class="entry-text">
+      <b>Yes, absolutely</b>, I do indeed concur, wholeheartedly! Ensign Babyface! I've had twelve years to think about it. And if I had it to do over again, I would have grabbed the phaser and pointed it at you instead of them. <br><br>
+
+      <b>Commander William Riker</b> of the Starship Enterprise. Talk about going nowhere fast. The look in your eyes, I recognize it. You used to have it for me. Mr. Worf, you sound like a man who's asking his friend if he can start dating his sister.  <br><br>
+
+      <b>Fear is the true enemy</b>, the only enemy. About four years. I got tired of hearing how young I looked.
+    </div>
+  </div>
+</div>
+
+{% for post in site.posts limit: 5 %} 
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <div class="post-summary">
+        <h3><a href="{{post.url}}">{{ post.title }}</a></h3>
+        <p>
+          {{ post.content | strip_html | truncatewords:60}} 
+          <br><a class="pull-right" href="{{post.url}}">weiterlesen...</a>
+        </p>
+      </div>
+    </div>
+  </div>
+{% endfor %} 
+
