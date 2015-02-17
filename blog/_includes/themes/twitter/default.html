@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html class="js no-touch cssanimations csstransitions loaded" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>{{ page.title }}</title>
+    {% if page.description %}<meta name="description" content="{{ page.description }}">{% endif %}
+    <meta name="author" content="{{ site.author.name }}">
+
+    <!-- Enable responsive viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="{{ ASSET_PATH }}/css/style.css?body=1" rel="stylesheet" type="text/css" media="all">
+    <link href="{{ ASSET_PATH }}/flat-ui/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="{{ ASSET_PATH }}/flat-ui/css/flat-ui.css" rel="stylesheet">
+    <link href="{{ ASSET_PATH }}/css/icon-font.css" rel="stylesheet">
+    <link href="{{ ASSET_PATH }}/css/style.css" rel="stylesheet">
+
+    <!-- atom & rss feed -->
+    <link href="{{ BASE_PATH }}{{ site.JB.atom_path }}" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
+    <link href="{{ BASE_PATH }}{{ site.JB.rss_path }}" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
+
+  </head>
+
+  <body>
+    <div class="page-wrapper">
+      <header class="header-20">
+        <div class="container">
+          <div class="row">
+
+            <div role="navigation" class="navbar col-sm-12">
+
+              <div class="navbar-header">
+                <button class="navbar-toggle" type="button"></button>
+                <a href="/" class="brand">Löwenrudel Blog</a>
+              </div>
+
+              <div class="navbar-collapse collapse pull-right">
+                <ul class="nav">
+                  <li><a href="/">Home</a></li>
+                  <li><a href="/archive.html">Archiv</a></li>
+                  <li><a href="/categories.html">Kategorien</a></li>
+                  <li><a href="http://loewe-software.de">Löwe Software</a></li>
+                </ul>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+      </header>
+
+        {{ content }}
+
+      <footer class="footer-11">
+        <div class="container">
+          <nav>
+            <ul>
+              <li><a href="/imprint.html">Impressum</a></li>
+              <li><a href="/privacy.html">Datenschutz</a></li>
+              <li><a href="/disclaimer.html">Haftungsausschluss</a></li>
+            </ul>
+          </nav>
+        </div>
+      </footer>
+    </div>
+    
+
+    {% include JB/analytics %}
+
+    <script type="text/javascript" async="" src="//platform.twitter.com/widgets.js"></script>
+    <script src="{{ ASSET_PATH }}/js/jquery-1.10.2.min.js"></script>
+    <script src="{{ ASSET_PATH }}/flat-ui/js/bootstrap.min.js"></script>
+    <script src="{{ ASSET_PATH }}/js/modernizr.custom.js"></script>
+    <script src="{{ ASSET_PATH }}/js/jquery.sharrre.min.js"></script>
+    <script src="{{ ASSET_PATH }}/js/startup-kit.js"></script>
+    <script src="{{ ASSET_PATH }}/js/script.js"></script>
+  </body>
+</html>

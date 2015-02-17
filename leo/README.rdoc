@@ -1,0 +1,58 @@
+== Leo
+
+=== Installation
+
+Install correct ruby version
+
+    rvm install 2.1.1
+
+Clone this repository
+
+    git clone git@guthub.com:LoeweSoftware/leo-prototype.git
+
+Install dependencies
+
+    bundle install
+
+Install local database
+
+    $ sudo -u postgres pg_dropcluster --stop 9.1 main
+    $ sudo -u postgres pg_createcluster --start --locale en_US.UTF-8 9.1 main
+
+    $ sudo -u postgres createdb leo-prototype-dev
+    $ sudo -u postgres createdb leo-prototype-test
+    $ sudo -u postgres createuser leo-prototype -P # password: leo-prototype
+
+Install nodejs + npm
+
+    http://stackoverflow.com/questions/16302436/install-nodejs-on-ubuntu-12-10
+
+Install coffeescript, karma
+
+    $ npm install coffee coffee-script
+    $ npm install karma karma-coffee-preprocessor karma-jasmine karma-ng-scenario
+    $ npm install karma-chrome-launcher karma-firefox-launcher
+  
+
+=== Testing
+
+run tests manually
+
+    rspec spec/
+
+run tests through guard
+
+    bundle exec guard
+
+
+=== Deployment
+
+Commit and push changes
+
+    git add --all
+    git commit -am 'usefull comment'
+
+Push app to heroku
+
+    git push heroku master
+

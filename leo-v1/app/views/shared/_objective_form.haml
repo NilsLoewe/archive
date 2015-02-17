@@ -1,0 +1,8 @@
+= form_for(@new_objective) do |f|
+  = render 'shared/error_messages', object: @new_objective
+  .form-group.focus
+    .input-group.input-group-sm
+      = f.text_field :title, placeholder: "Neues Ziel...", :id => "appendedInputButton-01", :class => "form-control"
+      .input-group-btn
+        = button_tag(type: 'submit', class: "btn btn-primary") do
+          %span.glyphicon.glyphicon-plus

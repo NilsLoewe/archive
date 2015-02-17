@@ -1,0 +1,6 @@
+- provide(:title, 'Aufgabe')
+- currently_at 'Tasks'
+%h1
+  Task: #{@task.title}
+%div
+  = link_to "Editieren", edit_task_path(@task)

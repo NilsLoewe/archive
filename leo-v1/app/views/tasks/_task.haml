@@ -1,0 +1,26 @@
+.col-md-3
+  %div{:class => "panel panel-default panel-card  border-color-#{task.color}"}
+    .panel-heading
+      .row
+        - if sprint
+          .col-xs-10.pull-left
+            = link_to_modal task.title, edit_task_path(task)
+          .col-xs-2.pull-right
+            = render :partial => 'tasks/sprint_buttons', :locals => { :task => task }
+        - else
+          .col-xs-12.pull-left
+            = link_to_modal task.title, edit_task_path(task)
+
+    - if task.content
+      - if task.content.size > 0
+        .panel-body
+          = truncate task.content, length: 60
+
+    .panel-footer
+      .row
+        .col-xs-10.pull-left
+          Größe:
+          %b= task.size
+        .col-xs-2.pull-right
+          - if done
+            = render :partial => 'tasks/done_buttons',   :locals => { :task => task }

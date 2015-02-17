@@ -1,0 +1,28 @@
+- provide(:title, 'Übersicht')
+- currently_at 'Übersicht'
+
+- @categories.each do |c|
+  %h4
+    = link_to_modal c.title, edit_category_path(c)
+  .row
+    .col-xs-6
+      = c.content
+    .col-xs-3
+      - if c.objectives.count > 0
+        %strong Ziele
+        %br/
+        - c.objectives.each do |o|
+          = link_to o.title, o
+          %br/
+    .col-xs-3
+      - if c.periodics.count > 0
+        %strong Regelmäßige Aufgaben
+        %br/
+        - c.periodics.each do |p|
+          = p.title
+          %br/
+
+.center
+  = link_to 'Archiv', archive_path
+  |
+  = link_to 'Parkplatz', parked_path

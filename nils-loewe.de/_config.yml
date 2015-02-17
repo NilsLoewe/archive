@@ -1,0 +1,11 @@
+# Site settings
+title: nils-loewe.de
+subtitle: Meine Gedanken zu Software, Lernen und dem ganzen Rest
+email: nils@loewe.io
+description: "Dies ist der private Blog von Nils Löwe über Softwareentwicklung, Lernen und das Leben im Allgemeinen"
+baseurl: ""
+url: "http://nils-loewe.de"
+
+# Build settings
+markdown: kramdown
+permalink: pretty

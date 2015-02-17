@@ -1,0 +1,21 @@
+.col-md-3
+  %div{:class => "panel panel-default panel-card border-color-#{periodic.color}"}
+    .panel-heading
+      .row
+        .col-xs-10.pull-left
+          = link_to_modal periodic.title, edit_periodic_path(periodic)
+        .col-xs-2.pull-right
+          = link_to_modal '', edit_periodic_path(periodic), :title => "Edit", :class => "glyphicon glyphicon-pencil"
+          - if plan
+            = link_to "", instanciate_periodic_path(periodic), :title => "einplanen", :class => "glyphicon glyphicon-chevron-right"
+
+    - if periodic.description
+      .panel-body
+        = truncate periodic.description, length: 60
+    - unless small
+      .panel-footer
+        %b= periodic.planned_count
+        x eingeplant
+        %br/
+        %b= periodic.done_count
+        x wirklich getan

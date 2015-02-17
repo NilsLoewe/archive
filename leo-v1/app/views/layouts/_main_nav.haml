@@ -1,0 +1,7 @@
+- content_for :main_navigation do
+  -# START_HIGHLIGHT
+  = nav_tab 'Übersicht',      life_path,       current: current_tab
+  = nav_tab 'Lebensbereiche', categories_path, current: current_tab
+  = nav_tab 'Woche planen',   plan_path,       current: current_tab
+  = nav_tab 'Aktive Woche',   show_path,       current: current_tab
+  -# END_HIGHLIGHT

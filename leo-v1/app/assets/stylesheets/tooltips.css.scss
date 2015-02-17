@@ -1,0 +1,16 @@
+a.tooltip:hover
+{    position: relative;                        /* Bezug für span, IE: erst bei :hover setzen */
+     background: transparent;          /* IE, Farbe egal */
+}  
+
+a.tooltip span  
+{    position: absolute;                     /* aus Textfluß herausnehmen */
+     visibility: hidden;                        /* normal: unsichtbar */
+
+     /*width: 10em;                                FF: kein Leerzeichen vor Einheit */
+     top: 2em; left: 1em;                    /* Tooltip-Position, sollte man festlegen */
+
+}
+
+a.tooltip:hover span  
+{    visibility: visible;   }                     /* hover: sichtbar */

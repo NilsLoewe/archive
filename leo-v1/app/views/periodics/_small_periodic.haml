@@ -1,0 +1,9 @@
+.col-md-6
+  %div{:class => "panel panel-default panel-card border-color-#{periodic.color}"}
+    .panel-heading
+      .row
+        .col-xs-9.pull-left
+          = link_to_modal periodic.title, edit_periodic_path(periodic)
+        .col-xs-3.pull-right
+          - if plan
+            = link_to "", instanciate_periodic_path(periodic), :title => "einplanen", :class => "glyphicon glyphicon-chevron-right"

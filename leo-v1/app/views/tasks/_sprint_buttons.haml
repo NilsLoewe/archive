@@ -1,0 +1,7 @@
+= form_for(task) do |f|
+  = f.hidden_field :sprint, :value => !task.sprint
+  - unless task.sprint
+    - unless task.done
+      = link_to_submit('', class: 'glyphicon glyphicon-chevron-up', :title => "Aufgabe im aktuellen Sprint bearbeiten" )
+  - else
+    = link_to_submit('', class: 'glyphicon glyphicon-chevron-down' )

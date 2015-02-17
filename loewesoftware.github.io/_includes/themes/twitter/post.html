@@ -1,0 +1,55 @@
+<div class="page-header">
+  <h1>{{ page.title }} {% if page.tagline %}<small>{{page.tagline}}</small>{% endif %}</h1>
+</div>
+
+<div class="row post-full">
+  <div class="col-xs-12">
+    <div class="content">
+      <div class="row">
+        <div class="col-md-7">
+          <div class="row">
+            <div class="col-xs-4">Aufgaben: </div>
+            <div class="col-xs-8">
+              {% for task in page.tasks %}
+                {{task}}<br>
+              {% endfor %}
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-xs-4">Technologien:</div>
+            <div class="col-xs-8">
+              {% for tech in page.tech %}
+                {{tech}}<br>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-5">
+          <div class="row">
+            <div class="col-xs-4">Branche:</div>
+            <div class="col-xs-8">{{page.branche}}</div>
+          </div>
+          <div class="row">
+            <div class="col-xs-4">Kunde:</div>
+            <div class="col-xs-8">{{page.customer}}</div>
+          </div>
+          <div class="row">
+            <div class="col-xs-4">Dauer:</div>
+            <div class="col-xs-8">{{page.duration}}</div>
+          </div>
+        </div>
+
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-md-12">
+          <p><b>{{page.description}}</b></p>
+          <p>{{ content }}</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

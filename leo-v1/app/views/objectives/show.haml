@@ -1,0 +1,99 @@
+- provide(:title, 'Ziel')
+- currently_at 'Lebensbereiche'
+%h1
+  %span.rest-in-place{"data-attribute" => "title", "data-object" => "objective", "data-url" => "/objectives/#{@objective.id}"}
+    = @objective.title
+%div
+  %span.rest-in-place{"data-attribute" => "description", "data-formtype" => "textarea", "data-object" => "objective", "data-url" => "/objectives/#{@objective.id}"}
+    - if @objective.description
+      = @objective.description
+    - else
+      %i Hier klicken, um die Beschreibung zu ändern
+  .pull-right= link_to 'Zurück', categories_path
+  / edit
+  #accordion
+    %h3{:class => "section-type-#{@objective.color}"}
+      - if @objective.simple
+        = @objective.title
+      - else
+        Aktueller Sprint:
+        - if @objective.sprint_running?
+          %b= @objective.sprinttitle
+          \- Noch #{@objective.days_left} Tage
+        - elsif @objective.sprint_finished?
+          Beendet
+        - else
+          Planen
+    %div
+      .row
+        .pull-right
+          - if @objective.simple
+            = form_for(@objective) do |f|
+              = f.hidden_field :simple, :value => false
+              = f.hidden_field :sprint_start, :value => Date.today
+              = f.hidden_field :duration, :value => "9999"
+              = f.submit "Enable Backlog", class: "btn btn-xs btn-primary"
+          - else
+            - if @objective.sprint_running?
+              = link_to "Abbrechen", finish_objective_path(@objective), :class => "btn btn-xs btn-primary"
+            - elsif @objective.sprint_finished?
+              - if @objective.unfinished_tasks_in_current_sprint?
+                Please close or move unfinished tasks
+              - else
+                = link_to "Abschließen", plan_objective_path(@objective), :class => "btn btn-xs btn-primary"
+            - else
+              - if @objective.unfinished_tasks_in_current_sprint?
+                = form_for(@objective) do |f|
+                  = f.hidden_field :status, :value => "sprint_running"
+                  = f.text_field :sprinttitle, :placeholder => "Optionaler Titel", :size => "20"
+                  = f.hidden_field :sprint_start, :value => Date.today
+                  = f.text_field :duration, :value => "28", :size => "5"
+                  = f.submit "Start", class: "btn btn-large btn-primary"
+              - else
+                Please put some work in here
+      .row
+        - @objective.tasks.progress.each do |task|
+          = render :partial => 'tasks/task', |
+            :locals => { :task => task,      |
+            :small => false,                 |
+            :done => true,                   |
+            :sprint => true,                 |
+            :delete => true,                 |
+            :plan => false}                  |
+      .row
+        .pull-right
+          = render :partial => 'shared/task_form', :locals => { :objective => @objective, :sprint => true }
+
+    - unless @objective.simple?
+      %h3 Backlog
+      %div
+        .row
+          .pull-right
+            = form_for(@objective) do |f|
+              = f.hidden_field :simple, :value => true
+              = f.hidden_field :sprint_start, :value => Date.today
+              = f.hidden_field :duration, :value => "9999"
+              = f.submit "Disable Backlog", class: "btn btn-xs btn-primary"
+        .row
+          - @objective.tasks.backlog.each do |task|
+            = render :partial => 'tasks/task', |
+              :locals => { :task => task,      |
+              :small => false,                 |
+              :done => true,                   |
+              :sprint => true,                 |
+              :delete => true,                 |
+              :plan => false}                  |
+        .row
+          .pull-right
+            = render :partial => 'shared/task_form', :locals => { :objective => @objective, :sprint => false }
+
+    %h3 Archiv
+    %div
+      - @objective.tasks.archive.each do |task|
+        = render :partial => 'tasks/task', |
+          :locals => { :task => task,      |
+          :small => false,                 |
+          :done => true,                   |
+          :sprint => true,                 |
+          :delete => true,                 |
+          :plan => false}                  |

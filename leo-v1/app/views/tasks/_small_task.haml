@@ -1,0 +1,21 @@
+.col-md-6
+  %div{:class => "panel panel-default panel-card  border-color-#{task.color}"}
+    .panel-heading
+      .row
+        .col-xs-11.pull-left
+          = link_to_modal task.title, edit_task_path(task)
+        .col-xs-1.pull-right
+        - if plan
+          = render :partial => 'tasks/plan_buttons',   :locals => { :task => task, :periodic_buttons => periodic_buttons }
+
+    .panel-footer
+      .row
+        .col-xs-10.pull-left
+          - if size
+            %small= truncate task.plan.title, length: 15
+            %br/
+          Größe:
+          %b= task.size
+        .col-xs-2.pull-right
+          - if done
+            = render :partial => 'tasks/done_buttons',   :locals => { :task => task }

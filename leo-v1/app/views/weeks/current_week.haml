@@ -1,0 +1,49 @@
+- provide(:title, 'Aktive Woche')
+- currently_at 'Aktive Woche'
+.row
+  .col-md-12
+    .row
+      #accordion2.active-sprint.ui-accordion.ui-widget.ui-helper-reset{:role => "tablist"}
+        %h3 ToDo
+        %div
+          .row
+            - @periodics.each do |periodic|
+              - periodic.tasks.unfinished.each do |periodic|
+                = render :partial => 'tasks/task', |
+                  :locals => { :task => periodic,  |
+                  :done => true,                   |
+                  :delete => true,                 |
+                  :sprint => false}
+            - @objectives.active.each do |objective|
+              - if objective.sprint_running? or objective.simple
+                - objective.tasks.unfinished.planned.each do |task|
+                  = render :partial => 'tasks/task', |
+                    :locals => { :task => task,      |
+                    :done => true,                   |
+                    :sprint => false,                |
+                    :delete => true}
+    .row
+      #accordion
+        %h3 Bereits geschafft
+        %div
+          .row
+            - @periodics.each do |periodic|
+              - periodic.tasks.finished.each do |periodic|
+                = render :partial => 'tasks/task', |
+                  :locals => { :task => periodic,  |
+                  :small => true,                  |
+                  :done => true,                   |
+                  :sprint => false,                |
+                  :delete => false,                |
+                  :periodic_buttons => true,       |
+                  :plan => false}                  |
+            - @objectives.active.each do |objective|
+              - if objective.sprint_running? or objective.simple
+                - objective.tasks.finished.planned.each do |task|
+                  = render :partial => 'tasks/task', |
+                    :locals => { :task => task,      |
+                    :small => true,                  |
+                    :done => true,                   |
+                    :sprint => false,                |
+                    :delete => false,                |
+                    :plan => false}                  |

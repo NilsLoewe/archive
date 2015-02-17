@@ -1,0 +1,206 @@
+/* Card definition */
+
+.cards {
+	width: 100%;
+	height: 100%;
+}
+
+.card, .card-front, .card-back {
+	width: 150px;
+	height: 100px;
+	
+	background-color: #cccccc;
+	color: #555555;
+
+	border-radius: 12px;
+
+	padding: 5px;
+}
+
+.card , .flip-container {
+	margin: 10px;
+	float: left; 
+}
+
+.card:hover {
+	background-color: #dddddd;
+}
+
+.card-header {
+}
+
+.card-title {
+	text-align: center;
+	vertical-align: middle;
+	font-weight: bold;
+	height: 50px;
+	overflow: hidden;
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+.card-footer {
+	font-size: 10pt;
+}
+
+.card-edit-actions {
+}
+
+/* Card flips */
+.flip-container {
+	perspective:1000;
+}
+
+.flip-container:hover .flipper, .flipcontainer.hover .flipper{
+	transform: rotateY(180deg);
+}
+
+.flip-container, .front, .back {
+	width: 150px;
+	height: 100px;
+}
+
+.flipper {
+	transition: 0.3s;
+	transform-style: preserve-3d;
+	
+	position: relative;
+}
+
+.card-front, .card-back {
+	backface-visibility: hidden;
+
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.card-front {
+	z-index: 2;
+}
+
+.card-back {
+	transform: rotateY(180deg);
+}
+
+
+/* Task definitions */
+
+.task-planning-action {
+	text-align: center;
+	padding-top: 20px;
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+.task-done-action {
+}
+
+.task-size {
+}
+
+/* Lebenshut definitions */
+
+.section-header {
+	text-align: right;
+}
+
+.section-add-new-card{
+	margin-top: 5px;
+}
+
+.sections-footer {
+	margin-top: 10px;
+	margin-bottom: 30px;
+}
+
+.section-form {
+	
+	display:inline;
+}
+/*farbschema seite 
+#45B29D; grün
+#E27A3F; orange
+#EFC94C; gelb
+#334D5C; blau
+#DF5A49; rot
+
+grün-blass: 6ac1b0
+orange-blass: e89465
+gelb-blass: f2d46f
+blau-blass: 5b707c
+rot-blass: e57a6d
+
+*/
+
+.section-type-4 { /*green*/
+	background-color: #6ac1b0;
+}
+
+.section-type-2 { /*orange*/
+	background-color: #e89465; 
+}
+
+.section-type-1 { /*yellow*/
+	background-color: #f2d46f; 
+}
+
+.section-type-5 { /*blue*/
+	background-color: #5b707c; 
+}
+
+.section-type-3 { /*red*/
+	background-color: #e57a6d;
+}
+
+/* Wochenplan: Aktive Sprints */
+
+.active-sprint {
+
+}
+
+/* Backlog */
+
+.backlog-cardbox {
+  border-width:1px;
+  border-style:solid;
+  border-color: green;
+}
+
+/* Sprint definitions */
+.sprint {
+
+}
+
+.sprint-cardbox {
+  border-width:1px;
+  border-style:solid;
+  border-color: green;
+}
+
+.sprint-header {
+  text-align: center;
+}
+
+.sprint-actions {
+  text-align: right;
+}
+
+.sprint-arrow {
+  background-color: green;
+  width: 10px;
+  height: 100%;
+  border-width:1px;
+  border-style:solid;
+}
+
+/* Wochenplan */
+.wochenplan-header {
+	background-color: #334D5C;
+	color: #ffffff;
+}
+
+/* Site menu */
+.bottom-menu {
+	margin-top: 30px;
+}

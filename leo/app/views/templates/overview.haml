@@ -1,0 +1,23 @@
+.ng-cloak(ng-init="init()")
+
+  .row{'ng-controller' => 'OverviewController'}
+    .col-xs-12
+      .ng-scope
+        .panel.panel-primary
+          .panel-heading
+            %h4 Lebensh&uuml;te
+
+          %ul.list-group(ng-show="hats == 0")
+            %li.list-group-item
+              You haven't created any hats yet
+
+          %ul.list-group
+            %li.list-group-item.ng-scope(ng-repeat="hat in hats")
+              {{hat.title}}
+              %button.btn.btn-danger.btn-xs.pull-right{:type => "button", "ng-click" => "deleteHat(hat, $index)"} [x]
+
+          %form{"ng-submit" => "createHat(hatTitle)", :id => "new_hat",  :class=>"ng-pristine ng-valid"}
+            .input-group
+              %input{:type => "text", :placeholder => "Hat name", "ng-model" => "hatTitle", :class => "form-control input-lg ng-pristine ng-valid", :autofocus=>"autofocus"}
+                .span.input-group-btn
+                  %button{ :type=>"submit", :class=>"btn btn-primary btn-lg"} create hat

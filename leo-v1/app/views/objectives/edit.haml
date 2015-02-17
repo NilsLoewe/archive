@@ -1,0 +1,46 @@
+- provide(:title, "Ziel editieren")
+%h1 Ziel editieren
+.row
+  .col-xs-12
+    = form_for(@objective) do |f|
+      .field
+        = f.label :title
+        = f.text_field :title
+      .field
+        = f.label :description
+        = f.text_area(:description, :size => '50x10')
+      .field
+        = f.submit "Save changes", class: "btn btn-large btn-primary"
+
+%h4 Krasse Dinge
+.row
+  .col-xs-12
+    - if not @objective.archive and not @objective.parked
+      = form_for(@objective) do |f|
+        = f.hidden_field :archive, :value => true
+        = f.hidden_field :sprint_start, :value => Date.today
+        = f.hidden_field :duration, :value => "9999"
+        = f.submit "Ziel erreicht", class: "btn btn-block btn-lg btn-success"
+        %br/
+      = form_for(@objective) do |f|
+        = f.hidden_field :parked, :value => true
+        = f.hidden_field :sprint_start, :value => Date.today
+        = f.hidden_field :duration, :value => "9999"
+        = f.submit "Auf den Parkplatz", class: "btn btn-block btn-lg btn-warning"
+    - elsif @objective.archive
+      = form_for(@objective) do |f|
+        = f.hidden_field :archive, :value => false
+        = f.hidden_field :sprint_start, :value => Date.today
+        = f.hidden_field :duration, :value => "9999"
+        = f.submit "Reaktivieren", class: "btn btn-block btn-lg btn-primary"
+    - elsif @objective.parked
+      = form_for(@objective) do |f|
+        = f.hidden_field :parked, :value => false
+        = f.hidden_field :sprint_start, :value => Date.today
+        = f.hidden_field :duration, :value => "9999"
+        = f.submit "Ausparken", class: "btn btn-block btn-lg btn-primary"
+
+%h4 Schlimme Dinge
+.row
+  .col-xs-12
+    = link_to 'Ziel löschen', @objective, :method=>:delete, :confirm => "Are you sure?", :title => "Ziel löschen", :class => "btn btn-lg btn-block btn-danger"

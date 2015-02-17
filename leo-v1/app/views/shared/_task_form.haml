@@ -1,0 +1,11 @@
+= form_for(@new_task) do |f|
+  = render 'shared/error_messages', object: f.object
+  .form-group.focus
+    .input-group.input-group-sm.pull-right
+      = f.hidden_field :plan_id, :value =>  @objective.id
+      = f.hidden_field :status, :value =>  "backlog"
+      = f.hidden_field :sprint, :value => sprint
+      = f.text_field :title, size: 20, placeholder: "Neue Aufgabe...", :class => "form-control"
+      .input-group-btn
+        = button_tag(type: 'submit', id: "add", class: "btn btn-primary") do
+          %span.glyphicon.glyphicon-plus-sign

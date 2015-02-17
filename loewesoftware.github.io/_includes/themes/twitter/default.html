@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html class="js no-touch cssanimations csstransitions loaded" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>{{ page.title }}</title>
+    {% if page.description %}<meta name="description" content="{{ page.description }}">{% endif %}
+    <meta name="author" content="{{ site.author.name }}">
+
+    <!-- Enable responsive viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="{{ ASSET_PATH }}/css/style.css?body=1" rel="stylesheet" type="text/css" media="all">
+    <link href="{{ ASSET_PATH }}/flat-ui/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="{{ ASSET_PATH }}/flat-ui/css/flat-ui.css" rel="stylesheet">
+    <link href="{{ ASSET_PATH }}/css/icon-font.css" rel="stylesheet">
+    <link href="{{ ASSET_PATH }}/css/style.css" rel="stylesheet">
+
+    <!-- atom & rss feed -->
+    <link href="{{ BASE_PATH }}{{ site.JB.atom_path }}" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
+    <link href="{{ BASE_PATH }}{{ site.JB.rss_path }}" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
+
+  </head>
+
+  <body>
+    <header class="header-2">
+      <div class="container">
+        <div class="row">
+          <div role="navigation" class="navbar col-sm-12 navbar-fixed-top" style="top: 45px;">
+            <div class="navbar-header">
+              <button class="navbar-toggle" type="button"></button>
+              <a href="/" class="brand" style="font-size: 25px; padding-top: 23px;">{{ site.title }}</a>
+            </div>
+
+            <div class="collapse navbar-collapse">
+              <ul class="nav pull-right">
+                <li><a href="index.html#time">Zeit</a></li>
+                <li><a href="index.html#planning">Planung</a></li>
+                <li><a href="index.html#life">Leben</a></li>
+                <li><a href="http://loewenrudel.net">Blog</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="page-wrapper">
+
+
+
+      <div class="content">
+        {{ content }}
+      </div>
+
+      <footer class="footer-1 bg-midnight-blue">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-5">
+        <p>
+          
+          <!-- Begin MailChimp Signup Form -->
+          <div id="mc_embed_signup">
+          <form action="http://loewe-software.us8.list-manage1.com/subscribe/post?u=c75075e099076db59aa2a53ae&amp;id=8aa29ffdb5" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+	          Mehr im Newsletter:  <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="Deine Emailadresse ..." required>
+              <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+              <div style="position: absolute; left: -5000px;"><input type="text" name="b_c75075e099076db59aa2a53ae_8aa29ffdb5" tabindex="-1" value=""></div>
+              <input type="submit" value="Eintragen" name="subscribe" id="mc-embedded-subscribe" class="confirm-btn btn btn-xs btn-primary">
+          </form>
+          </div>
+          <!--End mc_embed_signup-->
+
+        </p>
+
+            </div>
+            <nav>
+              <div class="col-sm-2 col-sm-offset-1">
+                <h6>About</h6>
+                <ul>
+                  <li><a href="/">Löwe Software</a></li>
+                  <li><a href="http://loewenrudel.net">Löwenrudel Blog</a></li>
+                  <!--<li><a href="#">Team</a></li>-->
+                  <!--<li><a href="#">Kontakt</a></li>-->
+                </ul>
+              </div>
+
+              <div class="col-sm-2">
+                <h6>Follow Us</h6>
+                <ul>
+                  <li><a href="https://twitter.com/NilsLoewe">Twitter</a></li>
+                  <li><a href="https://www.xing.com/profile/Nils_Loewe2">XING</a></li>
+                </ul>
+              </div>
+            </nav>
+              
+            <div class="col-sm-2 buy-btn">
+              <a href="http://loewenrudel.net" class="btn btn-danger btn-block">Mehr im Löwenrudel Blog</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-5 additional-links">
+            <a href="imprint.html">Impressum</a>
+            <a href="privacy.html">Datenschutzhinweis</a> 
+            <a href="disclaimer.html">Haftungsausschluss</a>
+          </div>
+        </div>
+      </footer>
+
+    </div>
+
+    {% include JB/analytics %}
+
+    <script type="text/javascript" async="" src="//platform.twitter.com/widgets.js"></script>
+    <script src="{{ ASSET_PATH }}/js/jquery-1.10.2.min.js"></script>
+    <script src="{{ ASSET_PATH }}/flat-ui/js/bootstrap.min.js"></script>
+    <script src="{{ ASSET_PATH }}/js/modernizr.custom.js"></script>
+    <script src="{{ ASSET_PATH }}/js/jquery.sharrre.min.js"></script>
+    <script src="{{ ASSET_PATH }}/js/startup-kit.js"></script>
+    <script src="{{ ASSET_PATH }}/js/script.js"></script>
+    <div style="opacity: 0.0001; position: fixed; z-index: 2; left: 0px; top: 0px; width: 100%; height: 70px; background-color: rgb(44, 62, 80);" class="header-2-startup-antiflicker header-antiflicker"></div>
+  </body>
+</html>

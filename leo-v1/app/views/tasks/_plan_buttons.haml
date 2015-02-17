@@ -1,0 +1,11 @@
+= form_for(task) do |f|
+  = f.hidden_field :current_week, :value => !task.current_week
+  - if task.current_week
+    - if periodic_buttons
+      = link_to '', task, :method=>:delete, :title => "ausplanen", :class => "glyphicon glyphicon-chevron-left"
+    - else
+      = link_to_submit('', :title => "ausplanen", :class => "glyphicon glyphicon-chevron-left" )
+  - else
+    - if periodic_buttons
+    - else
+      = link_to_submit('', :title => "einplanen", :class => "glyphicon glyphicon-chevron-right" )

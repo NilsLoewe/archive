@@ -1,0 +1,50 @@
+---
+layout: default
+---
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    <div class="entry-text">
+      <b>Leadership</b> describes the action of leading a group of people or an organization, or the ability to do this. <br><br>
+
+      <b>Craftsmanship</b> describes the beautiful or impressive quality of something that has been made using a lot of skill.<br><br>
+
+      <b>Leadercraftsmanship</b> is my personal vision of being a good leader for your group of people. Being a good leader involves many skills that have to be practiced just like all other professions. Many young leaders get into their positions because they did very well on the job before - but nobody tells them how to perform just as well as a leader.
+    </div>
+  </div>
+</div>
+
+{% for post in site.posts limit: 5 %} 
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <div class="post-summary">
+        <h3><a href="{{post.url}}">{{ post.title }}</a></h3>
+        <div class="row">
+          {% if post.pic != %}
+            <div class="col-md-3">
+              <img src=/images/{{ post.pic }}>
+            </div>
+            <div class="col-md-9">
+          {% else %}
+            <div class="col-md-12">
+          {% endif %}
+            {{ post.content | strip_html | truncatewords:42}} 
+
+            <div class="row">
+              <div class="col-md-12">
+                <div class="addthis_sharing_toolbox"></div>
+              </div>
+            </div>
+
+            </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <br><a class="pull-right" href="{{post.url}}">continue...</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endfor %} 
+

@@ -1,0 +1,54 @@
+- provide(:title, 'Kategorien')
+- currently_at 'Lebensbereiche'
+
+.row
+  .col-md-2
+    - @categories.each do |c|
+      = c.title
+  .col-md-10
+    Inhalt der Kategorie
+.row
+  .col-xs12
+    #accordion
+      - @categories.each do |c|
+        %h3{:class => "section-type-#{c.color}"}
+          %span.glyphicon.glyphicon-user
+            = c.title
+        %div
+          .row
+            %span.rest-in-place{"data-attribute" => "content", "data-formtype" => "textarea", "data-object" => "category", "data-url" => "/categories/#{c.id}"}
+              = c.content
+            .pull-right
+              = link_to_modal '', edit_category_path(c), :title => "Kategorie editieren", :class => "glyphicon glyphicon-cog"
+              - if c.position > 0
+                = link_to '', up_category_path(c), :title => "Hoch",   :class => "glyphicon glyphicon-chevron-up"
+              - if c.id != @categories.last.id
+                = link_to '', down_category_path(c), :title => "Runter", :class => "glyphicon glyphicon-chevron-down"
+          .row
+            = render c.objectives.active
+            - c.periodics.each do |periodic|
+              = render :partial => 'periodics/periodic', |
+                :locals => { :periodic => periodic,      |
+                :small => false,                         |
+                :plan  => false,                         |
+                :delete => true}                         |
+          .row
+            .section-footer
+              .pull-right
+                = render partial: "shared/objective_cat_form", locals: {category: c.id}
+              .pull-right
+                = render partial: "shared/periodic_cat_form", locals: {category: c.id}
+    - if @categories.count < 7
+      = form_for(@new_category) do |f|
+        = render 'shared/error_messages', object: f.object
+        .form-group.focus
+          .input-group.input-group-sm
+            = f.text_field :title, placeholder: "Neuer Lebenshut...", :class => "form-control"
+            = f.hidden_field :position, :value => @categories.count
+            .input-group-btn
+              = button_tag(type: 'submit', id: "add", class: "btn btn-primary") do
+                %span.glyphicon.glyphicon-plus
+.center
+  = link_to 'Archiv', archive_path
+  |
+  = link_to 'Parkplatz', parked_path

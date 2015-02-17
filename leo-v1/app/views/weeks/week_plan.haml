@@ -1,0 +1,84 @@
+- provide(:title, 'Woche planen')
+- currently_at 'Woche planen'
+
+.row
+  .col-xs-6
+    #accordion
+      %h3 Regelmäßige Aufgaben
+      %div
+        .row
+          - @periodics.each do |periodic|
+            = render :partial => 'periodics/small_periodic', |
+              :locals => { :periodic => periodic,      |
+              :plan  => true}
+
+      - @objectives.active.each do |objective|
+        - if objective.sprint_running? or objective.simple
+          %h3
+            = objective.title
+            - unless objective.simple
+              \: #{objective.sprinttitle}
+              %i
+                (#{objective.days_left} Tage)
+          %div
+            .row
+              .pull-right
+                = link_to '', objective, :title => "Sprint bearbeiten", :class => "glyphicon glyphicon-pencil"
+            .row
+              - objective.tasks.progress.unplanned.unfinished.each do |task|
+                = render :partial => 'tasks/small_task', |
+                  :locals => { :task => task,      |
+                  :done => true,                   |
+                  :delete => false,                |
+                  :periodic_buttons => false,      |
+                  :size => false,                  |
+                  :plan => true}                   |
+  .col-xs-6
+    #accordion2.active-sprint.ui-accordion.ui-widget.ui-helper-reset{:role => "tablist"}
+      %h3 Aktuelle Woche
+      %div
+        .row
+          - @periodics.each do |periodic|
+            - periodic.tasks.unfinished.planned.each do |periodic|
+              = render :partial => 'tasks/small_task', |
+                :locals => { :task => periodic,  |
+                :done => true,                   |
+                :delete => false,                |
+                :periodic_buttons => true,       |
+                :size => false,                  |
+                :plan => true}
+
+          - @objectives.active.each do |objective|
+            - if objective.sprint_running? or objective.simple
+              - objective.tasks.unfinished.planned.each do |task|
+                = render :partial => 'tasks/small_task', |
+                  :locals => { :task => task,      |
+                  :small => true,                  |
+                  :done => true,                   |
+                  :size => false,                  |
+                  :delete => false,                |
+                  :periodic_buttons => false,      |
+                  :plan => true}                   |
+        %hr/
+        .row
+          - @periodics.each do |periodic|
+            - periodic.tasks.finished.planned.each do |periodic|
+              = render :partial => 'tasks/small_task', |
+                :locals => { :task => periodic,  |
+                :done => true,                   |
+                :delete => false,                |
+                :size => false,                  |
+                :periodic_buttons => true,       |
+                :plan => true}                   |
+          - @objectives.active.each do |objective|
+            - if objective.sprint_running? or objective.simple
+              - objective.tasks.finished.planned.each do |task|
+                = render :partial => 'tasks/small_task', |
+                  :locals => { :task => task,      |
+                  :done => true,                   |
+                  :size => false,                  |
+                  :delete => false,                |
+                  :periodic_buttons => false,      |
+                  :plan => true}                   |
+        .row.pull-right
+          = link_to "Woche beenden", finish_path, :class => "btn btn-primary"

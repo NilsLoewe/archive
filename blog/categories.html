@@ -1,0 +1,35 @@
+---
+layout: page
+title: Kategorien
+header: Kategorien des Wissensblocks
+group: navigation
+---
+{% include JB/setup %}
+
+<section class="blog-1">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6 col-sm-offset-3 links">
+        <div class="tags">
+          <h2>Kategorien</h2>
+          <ul>
+            {% assign categories_list = site.categories %}
+            {% include JB/categories_list %}
+          </ul>
+        </div>
+
+        <div class="tags">
+          {% for category in site.categories %}
+            <h2 id="{{ category[0] }}-ref">{{ category[0] | join: "/" }}</h2>
+            <ul>
+              {% assign pages_list = category[1] %}
+              {% include JB/pages_list %}
+            </ul>
+          {% endfor %}
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+

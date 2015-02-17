@@ -1,0 +1,26 @@
+---
+layout: default
+---
+
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    <div class="entry-text">
+      <hr><b>“Wege entstehen dadurch, dass man sie geht.”</b><br><i>(Franz Kafka)</i><br><hr>
+    </div>
+  </div>
+</div>
+
+{% for post in site.posts limit: 5 %} 
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <div class="post-summary">
+        <h3><a href="{{post.url}}">{{ post.title }}</a></h3>
+        <p>
+          {{ post.content | strip_html | truncatewords:60}} 
+          <br><a class="pull-right" href="{{post.url}}">weiterlesen...</a>
+        </p>
+      </div>
+    </div>
+  </div>
+{% endfor %} 
+

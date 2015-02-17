@@ -1,0 +1,55 @@
+@import "brand";
+
+$sidebar-bg: #aaaaaa;
+$bars-bg: #bbbbbb;
+
+section#sidebar {
+  background: $sidebar-bg;
+  section {
+    header {
+      font-family: $heading-font;
+      font-size: 18px;
+    }
+  }
+}
+
+section#sidebar {
+  background-color: #9a9a9a;
+  -webkit-border-top-left-radius: 3px;
+  -webkit-border-bottom-left-radius: 3px;
+  -moz-border-radius-topleft: 3px;
+  -moz-border-radius-bottomleft: 3px;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+  color: #333;
+  font: {
+    size: 0.8em;
+    weight: normal;
+  }
+  line-height: 1.3em;
+  padding: 10px;
+
+  a,
+  a:link,
+  a:visited {
+    color: #666;
+    text-decoration: underline;
+  }
+
+  a:hover,
+  a:active {
+    color: #bc471d;
+  }
+
+  section {
+  }
+
+  #functional_nav {
+
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+  }
+}

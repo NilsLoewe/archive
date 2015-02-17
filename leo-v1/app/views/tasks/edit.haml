@@ -1,0 +1,19 @@
+- provide(:title, "Edit Task")
+%h1 Aufgabe editieren
+.row
+  .col-xs-12
+    = form_for(@task) do |f|
+      .field
+        = f.label :title
+        = f.text_field :title
+      .field
+        = f.label :size
+        = f.text_field :size
+      .field
+        = f.label :content
+        = f.text_area(:content, :size => '50x10')
+      .field
+        = f.submit "Save changes", class: "btn btn-large btn-primary"
+
+%h4 Aufgabe löschen
+= link_to 'Aufgabe löschen', @task, :method=>:delete, :confirm => "Are you sure?", :title => "Aufgabe löschen", :class => "btn btn-large btn-danger"

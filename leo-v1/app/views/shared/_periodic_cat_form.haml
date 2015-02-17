@@ -1,0 +1,9 @@
+= form_for(@new_periodic) do |f|
+  = render 'shared/error_messages', object: @new_periodic
+  .form-group.focus
+    = f.hidden_field :category_id, :value => category
+    .input-group.input-group-sm
+      = f.text_field :title, placeholder: "Neue regelmäßige Aufgabe...", :id => "add_periodic", :class => "form-control"
+      .input-group-btn
+        = button_tag(type: 'submit', class: "btn btn-primary") do
+          %span.glyphicon.glyphicon-plus

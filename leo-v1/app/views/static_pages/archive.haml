@@ -1,0 +1,13 @@
+- provide(:title, 'Archiv')
+- currently_at 'Archiv'
+
+.row
+  .col-xs-12
+    - @categories.each do |c|
+      - c.objectives.done.each do |o|
+        = render o
+
+.center
+  = link_to 'Archiv', archive_path
+  |
+  = link_to 'Parkplatz', parked_path

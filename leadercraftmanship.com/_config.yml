@@ -1,0 +1,11 @@
+# Site settings
+title: Leadercraftsmanship
+subtitle: How to master leadership as a skill
+email: nils@loewe.io
+description: "Leadercraftsmanship is my personal vision of being a good leader for your group of people. Being a good leader involves many skills that have to be practiced just like all other professions. Many young leaders get into their positions because they did very well on the job before - but nobody tells them how to perform just as well as a leader."
+baseurl: ""
+url: "http://leadercraftsmanship.com"
+
+# Build settings
+markdown: kramdown
+permalink: pretty

@@ -1,0 +1,29 @@
+.col-md-4
+  %div{:class => "panel panel-default panel-card border-color-#{objective.color}"}
+    .panel-heading
+      .row
+        .col-xs-10.pull-left
+          - unless objective.simple
+            %span.glyphicon.glyphicon-asterisk
+          = link_to objective.title, objective
+        .col-xs-2.pull-right
+          = link_to_modal '', edit_objective_path(objective), :title => "Edit", :class => "glyphicon glyphicon-pencil"
+
+    - if objective.sprint_running? or objective.description
+      .panel-body
+        - if objective.sprint_running? and not objective.simple
+          .row
+            %b= objective.sprinttitle
+            läuft noch #{objective.days_left} Tage
+            %br/
+            %hr
+        - if objective.description
+          .row
+            = truncate objective.description, length: 60
+
+    .panel-footer
+      %b= objective.tasks.unfinished.count
+      offene Aufgaben
+      %br/
+      %b= objective.tasks.finished.count
+      erledigte Aufgaben

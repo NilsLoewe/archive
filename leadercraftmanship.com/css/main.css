@@ -1,0 +1,201 @@
+/********** General Page layout **********/
+
+body {
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
+  font-size: 13pt;
+  line-height: 1.5;
+  font-weight: 300;
+}
+
+.container {
+  margin-top: 30px;
+  padding: 0px 0px 20px;
+  -webkit-box-shadow: 0px 0px 20px 3px rgba(112,112,112,1);
+  -moz-box-shadow: 0px 0px 20px 3px rgba(112,112,112,1);
+  box-shadow: 0px 0px 20px 3px rgba(112,112,112,1);
+}
+
+a         { color: #6C8648; text-decoration: none; }
+a:hover   { color: #6C8648; text-decoration: underline; }
+a:visited { color: #6C8648; }
+
+/********** Header **********/
+
+.page-header {
+  margin-top: 0px;
+  padding-top: -30px;
+  border-bottom: none;
+  height: 444px;
+}
+
+.header-bg {
+  background: #ffffff url("/img/header.jpg") no-repeat right top;
+  height: 382px;
+}
+.page-header h1 { padding-left: 20px; }
+.page-header h1 a         { color: #333; text-decoration: none; }
+.page-header h1 a:hover   { color: #333; text-decoration: none; }
+.page-header h1 a:visited { color: #333; text-decoration: none; }
+
+/********** Navigation **********/
+
+.nav-st {
+  padding: 10px;
+}
+
+.addthis_horizontal_follow_toolbox {
+  padding: 10px;
+  margin-top: -20px;
+}
+
+/********** Sidebar **********/
+
+.bio-subscribe {
+  text-align:center;
+  padding: 10px;
+  margin: 10px;
+  background-color: #fafafa;
+  border: solid 1px #dedede;
+}
+
+label.mc-label {
+  color:#000;
+  font-size: 13pt;
+  line-height: 1.5;
+  font-weight: 300;
+}
+
+input.button {
+  margin-top: 15px;
+}
+
+.bio-facebook {
+  text-align:center;
+  padding: 10px;
+  margin: 10px;
+  background-color: #fafafa;
+  border: solid 1px #dedede;
+}
+
+.bio-image {
+  width: 92%;
+  text-align:center;
+  padding: 10px;
+  margin: 10px;
+  background-color: #fafafa;
+  border: solid 1px #dedede;
+}
+
+.bio-text {
+  padding: 10px;
+  margin: 10px;
+  background-color: #fafafa;
+  border: solid 1px #dedede;
+}
+
+.sidebar-posts {
+  padding: 10px;
+  margin: 10px;
+  background-color: #fafafa;
+  border: solid 1px #dedede;
+}
+
+.sidebar-posts ul {
+  list-style-type:none;
+  margin: 0px;
+  padding-left: 5px;
+}
+
+.sidebar-posts ul li {
+  margin-top: 5px;
+}
+
+
+
+/********** Index Page **********/
+
+.entry-text {
+  padding: 10px;
+  margin: 10px;
+}
+
+.post-summary {
+  padding: 20px;
+  margin-top: 20px;
+  border-bottom: 1px solid rgba(112,112,112,0.25);
+}
+
+.post-summary img {
+  width: 100%;
+  height: auto;
+}
+
+
+/********** Post Layout **********/
+
+.post-heading {
+  margin-top: 25px;
+}
+
+.post-meta {
+  margin-top: 15px;
+  font-variant:small-caps;
+}
+
+.post-image {
+  margin-top: 15px;
+  font-variant:small-caps;
+}
+
+.post-image a         { color: #6C8648; text-decoration: none; }
+.post-image a:hover   { color: #6C8648; text-decoration: none; }
+.post-image a:visited { color: #6C8648; text-decoration: none; }
+
+.post-image img {
+  width: 90%;
+  height: auto;
+}
+
+.post-content {
+  margin-top: 15px;
+  margin-bottom: 35px;
+}
+
+.post-links {
+  font-variant:small-caps;
+  padding-bottom: 25px;
+}
+
+/********* Profiles ***********/
+
+.profiles {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.profiles ul {
+  list-style-type:none;
+  margin: 0px;
+  padding-left: 5px;
+}
+
+.profiles ul li {
+  margin-top: 5px;
+}
+
+
+/********** Footer **********/
+
+.footer-links {
+  padding-top: 30px;
+  margin-bottom: 30px;
+  text-align: center;
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  font-weight: 300;
+}
+
+.footer-links a         { color: #6C8648; text-decoration: none; }
+.footer-links a:hover   { color: #6C8648; text-decoration: underline; }
+.footer-links a:visited { color: #6C8648; }

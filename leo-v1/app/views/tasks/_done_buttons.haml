@@ -1,0 +1,6 @@
+= form_for(task) do |f|
+  = f.hidden_field :done, :value => !task.done
+  - unless task.done
+    = link_to_submit('', class: 'glyphicon glyphicon-ok' )
+  - else
+    = link_to_submit('', class: 'glyphicon glyphicon-check' )

@@ -1,0 +1,25 @@
+---
+layout: page
+title : Archiv
+header : Wissensarchiv
+group: navigation
+---
+{% include JB/setup %}
+
+
+<section class="blog-1">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-9 col-sm-offset-3 links">
+        <div class="tags">
+          <h2>Archiv</h2>
+          <ul>
+            {% assign posts_collate = site.posts %}
+            {% include JB/posts_collate %}
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>

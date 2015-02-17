@@ -1,0 +1,17 @@
+- provide(:title, "Edit Kategorie")
+%h4 Kategorie editieren
+= form_for(@category) do |f|
+  .field
+    = f.label :title
+    = f.text_field(:title, :size => 40)
+  .field
+    = f.label :color
+    - (1..14).each do |i|
+      %span{:class => "color-selector section-type-#{i}"}= f.radio_button :color, i
+  .field
+    = f.label :content
+    = f.text_area(:content, :size => '30x10')
+  .field
+    = f.submit "Save changes", class: "btn btn-large btn-primary"
+%h4 Kategorie löschen
+= link_to 'Kategorie löschen', @category, :method=>:delete, :confirm => "Are you sure?", :title => "Kategorie entfernen", :class => "btn btn-large btn-danger"

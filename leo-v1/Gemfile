@@ -1,0 +1,50 @@
+source 'https://rubygems.org'
+
+gem 'rails', '3.2.15'
+gem 'haml', '~> 4.0.5'
+gem 'twitter-bootstrap-rails', git: 'https://github.com/seyhunak/twitter-bootstrap-rails.git', branch: 'bootstrap3'
+gem 'devise', '~> 3.0.2'
+gem 'simple_form'
+gem 'acts_as_list'
+
+gem 'jquery-rails'
+gem 'jquery-ui-rails'
+gem 'jquery-modal-rails'
+gem 'less-rails' # Needed for less-version of flatui
+gem 'therubyracer'
+
+gem 'pg', '0.12.2'
+gem 'capistrano', '2.9.0'
+
+group :development, :test do
+  gem 'annotate', '2.5.0'
+  gem 'rspec-rails', '2.12.2'
+  gem 'guard-rspec', '2.4.0'
+  gem 'guard-spork', '1.4.1'
+  gem 'spork', '0.9.2'
+  gem 'libnotify', '0.8.0'
+  gem 'rb-inotify', '~> 0.9'
+  gem 'cucumber-rails', '1.2.1', :require => false
+  gem 'database_cleaner', '0.7.0'
+  gem 'guard-cucumber'
+  gem 'html2haml'
+end
+
+group :test do
+  gem 'capybara', '1.1.2'
+  gem 'factory_girl_rails', '4.1.0'
+  gem "email_spec", ">= 1.4.0"
+  gem 'simplecov', '>=0.4.2', :require => false
+  gem 'ci_reporter', '1.8.0'
+end
+
+# Gems used only for assets and not required
+# in production environments by default.
+group :assets do
+  gem 'sass-rails',   '~> 3.2.3'
+  gem 'coffee-rails', '~> 3.2.1'
+  gem 'uglifier', '>= 1.0.3'
+end
+
+gem 'thin', '~> 1.5.0'
+gem 'rest_in_place'

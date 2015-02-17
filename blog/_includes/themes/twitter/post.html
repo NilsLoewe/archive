@@ -1,0 +1,61 @@
+<section class="blog-1">
+  <div class="title">
+    <div class="container">
+      <h3>{{ page.title }} {% if page.tagline %}<small>{{page.tagline}}</small>{% endif %}</h3>
+      <div class="submitted">
+        Geschrieben am {{ page.date | date_to_long_string }} von {{page.author}}
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-3 links">
+        <div class="tags">
+          <h6>Tags</h6>
+          {% unless page.tags == empty %}
+            <ul>
+              {% assign tags_list = page.tags %}
+              {% include JB/tags_list %}
+            </ul>
+          {% endunless %} 
+        </div>
+
+        <div class="tags">
+          <h6>Kategorien</h6>
+          {% unless page.categories == empty %}
+            <ul>
+              {% assign categories_list = page.categories %}
+              {% include JB/categories_list %}
+            </ul>
+          {% endunless %} 
+        </div>
+
+        <div class="tags">
+          <h6>Weitere Artikel</h6>
+          <ul>
+
+
+      {% if page.previous %}
+        <li class="prev"><a href="{{ BASE_PATH }}{{ page.previous.url }}" title="{{ page.previous.title }}">{{ page.previous.title }}</a></li>
+      {% endif %}
+        <li><a href="{{ BASE_PATH }}{{ site.JB.archive_path }}">Archiv</a></li>
+      {% if page.next %}
+        <li class="next"><a href="{{ BASE_PATH }}{{ page.next.url }}" title="{{ page.next.title }}">{{ page.next.title }}</a></li>
+      {% endif %}
+      </ul>
+
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-sm-9">
+        {{ content }}
+        <div class="comments">
+          <h6>Kommentare</h6>
+          {% include JB/comments %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+

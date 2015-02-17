@@ -1,0 +1,19 @@
+- provide(:title, 'Help')
+- currently_at 'Help'
+%h1 Help
+
+%h3 Wartungsmodus
+Falls einige Ziele verloren gehen, kann man sie hier ggf. wieder reaktivieren...
+- @objectives.each do |o|
+  - if o.parked.nil? or o.archive.nil?
+    .row
+      .col-xs-4
+        %b= o.title
+      .col-xs-2
+        - if o.parked.nil?
+          = form_for(o) do |f|
+            = f.hidden_field :parked, :value => false
+            = f.hidden_field :archive, :value => false
+            = f.hidden_field :sprint_start, :value => Date.today
+            = f.hidden_field :duration, :value => "9999"
+            = f.submit "Reset", class: "btn btn-block btn-lg btn-primary"
