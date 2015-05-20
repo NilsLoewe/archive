@@ -1,0 +1,136 @@
+/* Base */
+/* ----------------------------------------------------------*/
+
+html, body { height: 100%; }
+
+body {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  font-weight: 300;
+  background-color: #DBF5FF; 
+/*  background-color: #dcdcdc;*/
+  opacity: 0.95;
+}
+
+a         { color: #2a7ae2; text-decoration: none; }
+a:hover   { color: #000; text-decoration: underline; }
+a:visited { color: #205caa; }
+
+.content {
+  background-color: #ffffff;
+  opacity: 1;
+  font-family: 'the_mix_light_plain';
+}
+
+.header-light {
+  background-color: #00AEF0;
+  min-height: 15px;
+}
+
+.footer-content {
+    list-style-type: none;
+    font-size: 11pt;
+    padding-top: 30px;
+    margin: 0px;
+}
+
+.footer-bars {
+  padding-top: 20px;
+}
+
+.footer-dark {
+  background-color: #006891;
+  text-align: center;
+  font-size: 21pt;
+  font-weight: bold;
+  font-family: 'the_mix_light_plain';
+  line-height:4em;
+  color: #FFFFFF;
+}
+
+.footer-text {
+  text-align: center;
+  font-size: 12pt;
+  font-weight: bold;
+  font-family: 'the_mix_light_plain';
+  line-height:2em;
+  padding-top: 25px;
+}
+
+.footer-links {
+  padding-top: 20px;
+  text-align: center;
+  font-size: 10pt;
+}
+
+.footer-light {
+  background-color: #00AEF0;
+  min-height: 10px;
+}
+
+.navbar {
+  background-color: #006891;
+}
+
+.logo-header {
+  padding-top: 10px;
+  padding-bottom: 15px;
+}
+
+.sidebar-box {
+  background-color: #006891;
+  opacity: 0.75;
+  filter:Alpha(Opacity=75);
+}
+
+.navbar, .navbar-nav {
+  background: white;
+  background-color: #006891;
+  color: #ffffff;
+  border: 0px;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+    color: #fff;
+}
+
+.navbar-inverse .navbar-nav > .active > a {
+    background-image: linear-gradient(to bottom, #222 0px, #005d7f 2%);
+    background-repeat: repeat-x;
+    box-shadow: 0 3px 9px rgba(0, 0, 0, 0.125) inset;
+}
+
+.navbar-inverse .navbar-nav > .open > a, 
+.navbar-inverse .navbar-nav > .open > a:hover, 
+.navbar-inverse .navbar-nav > .open > a:focus {
+    background-color: #005d7f;
+    color: #fff;
+}
+
+.nav li.dropdown:hover .dropdown-menu
+{
+    display: block;    
+}
+
+.dropdown-menu > li > a {
+    clear: both;
+    color: #333;
+    display: block;
+    font-weight: 400;
+    line-height: 1.42857;
+    padding: 3px 20px;
+    white-space: nowrap;
+}
+
+.dropdown-menu > li > a:hover, .dropdown-menu > li >a:focus {
+	background-color: #111;
+	background-image: linear-gradient(to bottom, #DBF5FF 0px, #DBF5FF 100%);
+}
+
+@font-face {
+font-family: 'the_mix_light_plain';
+src: url('../fonts/the_mix_plain.ttf') format('truetype');
+font-weight: normal;
+font-style: normal;
+}

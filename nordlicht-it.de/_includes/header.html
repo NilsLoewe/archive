@@ -1,0 +1,95 @@
+<div class="logo-header">
+  <a href="/"><img src="/images/logo.png" width="300px"></a>
+</div>
+
+<div role="navigation" class="navbar navbar-default navbar-static-top navbar-inverse header-padding menu">
+  <div class="container">
+    <div class="navbar-header">
+      <button data-target=".navbar-collapse" data-toggle="collapse" class="navbar-toggle" type="button">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav" id="navlist">
+
+        <li {% if page.menu == "index" %} class="active" {% endif %} ><a href="/">Startseite</a></li>
+
+        <li class="dropdown {% if page.menu == "ueber_uns" %} active {% endif %}">
+          <a id="menu1" data-toggle="dropdown" class="dropdown-toggle" data-target="#" href="/ueber_uns">&Uuml;ber uns <span class="caret"></span></a>
+          <ul role="menu" class="dropdown-menu">
+            <li><a href="/ueber_uns/unser_team">Unser Team</a></li>
+            <li><a href="/ueber_uns/unsere_partner">Partner / Marken</a></li>
+            <li><a href="/ueber_uns/firmenchronik">Firmenchronik</a></li>
+          </ul>
+        </li>
+
+
+        <li {% if page.menu == "aktuelles" %} class="active" {% endif %} ><a href="/aktuelles">Aktuelles</a></li>
+
+        <li class="dropdown {% if page.menu == "angebot" %} active {% endif %}">
+          <a id="menu2" data-toggle="dropdown" class="dropdown-toggle" data-target="#" href="/angebot">Dienstleistungen <span class="caret"></span></a>
+          <ul role="menu" class="dropdown-menu">
+            <li><a href="/angebot/kundenservice">Kundenservice</a></li>
+            <li><a href="/angebot/e-commerce">E-Commerce</a></li>
+            <li><a href="/angebot/it-consulting">IT-Consulting</a></li>
+            <li><a href="/angebot/webdesign">CMS- / Webdesign</a></li>
+            <li><a href="/angebot/storage">Storage / Backup</a></li>
+            <li><a href="/angebot/businesssecurity">Business Security</a></li>
+            <li><a href="/angebot/netzwerktechnik">Netzwerktechnik</a></li>
+            <li><a href="/angebot/downloads">Downloads</a></li>
+          </ul>
+        </li>
+
+
+        <li {% if page.menu == "referenzen" %} class="active" {% endif %} ><a href="/referenzen">Referenzen</a></li>
+
+        <li class="dropdown {% if page.menu == "kontakt" %} active {% endif %}">
+          <a id="menu3" data-toggle="dropdown" class="dropdown-toggle" data-target="#"  href="/kontakt">Kontakt <span class="caret"></span></a>
+          <ul role="menu" class="dropdown-menu">
+            <li><a href="/kontakt/rueckruf">Kostenloser R&uuml;ckruf</a></li>
+            <li><a href="/kontakt/fandi">Loai Fandi</a></li>
+            <li><a href="/kontakt/fietzek">Sebastian Fietzek</a></li>
+            <li><a href="/kontakt/bogner">Boie Bogner</a></li>
+            <li><a href="/kontakt/anfrage">Leistungsanfrage</a></li>
+            <li><a href="/kontakt/impressum">Impressum</a></li>
+          </ul>
+        </li>
+
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</div>
+
+<script type="text/javascript">
+
+function menus() { 
+      if($(window).width() < 756){
+          document.getElementById('menu1').setAttribute('data-toggle', 'dropdown');
+          document.getElementById('menu2').setAttribute('data-toggle', 'dropdown');
+          document.getElementById('menu3').setAttribute('data-toggle', 'dropdown');
+      }else {
+          document.getElementById('menu1').setAttribute('data-toggle', 'disable');
+          document.getElementById('menu2').setAttribute('data-toggle', 'disable');
+          document.getElementById('menu3').setAttribute('data-toggle', 'disable');
+      }
+} 
+
+window.onload=menus; 
+
+  $(window).resize(function(){
+      if($(window).width() < 756){
+          document.getElementById('menu1').setAttribute('data-toggle', 'dropdown');
+          document.getElementById('menu2').setAttribute('data-toggle', 'dropdown');
+          document.getElementById('menu3').setAttribute('data-toggle', 'dropdown');
+      }else {
+          document.getElementById('menu1').setAttribute('data-toggle', 'disable');
+          document.getElementById('menu2').setAttribute('data-toggle', 'disable');
+          document.getElementById('menu3').setAttribute('data-toggle', 'disable');
+      }
+  })
+</script>
+
+

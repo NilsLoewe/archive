@@ -1,0 +1,38 @@
+/*******************************************************
+
+This file contains the styles that are modified for the
+responsive layout on smaller screens.
+
+********************************************************/
+
+/* Portrait table to landscape and desktop */
+@media (min-width: 768px) {
+
+  .footer-dark {
+    font-size: 15pt;
+  }
+
+  .dropdown:hover .dropdown-menu {
+      display: block;
+  }
+  .dropdown-menu {
+      margin-top: 0px;
+  }
+}
+
+/* Landscape phone to portrait table */
+@media (max-width: 767px) {
+
+  .footer-dark {
+    font-size: 12pt;
+  }
+
+  .navbar-inverse .navbar-nav .open .dropdown-menu > li > a {
+      color: #fff;
+	  background-color: #0078a1;
+  }
+}
+
+/* Landscape phones and down */
+@media (max-width: 480px) {
+}
