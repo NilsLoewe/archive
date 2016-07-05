@@ -1,0 +1,55 @@
+.col-xs-12
+  - @decision.participants.each do |p|
+    .row{:id=> "participant#{p.id}"}
+      .col-xs-2.nopad
+        =p.user.name
+      .col-xs-2.nopad
+        =p.user.email
+      .col-xs-2.nopad
+        - unless p.invited
+          = link_to 'Einladung an ' + p.user.name + ' senden', invite_participant_path(p), :class => "btn btn-primary"
+        - else
+          = link_to 'Einladung erneut an ' + p.user.name + ' senden', invite_participant_path(p), :class => "btn btn-default"
+      -if p.id == @participant.id
+        .col-xs-1.nopad
+          :javascript
+            jQuery(document).ready(function(){
+              jQuery('body').on('click', '#toggle_edit#{p.id}', function(event) {
+                jQuery('#editparticipant#{p.id}').toggle('show');
+                jQuery('#participant#{p.id}').toggle('show');
+              });
+            });
+
+          %span.glyphicon.glyphicon-cog{:id=> "toggle_edit#{p.id}"}
+
+    -if p.id == @participant.id
+      .row{:id=> "editparticipant#{p.id}", :style=>"display: none"}
+        = form_for(@participant.user) do |f|
+          .col-xs-2.nopad
+            =f.text_field(:name, :size => 25, :placeholder => "Wer soll mitentscheiden?")
+          .col-xs-2.nopad
+            =f.text_field(:email, :size => 25, :placeholder => "Gib eine Email Adresse an")
+          .col-xs-2.nopad
+            = f.hidden_field :decision_id, :value => @decision.id
+            = button_tag(type: 'submit', id: "add", class: "btn btn-success pull-right") do
+              ok
+          .col-xs-1.nopad
+            %span.glyphicon.glyphicon-cog{:id=> "toggle_edit#{p.id}"}
+
+  - if @participant.admin && !@decision.closed?
+    .row
+      = form_for(@newuser) do |f|
+        .col-xs-2.nopad
+          =f.text_field(:name, :size => 25, :placeholder => "Wer soll mitentscheiden?")
+        .col-xs-2.nopad
+          =f.text_field(:email, :size => 25, :placeholder => "Gib eine Email Adresse an")
+        .col-xs-2.nopad
+          =f.hidden_field :decision_id, :value => @decision.id
+          =f.submit 'einladen', class: "btn btn-primary"
+    .row
+      .col-xs-6.nopad
+        %br
+        Um die Teilnehmer selber einzuladen, kopiere einfach den folgenden Einladungslink und versende ihn z.B. per Email.
+        %br
+        %br
+        =link_to(participate_decision_url(@decision), participate_decision_path(@decision))

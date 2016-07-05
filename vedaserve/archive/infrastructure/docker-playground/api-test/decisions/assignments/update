@@ -1,0 +1,18 @@
+#!/bin/bash
+
+. "$(dirname "${0}")/../../config"
+
+decision_id=$1
+assignment_id=$2
+applicable=$3
+
+if [[ -z "${decision_id}" || -z "${assignment_id}" || -z "${applicable}" ]]; then
+  echo "${0} decision_id assignment_id applicable"
+  exit 1
+fi
+
+request=$(printf '{ "assignments": { "applicable": "%s" } }' "${applicable}")
+
+curl ${CURL_OPTS} --request PUT \
+  --data-binary $request \
+  "${HOST}/decisions/${decison_id}/assignments/${assignment_id}" | ${POST_PROCESSING}

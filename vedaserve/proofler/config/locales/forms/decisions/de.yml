@@ -1,0 +1,34 @@
+---
+de:
+  decision:
+    check_your_email_html: Vielen Dank! Wir haben dir eine Email mit deinem persönlichen
+      Link an <strong>%{email}</strong> geschickt. Bis gleich!
+    create: Entscheiden
+    default-description: Editiere oder lösche diese Option und suche dann nach weiteren Optionen! Lade ein Bild hoch und überlege Dir weitere Entscheidungskriterien.
+  activerecord:
+    errors:
+      models:
+        decision:
+          attributes:
+            title:
+              blank: Bitte gib einen Titel ein
+        participant:
+          attributes:
+            email:
+              blank: Bitte gibt eine gültige Email-Adresse ein
+            name:
+              blank: Bitte gib einen Namen ein
+  helpers:
+    label:
+      decision:
+        description: Description
+        title: Welche Entscheidung willst du treffen?
+      decision[admin_attributes]:
+        email: Deine E-Mail Adresse
+        name: Dein Name
+    placeholder:
+      decision:
+        title: An welcher Uni soll ich meinen Master machen?
+      decision[admin_attributes]:
+        email: email@example.com
+        name: Peter Parker

@@ -1,0 +1,54 @@
+#dashboard-feel
+  .row.js-eq-height-target
+    =render "progress", progress: "66"
+
+    .row
+      .col-sm-9.col-sm-offset-1
+        %h2
+          = I18n.t('pages.dashboard.feel.question')
+
+    .row.buttons
+      .col-xs-10.col-xs-offset-1.col-md-6.col-md-offset-3.centered.rateFact
+        .row
+          .col-xs-2.col-xs-offset-1.no-padding
+            = bootstrap_form_for(@feeling, url: (dashboard_feeling_path(@token, @feeling))) do |feeling|
+              = feeling.hidden_field :value, :value => "1"
+              = button_tag(type: 'submit', class: "btn btn-block btn-info btn-left") do
+                %i.fa.fa-minus
+                %i.fa.fa-minus
+          .col-xs-2.no-padding
+            = bootstrap_form_for(@feeling, url: (dashboard_feeling_path(@token, @feeling))) do |feeling|
+              = feeling.hidden_field :value, :value => "2"
+              = button_tag(type: 'submit', class: "btn btn-block btn-info btn-center") do
+                %i.fa.fa-minus
+          .col-xs-2.no-padding
+            = bootstrap_form_for(@feeling, url: (dashboard_feeling_path(@token, @feeling))) do |feeling|
+              = feeling.hidden_field :value, :value => "3"
+              = button_tag(type: 'submit', class: "btn btn-block btn-info btn-center") do
+                %i.fa.fa-dot-circle-o
+          .col-xs-2.no-padding
+            = bootstrap_form_for(@feeling, url: (dashboard_feeling_path(@token, @feeling))) do |feeling|
+              = feeling.hidden_field :value, :value => "4"
+              = button_tag(type: 'submit', class: "btn btn-block btn-info btn-center") do
+                %i.fa.fa-plus
+          .col-xs-2.no-padding
+            = bootstrap_form_for(@feeling, url: (dashboard_feeling_path(@token, @feeling))) do |feeling|
+              = feeling.hidden_field :value, :value => "5"
+              = button_tag(type: 'submit', class: "btn btn-block btn-info btn-right") do
+                %i.fa.fa-plus
+                %i.fa.fa-plus
+
+    .row
+      = render @feeling.option,
+        wrapper: "col-sm-4 col-sm-offset-4",
+        editoption: false,
+        deletelink: false,
+        selectbutton: false,
+        rating: false,
+        disablefacts: true,
+        newfact: false,
+        comments: false,
+        newcomment: false,
+        review: false,
+        index: nil
+

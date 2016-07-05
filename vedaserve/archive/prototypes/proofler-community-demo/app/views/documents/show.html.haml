@@ -1,0 +1,47 @@
+= render :partial => "shared/firstline"
+.row.top
+  .col-md-12
+    .panel.panel-primary
+      .panel-heading
+        %h6= @document.title
+      .panel-body
+        .row
+          .col-md-4
+            .row
+              .col-md-12
+                .panel.panel-primary
+                  .panel-heading
+                    Created by
+                  .panel-body
+                    .row
+                      .col-md-6
+                        = image_tag("cat.jpg")
+                      .col-md-6
+                        = @document.user.username
+            .row
+              .col-md-12
+                .panel.panel-primary
+                  .panel-heading
+                    Description
+                  .panel-body
+                    = @document.description
+
+            .row
+              .col-md-12
+                .panel.panel-primary
+                  .panel-heading
+                    Decisions
+                  .panel-body
+                    = render @document.decisions
+  
+          .col-md-8
+            .row
+              .col-md-12
+                .panel.panel-primary
+                  .panel-heading
+                    = @document.title
+                  .panel-body
+                    = @document.content
+  
+      .panel-footer
+        = link_to 'Edit Document', edit_document_path(@document)

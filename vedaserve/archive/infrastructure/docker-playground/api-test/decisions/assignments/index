@@ -1,0 +1,12 @@
+#!/bin/bash
+
+. "$(dirname "${0}")/../../config"
+
+decision_id=$1
+
+if [[ -z "${decision_id}" ]]; then
+  echo "${0} decision_id"
+  exit 1
+fi
+
+curl $CURL_OPTS "${HOST}/decisions/${decison_id}/assignments" | ${POST_PROCESSING}

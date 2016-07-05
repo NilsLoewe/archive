@@ -1,0 +1,23 @@
+# == Schema Information
+#
+# Table name: document_parts
+#
+#  id          :integer          not null, primary key
+#  content     :text
+#  type        :string(255)
+#  document_id :integer
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  content: MyText
+  type: 1
+  document_id: 1
+
+two:
+  content: MyText
+  type: 1
+  document_id: 1

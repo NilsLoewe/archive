@@ -1,0 +1,95 @@
+- currently_at 'Gather'
+:javascript
+  $(function(){
+    //hover states on the static widgets
+    $('#dialog_link, ul#icons li').hover(
+    function() { $(this).addClass('ui-state-hover'); },
+    function() { $(this).removeClass('ui-state-hover'); }
+    );
+  });
+.row
+  .panel.panel-default
+    .panel-heading
+      %h3.panel-title
+        Find data for #{@question.title}
+    .container
+      .row
+        .accordion
+          / Searches
+          %h3 Manage search approaches
+          %div
+            / ToDo: Konfigurierte Methoden erstellen
+            / ToDo: Angelegte Suchen anzeigen + auswählen
+            .well
+              = link_to 'ALL', answer_gather_question_path
+              - @question.research_categories.in_groups_of(2, false) do |row|
+                - row.each do |category|
+                  | #{link_to t("search.#{category}"), answer_gather_question_path(:type => category)}
+            - @categories.each do |category|
+              .result
+                = link_to 'New '+ category, { controller: 'searches', action: 'create', question_id: @question.id, type: category }, method: :post
+            - @searches.each do |search|
+              .result
+                %b= link_to search.title, question_search_path(@question, search)
+          - unless search?
+            %h3 No search is loaded
+            %div
+              Please select or create a new search
+          - else
+            %h3
+              = @search.title
+            %div
+              .row
+                / ToDo: Für die Suche Quellen auswählen
+                / ToDo: Keywords in Quelle "werfen"
+                .col-xs-6
+                  = form_for([@question,@search], :as => :search) do |f|
+                    .field
+                      = f.label :title
+                      = f.text_field :title, placeholder: "Name this search"
+                      = f.submit "Update", class: "btn btn-xs btn-primary"
+                  = hint("gather_it_sources")
+                  %ul
+                    - @sources.each do |s|
+                      %li= link_to s.title, s.url, :target => "_blank"
+                .col-xs-6
+                  / ToDo: Ergebnisse editieren
+                  %div
+                    - unless dataobject?
+                      %b No data is loaded
+                      %p Please select or create a new search
+                    - else
+                      %b
+                        (#{@dataobject.type}) #{@dataobject.title}
+                      = form_for(@dataobject, :as => :dataobject) do |f|
+                        = f.label :title
+                        = f.text_field :title, placeholder: "What did you find?"
+                        %br/
+                        = f.label :content
+                        = f.text_field :content, placeholder: "Describe the details"
+                        %br/
+                        = f.hidden_field :search_id, :value => @search.id
+                        = f.submit "Update", class: "btn btn-xs btn-primary"
+                  / ToDo: Ergebnisse eintragen
+                  %div
+                    %b Add new data
+                    = form_for(@new_dataobject) do |f|
+                      = f.label :type
+                      = f.select :type, Dataobject.types.map {|r| [r.humanize, r.camelcase]}, {}
+                      = f.text_field :title, placeholder: "What did you find?"
+                      = f.hidden_field :search_id, :value => @search.id
+                      = f.hidden_field :score, :value => "0"
+                      = f.submit "Add", class: "btn btn-xs btn-primary"
+                  / ToDo: Ergebnisse anzeigen
+                  %div
+                    %b Data found until now
+                    .alert.alert-info
+                      %button.close{"aria-hidden" => "true", "data-dismiss" => "alert", :type => "button"} ×
+                      Hilfetext zu den Suchergebnissen dieser Suche
+                    %ul
+                      - @search.dataobjects.each do |dataobject|
+                        %li
+                          (#{dataobject.type}) #{link_to dataobject.title, sti_dataobject_path(dataobject.type, dataobject)}
+                          \#{link_to '[X]', sti_dataobject_path(dataobject.type, dataobject), method: :delete, data: { confirm: 'Are you sure?' }}
+    .panel-footer
+      = link_to 'Next step: Analyze your results', answer_analyze_question_path(@question)

@@ -1,0 +1,16 @@
+.col-sm-6
+  .row
+    .panel.panel-default
+      .panel-heading
+        %h4 
+          = title
+      .panel-body
+        = form_for(@option) do |f|
+          .form-group.focus
+            .input-group.input-group-sm
+              = f.text_field(:title, :size => "25", :placeholder => "Welche Option kennst Du noch?")
+              = f.hidden_field :decision_id, :value => decisionid
+              .input-group-btn
+                = button_tag(type: 'submit', id: "add", class: "btn btn-primary") do
+                  %span Add
+

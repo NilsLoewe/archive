@@ -1,0 +1,7 @@
+# Assuming that all *.pem files contain private keys it's wise to exclude them.
+# It might happen that a *.pem file contains a public key. In that case we need
+# to define an exception to this rule.
+*.pem
+
+etc/chef-server/chef-server-secrets.json
+etc/chef-server/chef-server-running.json

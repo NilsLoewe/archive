@@ -1,0 +1,6 @@
+-if @decision.participants.count > 1 && @decision.state == "users"
+  .row{:id=> "users_table"}
+    = render partial: "participants/users_table"
+-else
+  .row{:id=> "users_table", :style=>"display: none"}
+    = render partial: "participants/users_table"

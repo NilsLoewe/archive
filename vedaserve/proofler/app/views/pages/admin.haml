@@ -1,0 +1,84 @@
+.section#section0
+  #prooflerLogo.logo-fixed
+  #visual-green
+
+  .row
+    .col-md-6.col-md-offset-3.textblock.final
+      %h1= I18n.t('pages.admin.headline')
+
+      %table.table.table-striped
+        %thead
+          %tr
+            %th
+            %th Optionen
+            %th Kriterien
+            %th Teilnehmer
+        %tbody
+          %tr
+            %th{scope: "row"} pro Entscheidung
+            %td= number_with_precision((Option.all.count.to_f / Decision.all.count.to_f ).to_f, :precision => 2)
+            %td= number_with_precision((Fact.all.count.to_f  / Decision.all.count.to_f ).to_f, :precision => 2)
+            %td= number_with_precision((Participant.all.count.to_f  / Decision.all.count.to_f ).to_f, :precision => 2)
+
+      %table.table.table-striped
+        %thead
+          %tr
+            %th
+            %th Insgesamt
+            %th Heute
+            %th Gestern
+            %th letzte 7 Tage
+            %th letzte 30 Tage
+        %tbody
+          %tr
+            %th{scope: "row"} Entscheidungen
+            %td= Decision.all.count
+            %td= Decision.where("created_at >= ?", 1.days.ago).count
+            %td= Decision.where("created_at >= ? AND created_at <= ?", 2.days.ago, 1.days.ago).count
+            %td= Decision.where("created_at >= ?", 7.days.ago).count
+            %td= Decision.where("created_at >= ?", 30.days.ago).count
+          %tr
+            %th{scope: "row"} Optionen
+            %td= Option.all.count
+            %td= Option.where("created_at >= ?", 1.days.ago).count
+            %td= Option.where("created_at >= ? AND created_at <= ?", 2.days.ago, 1.days.ago).count
+            %td= Option.where("created_at >= ?", 7.days.ago).count
+            %td= Option.where("created_at >= ?", 30.days.ago).count
+          %tr
+            %th{scope: "row"} Kriterien
+            %td= Fact.all.count
+            %td= Fact.where("created_at >= ?", 1.days.ago).count
+            %td= Fact.where("created_at >= ? AND created_at <= ?", 2.days.ago, 1.days.ago).count
+            %td= Fact.where("created_at >= ?", 7.days.ago).count
+            %td= Fact.where("created_at >= ?", 30.days.ago).count
+          %tr
+            %th{scope: "row"} Teilnehmer
+            %td= Participant.all.count
+            %td= Participant.where("created_at >= ?", 1.days.ago).count
+            %td= Participant.where("created_at >= ? AND created_at <= ?", 2.days.ago, 1.days.ago).count
+            %td= Participant.where("created_at >= ?", 7.days.ago).count
+            %td= Participant.where("created_at >= ?", 30.days.ago).count
+          %tr
+            %th{scope: "row"} Bilder
+            %td= Image.all.count
+            %td= Image.where("created_at >= ?", 1.days.ago).count
+            %td= Image.where("created_at >= ? AND created_at <= ?", 2.days.ago, 1.days.ago).count
+            %td= Image.where("created_at >= ?", 7.days.ago).count
+            %td= Image.where("created_at >= ?", 30.days.ago).count
+          %tr
+            %th{scope: "row"} Kommentare
+            %td= Comment.all.count
+            %td= Comment.where("created_at >= ?", 1.days.ago).count
+            %td= Comment.where("created_at >= ? AND created_at <= ?", 2.days.ago, 1.days.ago).count
+            %td= Comment.where("created_at >= ?", 7.days.ago).count
+            %td= Comment.where("created_at >= ?", 30.days.ago).count
+          %tr
+            %th{scope: "row"}
+            %td
+              %b= (Comment.all.count + Image.all.count + Participant.all.count + Fact.all.count + Option.all.count + Decision.all.count)
+            %td
+            %td
+            %td
+            %td
+
+  =render 'layouts/footer'

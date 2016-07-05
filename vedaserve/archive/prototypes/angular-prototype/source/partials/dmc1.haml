@@ -1,0 +1,31 @@
+.row
+  .col-xs-12
+    .panel.panel-warning
+      .panel-heading
+        %h4 Wissen
+      .panel-body
+        .row
+          .col-xs-12
+            .row.text-center
+            %div{"ng-model" => "cards.knowledge", "ui-sortable" => "sortableOptions"}
+              .col-xs-4{"ng-repeat" => "card in cards.knowledge"}
+                .panel.panel-warning.is-draggable
+                  .panel-heading.text-right
+                    %a{"ng-click" => "removeNote('knowledge', $index)"} &times;
+                  .panel-body
+                    %a{:href => "#/knowledge/{{$index}}", 'ng-class' => "{active: $location.path() == '/knowledge'}"} {{ card }}
+
+.row
+  .col-xs-12
+    .panel.panel-warning
+      .panel-heading
+        Neue Notiz
+      .panel-body
+        %form.form-horizontal{:role => "form"}
+          .form-group
+            .col-xs-4
+              TODO: Auswahl Link/Kontakt/Buch/... + Referenz zur Quelle
+            .col-xs-6
+              %input.form-control{"ng-model" => "noteknowledge"}/
+            .col.xs-2
+              %button.btn.btn-warning{"ng-click" => "addNote('knowledge')"} add

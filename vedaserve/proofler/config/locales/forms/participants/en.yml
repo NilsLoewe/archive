@@ -1,0 +1,24 @@
+---
+en:
+  participant:
+    create: Einladen
+    title: Teilnehmer
+  activerecord:
+    errors:
+      models:
+        participant:
+          attributes:
+            email:
+              blank: Bitte gibt eine gültige Email-Adresse ein
+            name:
+              blank: Bitte gib einen Namen ein
+  helpers:
+    label:
+      participant:
+        description: Description
+        email: Which decision do you want to make?
+        name: Which decision do you want to make?
+    placeholder:
+      participant:
+        email: Which decision do you want to make?
+        name: Welche Entscheidung willst du treffen?

@@ -1,0 +1,19 @@
+%h1 Listing constraints
+
+%table
+  %tr
+    %th Title
+    %th
+    %th
+    %th
+
+  - @constraints.each do |constraint|
+    %tr
+      %td= constraint.title
+      %td= link_to 'Show', constraint
+      %td= link_to 'Edit', edit_constraint_path(constraint)
+      %td= link_to 'Destroy', constraint, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Constraint', new_constraint_path

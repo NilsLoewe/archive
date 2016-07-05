@@ -1,0 +1,27 @@
+---
+de:
+  fact:
+    create: Ok
+    edit: Übernehmen
+    create-true: Trifft zu
+    create-false: Trifft NICHT zu
+    create-bool: Das Entscheidungskriterum lässt sich für jede Option mit JA/NEIN bewerten
+    create-val: Für jede Option lässt sich ein eigener Wert für dieses Entscheidungskriterium finden
+    title: Neues Kriterium erstellen
+    edit-title: Kriterium bearbeiten
+  activerecord:
+    errors:
+      models:
+        fact:
+          attributes:
+            title:
+              blank: Bitte gib einen Namen für das Kriterium ein
+  helpers:
+    label:
+      fact:
+        title: Titel
+    placeholder:
+      fact:
+        title: Was ist wichtig?
+      fact[assignment_attributes]:
+        value: Wie ist der Wert?

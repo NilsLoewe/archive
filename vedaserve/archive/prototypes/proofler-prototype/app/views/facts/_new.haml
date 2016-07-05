@@ -1,0 +1,12 @@
+= form_for(@fact) do |f|
+  .row
+    .col-xs-12
+      .form-group.focus
+        .input-group.input-group-sm
+          = f.text_field(:title, :size => "25%", :placeholder => "Was kannst Du zu " + option.title + " sagen?")
+          = f.hidden_field :option, :value => option.id
+          = f.hidden_field :decision_id, :value => @decision.id
+          .input-group-btn
+            = button_tag(type: 'submit', id: "add", class: "btn btn-primary") do
+              %span +
+

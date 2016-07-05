@@ -1,0 +1,8 @@
+= render :partial => "shared/firstline"
+.row.top
+  .col-md-5
+    = render @decisions
+  .col-md-2
+    = link_to 'Selber recherchieren', new_decision_path, :class => "btn btn-default top"
+  .col-md-5
+    = render @documents

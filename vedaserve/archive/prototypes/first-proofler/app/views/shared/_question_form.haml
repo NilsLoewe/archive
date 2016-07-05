@@ -1,0 +1,5 @@
+= form_for(@new_question) do |f|
+  = render 'shared/error_messages', object: f.object
+  .field
+    = f.text_field :title, placeholder: "Add new question..."
+  = f.submit "Add", class: "btn btn-large btn-primary"

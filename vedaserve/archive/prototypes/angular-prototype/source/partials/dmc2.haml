@@ -1,0 +1,60 @@
+.row
+  .col-xs-12
+    .panel.panel-warning
+      .panel-heading
+        %h4 Quellen
+      .panel-body
+        .row
+          .col-xs-12
+
+            Dies hier ist ein einleitender Hilfetext zu der ausgewählten Art
+            von Quellen. Zum Surface Web würden wir z.B. beschreiben, dass man
+            sich mit Hilfe der Tools erstmal passende Suchbegriffe bauen kann,
+            für die Experten würden wir die Herangehensweise zur Suche in
+            Netzwerken etc. beschreiben. Abhängig von der Art der Quelle würden
+            wir hier weiterhin einige vertiefende Hilfetexte verlinken.
+            %br
+            In der unteren Ansicht können Quellen nach den folgenden Kriterien
+            gesucht und gefiltern werden:
+            %ul
+              %li Art der Quelle (Surface Web, Deep Web, ...)
+              %li Nur vom Proofler "vorgegebene" Quellen, oder auch Vorschläge anderer User?
+              %li Filter nach einem Stichwort (z.B. "Statistiken")
+            %br
+            Klick auf eine Quelle öffnet die eigentliche Suche in der jweiligen Quelle
+
+.row
+  .col-xs-12
+    .panel.panel-warning
+      .panel-heading
+        %h4 Quellen
+      .panel-body
+        .row
+          .col-xs-12
+            %form.form-horizontal{:role => "form"}
+              .form-group
+                .col-xs-3
+                  %select
+                    %option Alle
+                    %option Freie Quellen
+                    %option Datenbanken
+                    %option Literatur
+                    %option Experten
+                    %option Die Massen
+                .col-xs-3
+                  %input{ :type=>"checkbox" } Vorschläge anderer User?
+                .col-xs-4
+                  %input.form-control{"ng-model" => "noteknowledge"}/
+                .col-xs-2
+                  %button.btn.btn-warning Filter
+        %hr
+        .row
+          .col-xs-12
+            .row.text-center
+            %div{"ng-model" => "cards.sources", "ui-sortable" => "sortableOptions"}
+              .col-xs-4{"ng-repeat" => "card in cards.sources"}
+                .panel.panel-warning.is-draggable
+                  .panel-heading
+                    %a{:href => "#/source/{{$index}}", 'ng-class' => "{active: $location.path() == '/source'}"} {{ card }}
+                  .panel-body
+                    Einige Worte zu {{ card }}

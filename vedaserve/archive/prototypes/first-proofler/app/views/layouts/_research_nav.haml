@@ -1,0 +1,10 @@
+- content_for :sub_navigation do
+  .navbar
+    .navbar-inner
+      %ul.nav
+        -# START_HIGHLIGHT
+        = nav_tab 'Gather & Analyze', research_path , current: current_tab
+        = nav_tab 'Shape & Share', export_research_path, current: current_tab
+        -# END_HIGHLIGHT
+      %ul.nav.pull-right
+        %li= link_to 'back', researches_path

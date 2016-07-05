@@ -1,0 +1,63 @@
+=render 'layouts/logo'
+.row
+  .col-xs-5.col-xs-offset-3
+    = form_for(@decision) do |f|
+      .field.space-top
+        %h3 Welche Entscheidung willst Du treffen?
+        = f.text_area(:title, :size => '70x4')
+      .field.space-top
+
+        :javascript
+          jQuery(document).ready(function(){
+            jQuery('body').on('click', '#btn-single', function(event) {
+              $("#helptext").text("Entscheide einen kompexen Sachverhalt, indem Du Informationen sammelst, Entscheidungskriterien anlegst und bewertest, sowie Deine Intuition befragst. Du kannst Personen zur Entscheidung einladen, typischerweise sind an diesen Entscheidungen aber wenig Leute beteiligt.");
+              $("#helptitle").text("Wissensbasierte Entscheidung")
+              $("#btn-single" ).addClass( "active" );
+              $("#btn-group" ).removeClass( "active" );
+              $("#btn-custom" ).removeClass( "active" );
+              $("#decision_type").val("single");
+            });
+
+            jQuery('body').on('click', '#btn-group', function(event) {
+              $("#helptext").text("Finde eine Entscheidung mit einer (größeren) Gruppe. Diese Entscheidungen enthalten typischerweise weniger Daten und Entscheidungskriterien, sie ähneln eher gut organisieren Abstimmungen.");
+              $("#helptitle").text("Entscheidung in der Gruppe")
+              $("#btn-single" ).removeClass( "active" );
+              $("#btn-group" ).addClass( "active" );
+              $("#btn-custom" ).removeClass( "active" );
+              $("#decision_type").val("group");
+            });
+
+            jQuery('body').on('click', '#btn-custom', function(event) {
+              $("#helptext").text("Lege alle Details und benötigten Funktionen für die Entscheidung auf der nächsten Seite selber fest");
+              $("#helptitle").text("Details selber festlegen")
+              $("#btn-single" ).removeClass( "active" );
+              $("#btn-group" ).removeClass( "active" );
+              $("#btn-custom" ).addClass( "active" );
+              $("#decision_type").val("custom");
+            });
+          });
+
+
+
+
+        = f.hidden_field :type, :value => "single"
+      .field.space-top
+        Dein Name
+        %br
+        = f.text_field :author, :size => '70'
+      .field.space-top
+        Email Adresse
+        %br
+        = f.text_field :email, :size => '70'
+        %br
+        Wir senden Dir den Link zum Administrieren der Entscheidung an diese Adresse. 
+        %br
+        Es wird NICHT automatisch ein Proofler-Konto erstellt.
+      
+      .actions.dist-top
+        = link_to 'abbrechen', root_path, :class => "btn btn-md btn-default"
+        = f.submit :value=> 'Weiter', :class => "btn btn-md btn-primary space-left pull-right"
+
+
+
+  

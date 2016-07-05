@@ -1,0 +1,6 @@
+<%- if @fact.errors.present? %>
+  $("#newfact<%= @option_id %>").html("<%= escape_javascript(render 'form', locals: { option: @option_id, fact: @fact }) %>");
+<%- else %>
+  // TODO: Temporary hack until we can add options via javascript
+  location.reload();
+<%- end %>

@@ -1,0 +1,7 @@
+<%= I18n.t('mails.decisions.close.hello') %> <%= @participant.name %>,
+
+<%= I18n.t('mails.decisions.close.text1') %> "<%= @decision.title %>" <%= I18n.t('mails.decisions.close.text2') %>
+<%= dashboard_url(token: @participant.invitation_token) %>
+
+<%= I18n.t('mails.decisions.close.greet') %>
+<%= I18n.t('mails.decisions.close.signiture') %>

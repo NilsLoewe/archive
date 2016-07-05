@@ -1,0 +1,198 @@
+/* Options */
+
+.option {
+  background: #fff;
+  margin-bottom: 30px;
+  padding: 10px;
+  color: #34495E;
+}
+
+.new-option {
+  background: #fff;
+  margin-bottom: 30px;
+  padding: 10px;
+}
+
+/* Header and Description */
+
+.option .option-header {
+    padding: 10px;
+}
+
+.option .option-header h3 {
+  margin-top: 5px;
+  margin-left: 10px;
+  text-align: left;
+  color: #34495E;
+  padding: 0;
+}
+
+.option .option-header .option-remove a {
+    color: #34495D;
+    margin-top: -10px;
+    margin-right: -10px;
+}
+
+.option .option-header .option-description {
+    margin-left: 5px;
+    padding-bottom: 15px;
+    text-align: left;
+}
+
+.option .option-header .option-link {
+  padding-bottom: 0;
+}
+
+.option .option-header .btn-select {
+  margin-top: -35px;
+  color: #3498db;
+}
+
+.option .option-header .btn-select:hover {
+  color: #fff;
+}
+
+.option .option-header .option-rating .progress {
+  margin: 10px 0;
+}
+
+.option .option-header .option-rating .fa {
+  padding-left: 10px;
+}
+
+/* Images */
+
+.option .option-image img {
+    padding-top: 0;
+    padding-bottom: 10px;
+
+}
+
+/* Facts */
+
+.option .option-facts .option-fact-name {
+    padding-right: 1px;
+}
+
+.option .option-facts .option-fact-name .form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {
+    cursor: not-allowed;
+    background-color: #fff;
+    color: #666;
+    opacity: 1;
+}
+
+.option .option-facts .option-fact-name .input-group-btn .btn-default {
+    background-color: #fff;
+    border-color: #D5DBDB;
+}
+
+.option .option-facts .option-fact-name .dropdown-toggle .fa-cog {
+    margin-left: 1px;
+    margin-right: 1px;
+    color: #000;
+}
+
+.option .option-facts .option-fact-value {
+    padding-left: 1px;
+}
+
+@media (max-width: 767px) {
+    .option .option-facts .option-fact-name {
+        padding-right: 15px;
+    }
+
+    .option .option-facts .option-fact-value {
+        padding-left: 15px;
+    }
+
+}
+
+.option .option-facts .option-fact-value .input-group-btn .btn-default {
+    background-color: #fff;
+    border-color: #D5DBDB;
+}
+
+
+.option .option-facts .option-fact-value input {
+    background-color: #fff;
+    border-color: #D5DBDB;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+}
+
+.option .option-facts .option-fact-value input[disabled] {
+  color: #34495E;
+}
+
+.option .option-facts .option-fact {
+    padding-bottom: 10px;
+}
+
+.option .option-facts .option-add-fact a {
+    text-align: left;
+}
+
+.option .option-facts .option-add-fact form {
+    background-color: #CDEEE7;
+    padding: 10px;
+}
+
+.option .option-facts .option-add-fact form .form-group {
+    margin-bottom: 10px;
+}
+
+.option .option-facts .option-add-fact .fui-tag {
+  padding-left: 0;
+    margin: 0 0 0 -5px;
+}
+
+.option .option-facts .option-add-fact b {
+    padding-left: 10px;
+}
+
+/* Comments */
+
+.option .option-comments {
+    padding-top: 10px;
+}
+
+.option .option-comments .option-comment {
+    background: #97A0AA;
+    color: #34485E;
+    text-align: left;
+    padding: 10px;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+}
+
+.option .option-comments .option-comment b {
+    padding-left: 10px;
+}
+
+.option .option-comments .option-comment {
+    margin-bottom: 10px;
+}
+
+.option .option-comments .option-add-comment a {
+    text-align: left;
+}
+.option .option-comments .option-add-comment form {
+    background-color: #97A0AA;
+    padding: 10px;
+}
+
+.option .option-comments .option-add-comment form .form-group {
+    margin-bottom: 10px;
+}
+
+.option .option-comments .option-add-comment .fa-comment-o {
+    padding-left: 0;
+    margin: 0 0 0 -5px;
+}
+
+.option .option-comments .option-add-comment b {
+    padding-left: 10px;
+}
+

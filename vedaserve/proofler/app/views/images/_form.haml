@@ -1,0 +1,31 @@
+= bootstrap_form_for(@image, url: (@image.new_record? ? dashboard_images_path(params[:dashboard_token]) : dashboard_image_path(params[:dashboard_token], @image)), layout: :horizontal, control_col: "col-sm-12", remote: request.xhr?, html: { data: { modal: true }, :multipart => true, :id => "upload" }) do |image|
+
+  .modal-body
+    = image.hidden_field :option_id, value: params[:option], placeholder: true
+    = file_field_tag :original_post_picture
+    = image.hidden_field :file
+    = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
+
+  .modal-footer
+    = image.submit I18n.t('image.create')
+
+:javascript
+  $().ready(function(){
+    $('input#original_post_picture').change(function(e){
+      var file = e.target.files[0];
+      $('canvas').remove();
+      $.canvasResize(file, {
+        width   : 800,
+        crop    : false,
+        quality : 80,
+        callback: function(data, width, height){
+          $('input#image_file').val(data);
+        }
+      });
+    });
+  });
+
+:javascript
+  function clear_original_post_picture() {
+    $('input#original_post_picture').val('');
+  }

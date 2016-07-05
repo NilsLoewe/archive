@@ -1,0 +1,61 @@
+.row
+  .col-xs-3.space-top
+    = render partial: "participants/steps", :locals => { :step => "options" }
+    = render partial: "participants/comments"
+
+  .col-xs-9.dist-top
+    .row
+      .col-xs-12
+        %h3
+          Optionen für "
+          %i=@decision.title
+          "
+    .row
+      .col-xs-12
+        %h4 Lege die bereits bekannten Optionen an.
+        %hr
+
+    .row
+      .col-xs-4
+        .panel.panel-success.option
+          .panel-heading
+            Weitere Option anlegen
+          .panel-body
+            Füge eine neue Option hinzu:
+            = form_for(@option) do |f|
+              .input-group.space-top
+                = f.text_field(:title, :class => "form-control", :placeholder => "Welche Option gibt es noch?")
+                = f.hidden_field :decision_id, :value => @decision.id
+                .input-group-btn
+                  = button_tag(type: 'submit', id: "add", class: "btn btn-success") do
+                    +
+
+      - @decision.options.each do |o|
+        .col-xs-4
+          .panel.panel-default.option
+            .panel-heading
+              =link_to o.title, [@participant, o]
+              .pull-right
+                =link_to '', [@participant, o], method: :delete, data: { confirm: 'Bist Du sicher?' }, class: "glyphicon glyphicon-remove"
+            .panel-body 
+              .row
+                .col-xs-10
+                  -if o.description?
+                    = o.description
+                  -else
+                    %i
+                      Beschreibe diese Option indem Du auf das 
+                      .glyphicon.glyphicon-pencil
+                      Symbol oder auf den Titel der Option klickst.
+                    %p
+                    %i
+                      Du kannst auch Quellen, Dokumente und Bilder mit der
+                      .glyphicon.glyphicon-paperclip
+                      zu dieser Option hinzufügen
+
+                .col-xs-2
+                  .pull-right
+                    =link_to('',[@participant, o], :class=>"glyphicon glyphicon-pencil")
+                    %br
+                    =link_to('','#', :class=>"glyphicon glyphicon-paperclip top")
+

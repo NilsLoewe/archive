@@ -1,0 +1,5 @@
+metadata
+
+# those awesome cookbooks are not on community.opscode.com
+cookbook 'vedaserve-ruby', :path => '../vedaserve-ruby'
+cookbook 'vedaserve-nginx', :path => '../vedaserve-nginx'

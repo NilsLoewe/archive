@@ -1,0 +1,31 @@
+- order = %w(front back)
+- startState = 'front' unless defined?(startState)
+- order.reverse! if startState == 'back'
+= foo if defined?(foo)
+.col-md-3
+  .new-question-card
+    .quickflip-wrapper
+      - order.each do |state|
+        - if state == 'front'
+          .panel.panel-default.question-panel
+            .panel-heading
+              %b.panel-title
+                %a.quickFlipCta{:href => "#"}
+                  Add new question
+                  %span.fui-plus.pull-right
+            .panel-body
+              %i Here we should perhaps write a small text for motivation?
+        - else
+          .panel.panel-default.question-panel
+            .panel-heading
+              %b.panel-title
+                Enter question
+                %a.quickFlipCta{:href => "#"}
+                  %span.fui-cross.pull-right
+            = form_for(@new_question) do |f|
+              .panel-body
+                = f.hidden_field :topic_id, :value =>  @topic.id
+                = f.label :title
+                = f.text_field :title, size: 17
+              .panel-footer.bottom
+                = f.submit "Create", class: "btn btn-large btn-primary"

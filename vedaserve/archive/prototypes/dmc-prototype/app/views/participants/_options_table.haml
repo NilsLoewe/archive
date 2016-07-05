@@ -1,0 +1,47 @@
+.col-md-12
+  .row      
+    .col-xs-2.nopad
+      =@decision.participants.count
+      Teilnehmer
+    -@decision.options.each do |o|
+      - if @decision.closed?
+        - if @decision.chosen_option == o.id
+          .col-xs-1.nopad.bg-success
+            = o.title
+        - else
+          .col-xs-1.nopad
+            = o.title
+      - else
+        .col-xs-1.nopad
+          = o.title
+        
+
+  -@decision.participants.each do |p|
+    .row
+      .col-xs-2.nopad
+        .glyphicon.glyphicon-user
+        =p.user.name
+      -if p.user.id == @participant.user.id && !@decision.closed?
+        =form_for(@participant) do |f|
+          -@decision.options.each do |o|
+            -p.user.guts.each do |g|
+              -if g.option.id == o.id
+                = fields_for 'option[]' , o do |option_fields|
+                  = f.hidden_field :id, :value => o.id
+                  .col-xs-1.nopad
+                    = option_fields.select :value, options_for_select([["Super",2],["Ok",1],["Egal",0],["Naja",-1],["Nein!",-2]], g.value), {}
+
+          .col-xs-1.nopad
+            = f.hidden_field :type, :value => "options"
+            = f.hidden_field :decision_id, :value => @decision.id
+            = f.hidden_field :user_id, :value => @participant.user.id
+            = f.submit 'ok', class: "btn btn-xs btn-block btn-primary pull-right"
+
+
+      -else
+        -@decision.options.each do |o|
+          -p.user.guts.each do |g|
+            -if g.option.id == o.id
+              .col-xs-1.nopad
+                = g.value
+

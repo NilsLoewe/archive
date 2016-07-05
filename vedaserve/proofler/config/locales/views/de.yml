@@ -1,0 +1,245 @@
+---
+de:
+  pages:
+    lp:
+      title: Einfach. Gemeinsam. Entscheiden.
+      subtitle: Der proofler hilft Dir bei der Entscheidungsfindung, indem Du sowohl Kopf und Bauch, als auch Freunde und Experten zu Rate ziehst.
+      home: Proofler
+      features: Funktionen
+      price: Funktionen und Preise
+      example:
+        car: Welches Auto soll ich kaufen?
+        medical: Welche Klinik wähle ich?
+        uni: Welche Uni wähle ich?
+        hr: Wen stelle ich ein?
+        product: Wie bewerbe ich mein Produkt?
+        custom: Entscheide etwas ganz anderes!
+      benefits:
+        peace:     Mit dem proofler kannst du deine Entscheidungen verbessern. An großen Entscheidungen hängen
+                   oft große Konsequenzen. Wie wäre es, nach einer harten Entscheidung trotzdem ruhig schlafen zu können?
+        brainbugs: Als Menschen haben wir leider Schwierigkeiten dabei, gute Entscheidungen zu treffen. Wir sind unseren
+                   Stimmungen unterworfen, sehen oft die besten Optionen nicht und werden auch noch durch unser Unterbewusstsein beeinflusst.
+        group:     Müssen wir als Gruppe eine Entscheidung treffen, wird es oft noch komplizierter. Alle Beteiligten haben ihre eigenen
+                   Prioritäten und am Ende soll das Ergebnis von allen akzeptiert werden.
+        options:   Der proofler hilft Dir, die richtigen Optionen für Deine Entscheidung zu finden. Manchmal reicht es schon aus, einfach die Frage
+                   zu verändern und damit Raum für weitere Möglichkeiten zu schaffen.
+        facts:     Der proofler hilft Dir, die für Dich relevanten Entscheidungskriterien zu finden und zu bewerten. Dabei greifst Du nicht nur auf
+                   Online-Quellen zurück, sondern auch auf die Erfahrung von Freunden und Experten.
+        consens:   Mit dem proofler kannst Du Entscheidungen allein oder in der Gruppe treffen. Alle helfen bei der Datenbeschaffung mit und jeder
+                   gibt seine persönliche Bewertung ab.
+      headline: Willkommen beim proofler!
+      headline2: Einfach. Gemeinsam. Entscheiden.
+      intro: Der proofler hilft Dir bei der Entscheidungsfindung. Recherchiere alleine
+             oder in der Gruppe. Der Ansatz zur wissensbasierten Entscheidungsfindung,
+             bei dem Du sowohl Kopf als auch Bauch zu Rate ziehst.
+      image-description: Sie alle wollen Entscheiden
+      start-link: Jetzt kostenlos ausprobieren!
+      scribble-description: Was willst Du entscheiden?
+      scribble-text-1: Was willst Du
+      scribble-text-2: entscheiden?
+      privacyText:
+        first: Wir senden Dir den Link zum Bearbeiten der Entscheidung an diese Adresse.
+        second: Es wird NICHT automatisch ein Proofler-Konto erstellt
+    prices:
+      title: Funktionen und Preise
+      description: Der proofler lässt sich kostenlos nutzen, ganz egal von wem und für welche Entscheidung. Für diejenigen die regelmäßig
+                   wichtige Entscheidungen treffen oder anderen beim Treffen von wichtigen Entscheidungen helfen haben wir
+                   noch ein paar sehr wirkungsvolle Zusatzfunktionen entwickelt. Finde den proofler, der für Deine Entscheidungen passt!
+      netto: Alle Preise sind Nettopreise zzgl. der gesetzlichen MwSt
+      newsletter:
+        title:  Sei dabei, wenn es neue Funktionen gibt
+        ok:     Ok
+        cancel: Zurück
+      free:
+        title: FREE
+        price: 0
+        description: Bessere Entscheidungen für alle! Kostenlos und ohne Anmeldung.
+        abo-price: 'Ohne Account nutzbar'
+        action: Jetzt testen
+      pro:
+        title: PROFESSIONAL
+        price: '5'
+        description: Analysiere, Exportiere und archiviere Deine Entscheidungen.
+        abo-price: '49€ '
+        action: Jetzt testen
+        action: Demnächst verfügbar!
+      business:
+        title: BUSINESS
+        price: 50
+        description: 'Arbeite in Teams und dokumentiere Entscheidungen für die Zukunft.'
+        abo-price: '490€ '
+        action: Demnächst verfügbar!
+      month: ' p. M.'
+      currency: '€'
+      abo: im Jahresabo
+      features:
+        prices:
+          heading: Funktionen und Preise
+          monthly:
+            title:    Preis pro Monat
+            free:     '0 €'
+            pro:      '5 €'
+            business: '50 €'
+          annual:
+            title:    Jahresabo
+            free:     '0 €'
+            pro:      '49 €'
+            business: '490 €'
+        options:
+          heading:       Optionen
+          unlimited:
+            title:       Beliebig viele Optionen
+            description: Lege so viele Optionen an, wie Du willst
+          guide:
+            title:       Proofler-Guide
+            description: Der proofler hilft Dir, die richtigen Optionen zu finden.
+          images:
+            title:       Bilder für jede Option
+            description: Ein Bild sagt mehr als tausend Worte.
+          opengraph:
+            title:       Einfaches erstellen
+            description: Gib einen Link für eine Option ein und der proofler importiert Bilder und Beschreibung.
+        facts:
+          heading:       Entscheidungskriterien
+          unlimited:
+            title:       Beliebig viele Kriterien
+            description: Lege so viele Entscheidungskriterien an, wie Du willst
+          guide:
+            title:       Proofler-Guide
+            description: Der proofler hilft Dir, die richtigen Entscheidungskriterien zu finden.
+          defaults:
+            title:       Datenbank
+            description: Für eine Reihe von Entscheidungssituationen haben wir bereits gängige Entscheidungskriterien recherchiert.
+        users:
+          heading:       Teilnehmer
+          invite:
+            title:       Beliebig viele Teilnehmer
+            description: Lade beliebig viele Teilnehmer zu Deinen Entscheidungen ein. Mit dem proofler lässt sich so Gruppenkonsens erreichen.
+          experts:
+            title:       Experten einladen
+            description: Lade Experten aus Deinem Netzwerk ein, die Entscheidung durch ihr Fachwissen zu verbessern.
+          team:
+            title:       Teams bilden
+            description: Füge feste Teilnehmer deines Teams zum proofler Account hinzu, denen Du bestimmte Rollen zuweisen kannst.
+        analytics:
+          heading:       Analytics & Export
+          basic:
+            title:       Basic-Analytics
+            description: Untersuche und verstehe, wie der Vorschlag des prooflers sich ergibt.
+          advanced:
+            title:       Advanced-Analytics
+            description: Untersuche im Detail wie die Teilnehmer abgestimmt haben und welches Kriterium wie wichtig ist.
+          team:
+            title:       Team-Analytics
+            description: Gruppiere Dein Team in bestimmte Rollen und untersuche welchen Gruppen welche Kriterien besonders wichtig sind.
+          export:
+            title:       Whitepaper-Export
+            description: Exportiere einen Entscheidungspfad. Das Dokument enthält die Optionen mit allen Details und eine Erklärung, wie die Entscheidung getroffen wurde.
+        documentation:
+          heading:       Dokumentation
+          review:
+            title:       Ablage
+            description: Du kannst alte Entscheidungen jederzeit wieder öffnen und die Ergebnisse und Analysen nachvollziehen.
+          reuse:
+            title:       Wiederverwendung
+            description: Du kannst eine alte Entscheidung als Grundlage für eine neue verwenden. Alte Optionen und Fakten werden für die neue Entscheidung importiert.
+          archive:
+            title:       Suche & Archiv
+            description: Du kannst geschlossene Entscheidungen mit einer Beschreibung und mit Schlagworten versehen und im durchsuchbaren Archiv ablegen.
+      test:
+        action:      Jetzt testen
+        now:         Probiere den proofler jetzt aus!
+        description: Du brauchst keinen Account anlegen und keine Daten außer einer gültigen E-Mail-Adresse angeben.
+    dashboard:
+      header:
+        invite: Einladen
+        options: Optionen
+      progress:
+        collect: Sammeln
+        gather: Bewerten
+        decide: Entscheiden
+      gather:
+        intro:
+          admin:
+            first: Der proofler führt dich jetzt durch einen Prozess, in dem du zunächst die
+                   Optionen sammelst und dann Kriterien hinzufügst. Lege nun die erste Option an!
+            more:  Oftmals ist es sinnvoll, mindestens drei Optionen zu betrachten. Gibt es noch weitere Optionen?
+            facts: Du hast noch keine Kriterien für die Entscheidung definiert. Lege die Entscheidungskriterien an, mit
+                   denen du die Optionen besser gegeneinander vergleichen kannst.
+            users: Gibt es Leute, die mit Dir zusammen entscheiden sollen? Lade sie doch ein!
+            rate:  Wenn Du alle Optionen und Daten zusammengetragen hast, kannst Du die Bewertungsphase einleiten. Alle Teilnehmer
+                   werden per Mail informiert, weitere Optionen können dann nicht mehr angelegt werden.
+          participant:
+            p1: Du wurdest von
+            p2: eingeladen, an dieser Entscheidung teilzunehmen. Aktuell werden Optionen und
+                Entscheidungskriterien definiert. Wenn Du Optionen oder Kriterien kennst, lege
+                sie einfach an.
+            p3: wird Dich per Mail informieren, sobald die Bewertung der Optionen ansteht.
+        new:
+          title: Die Option wird erstellt
+          description: Wenn Du einen Link angegeben hast, laden wir jetzt die Beschreibung und das Bild von der Quelle. Das kann einen kleinen Moment dauern.
+        rate: weiter
+        proceed:
+          warning: Du beendest hiermit die Datensammlung. Alle Teilnehmer werden per Mail zur Bewertung der Optionen und Kriterien aufgerufen.
+          message: Oftmals ist es sinnvoll, mindestens drei Optionen zu betrachten. Gibt es vielleicht noch weitere Optionen?
+          facts:   Du hast noch keine Entscheidungskriterien festgelegt. Gibt es wirklich keine Kriterien nach denen Du die Optionen bewerten willst?
+          commit: Weiter
+          cancel: Abbrechen
+          title: Bist du sicher, dass du schon bewerten möchtest?
+      rate:
+        intro: Der proofler führt dich jetzt durch einen Prozess, in dem du zunächst die
+               Kriterien gewichtest und dann auf deinen Bauch hören kannst. Danach bittest
+               du einfach deine Freunde, das Gleiche zu tun. Viel Spaß!
+        question: 'Wie wichtig ist Dir:'
+        options: 'Wie gut erfüllen die Optionen das Kriterium:'
+        delimiter: von
+        next: weiter
+        back: Optionen und Fakten überarbeiten
+      feel:
+        intro: Der proofler führt dich jetzt durch einen Prozess, in dem du zunächst die
+               Kriterien gewichtest und dann auf deinen Bauch hören kannst. Danach bittest
+               du einfach deine Freunde, das Gleiche zu tun. Auf geht's!
+        question: 'Was sagt Dein Bauch?'
+        next: weiter
+        delimiter: von
+      favorite:
+        intro: So sieht dein Ranking aus nachdem Du Kriterien nach Kopf und Bauch gewichtet hast.
+                Doch Entscheide selbst, wer dein Favorit ist.
+        question: 'Bitte wähle Deinen Favoriten?'
+      decide:
+        friends: Folgende Teilnehmer haben bereits ihre Bewertung abgegeben.
+        intro: Die Reihenfolge der Optionen ergibt sich aus den Bewertungen der Fakten und Bauchgefühle. Wähle nun Deinen Favoriten!
+        question: 'Triff die finale Entscheidung!'
+        email:
+          header: Hat dir der proofler geholfen?
+          text: Der proofler ist noch in der Betaphase und wir arbeiten mit Hochdruck an weiteren Funktionen. Wenn Du auf dem Laufenden bleiben willst, melde
+                dich doch für unseren Newsletter an.
+      closed:
+        intro:       'Die finale Entscheidung!'
+        how:         'Details zur Entscheidung:'
+        description: 'So wichtig wurden die Kriterien für die Entscheidung bewertet:'
+        details:     'Und so gut schneidet '
+        details2:    ' bei den einzelnen Kriterien ab:'
+        no-facts:    Für diese Entscheidung wurden keine Kriterien angelegt. Die Optionen wurden lediglich nach dem Bauchgefühl bewertet.
+        share: Teile diese Entscheidung!
+        follow:
+          facebook: Folge uns bei Facebook
+          twitter:  Folge uns bei twitter
+        others: Diese Optionen standen auch zur Diskussion, wurden aber nicht gewählt.
+      pending:
+        headline: 'Warte nun auf die Entscheidung von '
+        intro: Herzlichen Glückwunsch! Du hast gerade alles getan was Du kannst.
+    option:
+      undef: n.n.
+      new:
+        fact: Neues Kriterium
+        comment: Schreibe einen Kommentar
+    contact:
+      headline: Kontakt
+      intro: Schreib uns was
+      submit: Absenden
+    thanks:
+      headline: Danke!
+      text: Wir melden uns
+    admin:
+      headline: Proofler Admin Panel

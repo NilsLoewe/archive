@@ -1,0 +1,20 @@
+.row
+  .col-xs-12
+    .panel.panel-warning
+      .panel-heading
+        %h4 {{ cards.knowledge[optionId] }}
+      .panel-body
+        Hier erscheint der konkrete Inhalt der Notiz. Nach derzeitigem Plan sind das
+        folgende Möglichkeiten:
+        %ul
+          %li Selbst geschriebener Text zur Notiz
+          %li Links zu Referenzen
+          %li Anhänge (Bilder, Dokumente, ...)
+      .panel-footer
+        .row
+          .col-xs-4
+            %a{:href => "#"}  Editieren
+          .col-xs-4
+            %a{:href => "#/dmc2"}  Weitersuchen
+          .col-xs-4
+            %a{:href => "#/dmc1"}  Zurück zur Übersicht

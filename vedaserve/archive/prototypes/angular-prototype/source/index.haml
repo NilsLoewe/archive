@@ -1,0 +1,26 @@
+<!doctype html>
+%html{:lang => "en", "ng-app" => "myApp"}
+  %head
+    %meta{:charset => "utf-8"}/
+    %title Descision model canvas
+    %meta{:content => "IE=edge", "http-equiv" => "X-UA-Compatible"}/
+    %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
+    %link{:href => "//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css", :rel => "stylesheet"}/
+    %link{:href => "stylesheets/app.css", :rel => "stylesheet"}/
+  %body
+    .container
+      .row.logo
+        %img(src="/img/logo.png")
+      .row{'ng-controller' => 'DmcCtrl'}
+        .col-xs-12
+          .panel.panel-warning
+            .panel-heading
+              %h4 Proofler Demo
+            .panel-body
+              .row
+                .col-xs-12
+                  %div{'ng-view' => ''}
+
+      .footer.text-center
+        Wenn etwas kaputt geht dann <a href="#/dashboard">klicke hier</a> um alles zu l&ouml;schen.
+    %script{:src => "javascripts/application.js"}

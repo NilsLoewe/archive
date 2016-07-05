@@ -1,0 +1,77 @@
+---
+en:
+  pages:
+    lp:
+      headline: Willkommen beim proofler! Gemeinsam. Einfach. Entscheiden.
+      intro: Der proofler hilft Dir bei der Entscheidungsfindung. Recherchiere alleine
+             oder in der Gruppe. Der Ansatz zur wissensbasierten Entscheidungsfindung,
+             bei dem Du sowohl Kopf als auch Bauch zu Rate ziehst.
+      image-description: Sie alle wollen Entscheiden
+      scribble-description: Was willst Du entscheiden?
+      privacyText:
+        first: Wir senden Dir den Link zum Bearbeiten der Entscheidung an diese Adresse.
+        second: Es wird NICHT automatisch ein Proofler-Konto erstellt
+    dashboard:
+      header:
+        invite: Einladen
+        options: Optionen
+      progress:
+        collect: Sammeln
+        gather: Bewerten
+        decide: Entscheiden
+      gather:
+        intro: Der proofler führt dich jetzt durch einen Prozess, in dem du zunächst die
+               Optionen sammelst und dann Kriterien hinzufügst. Auf geht’s!
+        rate: Bewerten
+        proceed:
+          message: Oftmals ist es sinnvoll, mindestens drei Optionen zu betrachten.
+          commit: Danke, aber ich will bewerten!
+          cancel: Ok, ich suche weiter
+          title: Bist du sicher, dass du schon bewerten möchtest?
+      rate:
+        intro: Der proofler führt dich jetzt durch einen Prozess, in dem du zunächst die
+               Kriterien gewichtest und dann auf deinen Bauch hören kannst. Danach bittest
+               du einfach deine Freunde, das Gleiche zu tun. Viel Spaß!
+        question: 'Wie wichtig ist Dir:'
+        options: 'Wie gut erfüllen die Optionen das Kriterium:'
+        delimiter: von
+        next: weiter
+        back: zurück
+      feel:
+        intro: Der proofler führt dich jetzt durch einen Prozess, in dem du zunächst die
+               Kriterien gewichtest und dann auf deinen Bauch hören kannst. Danach bittest
+               du einfach deine Freunde, das Gleiche zu tun. Auf geht's!
+        question: 'Was sagt Dein Bauch?'
+        next: weiter
+        delimiter: von
+      favorite:
+        intro: So sieht dein Ranking aus nachdem Du Kriterien nach Kopf und Bauch gewichtet hast.
+                Doch Entscheide selbst, wer dein Favorit ist.
+        question: 'Bitte wähle Deinen Favoriten?'
+      decide:
+        friends: Folgende Teilnehmer haben bereits ihre Bewertung abgegeben.
+        intro: Die Reihenfolge der Optionen ergibt sich aus den Bewertungen der Fakten und Bauchgefühle. Wie entscheidest Du?
+        question: 'Triff die finale Entscheidung!'
+        email:
+          header: Hat dir der proofler geholfen?
+          text: Der proofler ist noch in der Betaphase und wir arbeiten mit Hochdruck an weiteren Funktionen. Wenn Du auf dem Laufenden bleiben willst, melde
+                dich doch für unseren Newsletter an.
+      closed:
+        intro: Die finale Entscheidung!
+      pending:
+        intro: Herzlichen Glückwunsch! Du hast gerade alles getan was Du kannst.
+        text:  wird nun die Entscheidung treffen. Die folgende Reihenfolge spiegelt Deine Priorisierung der Optionen wider.
+    option:
+      undef: n.n.
+      new:
+        fact: Was ist dir wichtig?
+        comment: Schreibe einen Kommentar
+    contact:
+      headline: Kontakt
+      intro: Schreib uns was
+      submit: Absenden
+    thanks:
+      headline: Danke!
+      text: Wir melden uns
+    admin:
+      headline: Proofler Admin Panel

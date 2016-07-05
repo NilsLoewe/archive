@@ -1,0 +1,26 @@
+%ul.nav.nav-pills.nav-stacked.top
+  -if step == "start"
+    %li.active=link_to "Übersicht", start_participant_path(@participant)
+  -else
+    %li=link_to "Übersicht", start_participant_path(@participant)
+
+  -if step == "options"
+    %li.active=link_to "Optionen", show_options_participant_path(@participant)
+  -else
+    %li=link_to "Optionen", show_options_participant_path(@participant)
+
+  -if step == "facts"
+    %li.active=link_to "Kriterien", show_facts_participant_path(@participant)
+  -else
+    %li=link_to "Kriterien", show_facts_participant_path(@participant)
+
+  -if step == "rate"
+    %li.active=link_to "Bewerten", evaluate_participant_path(@participant)
+  -else
+    %li=link_to "Bewerten", evaluate_participant_path(@participant)
+
+  -if step == "decide"
+    %li.active=link_to "Entscheiden", decide_participant_path(@participant)
+  -else
+    %li=link_to "Entscheiden", decide_participant_path(@participant)
+

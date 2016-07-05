@@ -1,0 +1,33 @@
+#!/bin/bash
+
+. "$(dirname "$0")/../../config"
+
+id=$1
+name=$2
+option=$3
+applicable=$4
+
+if [[ -z "${id}" || -z "${name}" || -z "${option}" || -z "${applicable}" ]]; then
+  echo "${0} id name option applicable"
+  exit
+fi
+
+read -d '' template << EOF
+{
+  "facts": {
+    "name": "%s",
+      "links": {
+        "options": [
+          {
+            "id": "%s",
+            "applicable": "%s"
+          }
+        ]
+      }
+  }
+}
+EOF
+
+request=$(printf "${template}" "${name}" "${option}" "${applicable}")
+
+curl "${CURL_OPTS}" --request POST --data-binary "${request}" "${HOST}/decisions/${id}/facts" | ${POST_PROCESSING}

@@ -1,0 +1,45 @@
+.row
+  .col-xs-12.center
+    %h1.front-page
+      Eine Entscheidung treffen
+
+    1. Allgemein'
+    =link_to('2. Optionen und Fakten', options_decision_path(@decision))
+    =link_to('3. Einladen', invite_decision_path(@decision))
+    =link_to('4. Optionen bewerten', evaluate_decision_path(@decision))
+    =link_to('5. Fakten bewerten', facts_decision_path(@decision))
+    %b 6. Entscheiden
+    
+.row
+  .col-xs-1
+  .col-xs-10.dist-top
+    .row
+      .col-xs-2
+      .col-xs-8
+        %h3 Die Optionen bekommen folgende Gewichtung:
+        - @orderedOptionsGut.each do |o|
+          .row
+            .col-xs-12
+              .panel.panel-primary
+                .panel-heading
+                  = o.title
+                .panel-body
+                  Bewertung:
+                  = o.value
+                  .pull-right
+                    = link_to 'Ich wähle ' + o.title + ' aus!', '#', :class => "btn btn-lg btn-default"
+      .col-xs-2
+    .row
+      .col-xs-12
+        %h4 Erfahre mehr über die Entscheidung
+        = link_to 'Wie hätte ich nur aus dem Bauch entschieden?', '#', :class => "btn btn-sm btn-default"
+        = link_to 'Wie hätte ich nur nach Fakten entschieden?', '#', :class => "btn btn-sm btn-default space-left"
+        = link_to 'Wie haben die Teilnehmer bewertet?', '#', :class => "btn btn-sm btn-default space-left"
+                
+    .row
+      .col-xs-12            
+        .space-top
+          = link_to 'Zurueck', evaluate_decision_path(@decision), :class => "btn btn-sm btn-default"
+
+    .col-xs-1
+

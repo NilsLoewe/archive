@@ -1,0 +1,6 @@
+<%- if @option.errors.present? %>
+  $("#newoption .new-option").html("<%= escape_javascript(render 'form', locals: { option: @option }) %>");
+<%- else %>
+  // TODO: Temporary hack until we can add options via javascript
+  location.reload();
+<%- end %>

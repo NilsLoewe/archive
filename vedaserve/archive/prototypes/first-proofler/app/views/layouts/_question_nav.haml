@@ -1,0 +1,11 @@
+- content_for :sub_navigation do
+  .navbar
+    .navbar-inner
+      %ul.nav
+        -# START_HIGHLIGHT
+        /= nav_tab 'Select', select_research_path, current: current_tab
+        -# END_HIGHLIGHT
+      %ul.nav.pull-right
+        -# START_HIGHLIGHT
+        %li= link_to 'Back', @research
+        -# END_HIGHLIGHT

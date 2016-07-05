@@ -1,0 +1,62 @@
+.row
+  .col-xs-3.space-top
+    = render partial: "participants/steps", :locals => { :step => "start" }
+    = render partial: "participants/comments"
+
+  .col-xs-9.dist-top
+    .row
+      .col-xs-12
+        %h3=@decision.title
+
+        %p
+          Hallo 
+          =@user.name
+        %p
+          Du wurdest von
+          =@decision.author
+          eingeladen, an der Entscheidung zum Thema "
+          %b=@decision.title
+          " teilzunehmen.
+
+    .row
+      .col-xs-12
+        %hr
+
+    .row
+      .col-xs-12
+
+        .row
+          .col-xs-6
+            =link_to "Optionen", show_options_participant_path(@participant), :class => "btn btn-block btn-default midButton"
+          .col-xs-6.space-top
+            %ul
+              %li Optionen finden
+              %li Optionen untersuchen
+              %li Daten zu Optionen suchen
+
+
+        .row
+          .col-xs-6
+            =link_to "Entscheidungskriterien", show_facts_participant_path(@participant), :class => "btn btn-block btn-default midButton"
+          .col-xs-6.space-top
+            %ul
+              %li Entscheidungskriterien definieren
+
+
+        .row
+          .col-xs-6
+            =link_to "Meinung abgeben", evaluate_participant_path(@participant), :class => "btn btn-block btn-default midButton"
+          .col-xs-6.space-top
+            %ul
+              %li Einschätzung jeder Option abgeben
+
+
+
+        .row
+          .col-xs-6
+            =link_to "Entscheidung treffen", decide_participant_path(@participant), :class => "btn btn-block btn-default midButton"
+          .col-xs-6.space-top
+            %ul
+              %li Die finale Option auswählen
+
+

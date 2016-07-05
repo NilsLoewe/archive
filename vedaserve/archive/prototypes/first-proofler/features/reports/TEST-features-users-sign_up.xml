@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite errors="0" failures="0" name="Register" skipped="0" tests="6" time="0.386228">
+<testcase classname="Register" name="Researcher accesses the register page" time="0.078817">
+  <system-out/>
+  <system-err/>
+</testcase>
+<testcase classname="Register" name="User registers with invalid email" time="0.093797">
+  <system-out/>
+  <system-err/>
+</testcase>
+<testcase classname="Register" name="User signs up with already signed up email" time="0.043772">
+  <system-out/>
+  <system-err/>
+</testcase>
+<testcase classname="Register" name="User signs up without password" time="0.043328">
+  <system-out/>
+  <system-err/>
+</testcase>
+<testcase classname="Register" name="User signs up without password confirmation" time="0.043802">
+  <system-out/>
+  <system-err/>
+</testcase>
+<testcase classname="Register" name="User signs up with mismatched password and confirmation" time="0.082712">
+  <system-out/>
+  <system-err/>
+</testcase>
+  <system-out>
+    <![CDATA[]]>
+  </system-out>
+  <system-err>
+    <![CDATA[]]>
+  </system-err>
+</testsuite>

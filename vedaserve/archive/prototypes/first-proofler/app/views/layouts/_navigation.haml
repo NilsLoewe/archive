@@ -1,0 +1,15 @@
+- content_for :sub_navigation do
+  .navbar
+    .navbar-inner
+      %ul.nav
+        -# START_HIGHLIGHT
+        = nav_tab 'Describe', answer_describe_question_path, current: current_tab
+        = nav_tab 'Improve',  answer_improve_question_path,  current: current_tab
+        = nav_tab 'Gather',   answer_gather_question_path,   current: current_tab
+        = nav_tab 'Analyze',  answer_analyze_question_path,  current: current_tab
+        = nav_tab 'Shape',    answer_shape_question_path,    current: current_tab
+        -# END_HIGHLIGHT
+    %ul.nav.pull-right
+      -# START_HIGHLIGHT
+      %li= link_to 'Back', @question
+      -# END_HIGHLIGHT

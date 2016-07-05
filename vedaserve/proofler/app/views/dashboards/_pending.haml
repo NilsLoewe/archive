@@ -1,0 +1,29 @@
+#dashboard-decide.js-spinner
+  .row.js-eq-height-target
+    =render "progress", progress: "100"
+
+    .row
+      .col-xs-10.col-xs-offset-1
+        %h2
+          #{ I18n.t('pages.dashboard.pending.headline')} #{ @decision.admin.name }
+
+    .row
+      .col-xs-10.col-xs-offset-1.intro
+        = I18n.t('pages.dashboard.pending.intro')
+
+    .row.hide.js-spinner-show
+      .col-sm-10.col-sm-offset-1.col-xs-10.col-xs-offset-1
+        .row
+          = render @options,
+            wrapper: "col-xs-12 col-sm-6 col-lg-4",
+                editoption: false,
+                deletelink: false,
+                selectbutton: false,
+                rating: true,
+                disablefacts: true,
+                newfact: false,
+                comments: false,
+                newcomment: false,
+                review: false,
+                index: nil
+

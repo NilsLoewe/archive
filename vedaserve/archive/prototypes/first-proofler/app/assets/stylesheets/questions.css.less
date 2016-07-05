@@ -1,0 +1,108 @@
+@import 'configuration';
+@import 'twitter/bootstrap/variables';
+@import 'twitter/bootstrap/mixins';
+
+.question {
+  .select & {
+    .front {
+      cursor: pointer;
+      
+      &:hover {
+        background-color: @hover-background-color;
+      }
+    }
+  }
+}
+
+.upper-area {
+  .question-row;
+
+  border-radius: 6px 6px 0 0;
+  border: 2px solid @box-border;
+  height: @upper-area-height;
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+
+  .front, .back {
+    background-color: white;
+    padding: 15px;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+
+    .main {
+      width: 95%;
+    }
+
+    .top-right {
+      cursor: pointer;
+      padding: 10px;
+      position: absolute;
+      right: 0;
+      top: 0;
+
+      .cog {
+        font-size: 1.3em;
+      }
+    }
+  }
+
+  .front {
+    background-color: #fefefe;
+    border-left: 0 solid #555;
+    box-shadow: -1px 0px 2px #666;
+    transition-timing-function: linear;
+    transition: margin-left 0.8s;
+    z-index: 1;
+  }
+
+  .slide {
+    margin-left: 90%;
+  }
+
+  .back {
+    background-color: #f9f9f9;
+    box-shadow: 0 0 2px #666 inset;
+    overflow-y: scroll;
+    z-index: 0;
+  }
+}
+
+.checked {
+  .front:hover {
+    background-color: white;
+  }
+
+  .checkmark {
+    color: @checkmark-checked;
+  }
+}
+
+.question-row {
+  .method {
+    cursor: pointer;
+    height: @method-height;
+
+    .content {
+      background-color: white;
+      height: 100%;
+      border: 2px solid @box-border;
+    }
+
+    .content:hover {
+      background-color: @hover-background-color;
+      color: @hover-foreground-color;
+    }
+
+    &:nth-child(even) .content {
+      border-left-width: 0;
+    }
+  }
+
+  &:nth-child(n+1) .content {
+    border-top-width: 0;
+  }
+}

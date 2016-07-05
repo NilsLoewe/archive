@@ -1,0 +1,32 @@
+.row
+  .col-xs-12
+    .panel.panel-primary
+      .panel-body
+        = form_for(point) do |f|
+          Wie wichtig ist Dir
+          %b= point.fact.title
+          ? 
+          = f.hidden_field(:value, :maxlength => 3, :size => 2, :id => "guts_value#{point.id}", :class => "labeled")
+          .row
+            .col-xs-1
+              =image_tag "contra.png"
+            .col-xs-9
+              :javascript
+                $(function() {
+                  $( "#slider#{point.id}" ).slider({
+                    min: 0, 
+                    max: 100, 
+                    step: 5,
+                    value: $("#guts_value#{point.id}").val(),
+                    slide: function(event, ui) {
+                      $("#guts_value#{point.id}").val(ui.value);
+                    }
+                  });
+                  $( "#guts_value#{point.id}" ).val( $( "#slider#{point.id}" ).slider( "value" ));
+                });
+              .div{:id=> "slider#{point.id}"}
+            .col-xs-1
+              = button_tag(type: 'submit', id: "add", class: "btn btn-primary") do
+                %span save
+            .col-xs-1
+              =image_tag "pro.png"

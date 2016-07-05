@@ -1,0 +1,105 @@
+= render :partial => "shared/firstline"
+.row.marg
+  .col-md-12
+    .panel.panel-warning
+      .panel-heading
+        %b= @decision.title
+      .panel-body
+        .row
+          .col-md-3
+            .row
+              .col-md-12
+                .panel.panel-warning
+                  .panel-heading
+                    Antwort
+                    .pull-right
+                      = link_to "antworten", '#answer', :class => "badge badge-warning", data: { toggle: "modal" }
+                  .panel-body
+                    = @decision.answer
+            .row
+              .col-md-12
+                .panel.panel-warning
+                  .panel-heading
+                    Constraints
+                    .pull-right
+                      = link_to 'Add', '#new_constraint', :class => "badge", data: { toggle: "modal" }
+                  .panel-body
+                    = render @decision.constraints
+            .row
+              .col-md-12
+                .panel.panel-warning
+                  .panel-heading
+                    Questions
+                    .pull-right
+                      = link_to 'Add', '#new_question', :class => "badge", data: { toggle: "modal" }
+                  .panel-body
+                    = render @decision.questions
+          .col-md-9
+            .row
+              .col-md-12
+                .panel.panel-warning
+                  .panel-body
+                    = link_to 'Frag Dich selber', '#brain', :class => "btn btn-warning", data: { toggle: "modal" }
+                    = link_to 'Frag das Web', '#web', :class => "btn btn-warning", data: { toggle: "modal" }
+                    = link_to 'Frag die Buecher', '#books', :class => "btn btn-warning", data: { toggle: "modal" }
+                    = link_to 'Frag die Experten', '#interview', :class => "btn btn-warning", data: { toggle: "modal" }
+                    = link_to 'Frag die Masse', '#survey', :class => "btn btn-warning", data: { toggle: "modal" }
+            .row
+              .col-md-12
+                .panel.panel-warning
+                  .panel-body
+                    .col-md-2
+                      .row
+                        = link_to 'New Link', '#new_link', :class => "btn btn-xs btn-block btn-warning", data: { toggle: "modal" }
+                        = render @decision.sources.link
+                    .col-md-2
+                      .row
+                        = link_to 'New Article', '#new_article', :class => "btn btn-xs btn-block  btn-warning", data: { toggle: "modal" }
+                        = render @decision.sources.article
+                    .col-md-2
+                      .row
+                        = link_to 'New Book', '#new_book', :class => "btn btn-xs btn-block  btn-warning", data: { toggle: "modal" }
+                        = render @decision.sources.book
+                    .col-md-2
+                      .row
+                        = link_to 'New Contact', '#new_contact', :class => "btn btn-xs btn-block  btn-warning", data: { toggle: "modal" }
+                        = render @decision.sources.contact
+                    .col-md-2
+                      .row
+                        = link_to 'New Note', '#new_note', :class => "btn btn-xs btn-block  btn-warning", data: { toggle: "modal" }
+                        = render @decision.sources.note
+                    .col-md-2
+                      .row
+                        = link_to 'New Image', '#new_image', :class => "btn btn-xs btn-block  btn-warning", data: { toggle: "modal" }
+                        = render @decision.sources.image
+  
+      .panel-footer
+        = link_to 'Back to Decision', decision_path(@decision)
+
+#answer.modal.fade{:tabindex => "-1"}
+  .modal-header
+    %h4.modal-title Enter answer
+  .modal-body
+    .modal-body-content
+      = form_for(@decision) do |f|
+        .field
+          = f.text_area(:answer, :size => '20x5')
+        .field
+          = f.submit "Save changes", class: "btn btn-large btn-primary"
+          %button.btn{"data-dismiss" => "modal", :type => "button"} Close
+
+= render :partial => 'sources/new', :locals => {:type => "link"}
+= render :partial => 'sources/new', :locals => {:type => "book"}
+= render :partial => 'sources/new', :locals => {:type => "article"}
+= render :partial => 'sources/new', :locals => {:type => "contact"}
+= render :partial => 'sources/new', :locals => {:type => "image"}
+= render :partial => 'sources/new', :locals => {:type => "note"}
+
+= render :partial => 'constraints/new'
+= render :partial => 'questions/new'
+
+= render :partial => 'decisions/research_brain'
+= render :partial => 'decisions/research_web'
+= render :partial => 'decisions/research_books'
+= render :partial => 'decisions/research_survey'
+= render :partial => 'decisions/research_interview'

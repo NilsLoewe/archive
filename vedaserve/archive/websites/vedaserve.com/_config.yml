@@ -1,0 +1,10 @@
+# Site settings
+title: Vedaserve
+email: moin@vedaserve.com
+description: "Vedaserve baut Tools um bessere Entscheidungen zu treffen."
+baseurl: ""
+url: "http://beta.vedaserve.de"
+
+# Build settings
+markdown: kramdown
+permalink: pretty

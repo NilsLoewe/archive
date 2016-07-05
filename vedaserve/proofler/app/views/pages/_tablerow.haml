@@ -1,0 +1,22 @@
+%tr{ :class => ("feature-table-grey" if grey) }
+  %th
+    = title
+    .feature-table-subheading= description
+  -if free
+    %td
+      %span.feature-table-yes
+      %span.visuallyhidden ✓
+  -else
+    %td.feature-table-no –
+  -if pro
+    %td
+      %span.feature-table-yes
+      %span.visuallyhidden ✓
+  -else
+    %td.feature-table-no –
+  -if business
+    %td
+      %span.feature-table-yes
+      %span.visuallyhidden ✓
+  -else
+    %td.feature-table-no –

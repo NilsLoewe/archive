@@ -1,0 +1,15 @@
+.panel.panel-default
+  .panel-heading
+    Lade einen weiteren Teilnehmer ein!
+  .panel-body
+    = form_for(@user) do |f|
+      .form-group.focus
+        .input-group.input-group-sm
+          = f.text_field(:name, :size => "40%", :placeholder => "Wer soll mit Dir entscheiden?")
+          = f.text_field(:email, :size => "40%", :placeholder => "Gib optional eine Email Adresse an")
+          = f.hidden_field :decision_id, :value => @decision.id
+          .input-group-btn
+            = button_tag(type: 'submit', id: "add", class: "btn btn-primary") do
+              %span Add
+
+

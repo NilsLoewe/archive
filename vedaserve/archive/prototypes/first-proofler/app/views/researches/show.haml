@@ -1,0 +1,10 @@
+- research_at 'Gather & Analyze'
+.col-md-12
+  .panel.panel-default
+    .panel-heading
+      %h1.panel-title
+        = @research.title
+        %a{:href => "#"}
+          %span.fui-gear.pull-right
+    .panel-body
+      = render 'questions/all'

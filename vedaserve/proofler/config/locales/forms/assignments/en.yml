@@ -1,0 +1,22 @@
+---
+en:
+  assignment:
+    'false': 'NEIN'
+    'no': 'NEIN'
+    own: Eigener Wert
+    'true': 'JA'
+    'yes': 'JA'
+  activerecord:
+    errors:
+      models:
+        assignment:
+          attributes:
+            value:
+              blank: Bitte gib einen Wert ein
+  helpers:
+    label:
+      assignment:
+        value: Wert
+    placeholder:
+      assignment:
+        value: Wie ist der Wert?

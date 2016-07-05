@@ -1,0 +1,81 @@
+.row
+  .col-xs-12.col-sm-9
+    .row
+      .col-xs-4
+        .row.text-center
+          %h1 Randbedingungen
+        %div{"ng-model" => "cards.conditions", "ui-sortable" => "sortableOptions"}
+          .row{"ng-repeat" => "card in cards.conditions"}
+            .col-xs-12
+              .panel.panel-warning.is-draggable
+                .panel-heading.text-right
+                  %a{"ng-click" => "removeNote('conditions', $index)"} &times;
+                .panel-body
+                  {{ card }}
+        .row
+          .col-xs-12
+            .panel.panel-warning
+              .panel-heading.text-right
+                \&nbsp;
+              .panel-body
+                %form.form-horizontal{:role => "form"}
+                  .form-group
+                    %label.col-xs-2.control-label{:for => "note"} Note
+                    .col-xs-10
+                      %input.form-control{"ng-model" => "noteconditions"}/
+                  .form-group
+                    .col-xs-offset-2.col-xs-10
+                      %button.btn.btn-primary{"ng-click" => "addNote('conditions')"} add
+      .col-xs-4
+        .row.text-center
+          %h1 Bauchgefühl
+        %div{"ng-model" => "cards.gutFeeling", "ui-sortable" => "sortableOptions"}
+          .row{"ng-repeat" => "card in cards.gutFeeling"}
+            .col-xs-12
+              .panel.panel-info.is-draggable
+                .panel-heading.text-right
+                  %a{"ng-click" => "removeNote('gutFeeling', $index)"} &times;
+                .panel-body
+                  {{ card }}
+        .row
+          .col-xs-12
+            .panel.panel-info
+              .panel-heading.text-right
+                \&nbsp;
+              .panel-body
+                %form.form-horizontal{:role => "form"}
+                  .form-group
+                    %label.col-xs-2.control-label Note
+                    .col-xs-10
+                      %input.form-control{"ng-model" => "notegutFeeling"}/
+                  .form-group
+                    .col-xs-offset-2.col-xs-10
+                      %button.btn.btn-primary{"ng-click" => "addNote('gutFeeling')"} add
+      .col-xs-4
+        .row.text-center
+          %h1 Wissen
+        %div{"ng-model" => "cards.knowledge", "ui-sortable" => "sortableOptions"}
+          .row{"ng-repeat" => "card in cards.knowledge"}
+            .col-xs-12
+              .panel.panel-success.is-draggable
+                .panel-heading.text-right
+                  %a{"ng-click" => "removeNote('knowledge', $index)"} &times;
+                .panel-body
+                  {{ card }}
+        .row
+          .col-xs-12
+            .panel.panel-success
+              .panel-heading.text-right
+                \&nbsp;
+              .panel-body
+                %form.form-horizontal{:role => "form"}
+                  .form-group
+                    %label.col-xs-2.control-label Note
+                    .col-xs-10
+                      %input.form-control{"ng-model" => "noteknowledge"}/
+                  .form-group
+                    .col-xs-offset-2.col-xs-10
+                      %button.btn.btn-primary{"ng-click" => "addNote('knowledge')"} add
+  .col-sm-3.col-xs-12
+    .row.text-center
+      %h1 Chat

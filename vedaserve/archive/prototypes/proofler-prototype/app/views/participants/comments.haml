@@ -1,0 +1,32 @@
+.row
+  .col-xs-1
+  .col-xs-10.dist-top
+
+    .col-xs-12
+      =link_to 'zurueck', dashboard_participant_path(@participant)
+      .panel.panel-default
+        .panel-heading
+          Diskutiere
+          =@decision.title
+        .panel-body
+          = form_for(@comment) do |f|
+            .input-group.space-top
+              = f.text_field(:comment, :class => "form-control", :placeholder => "Diskutiere mit!")
+              = f.hidden_field :decision_id, :value => @decision.id
+              = f.hidden_field :user_id, :value => @participant.user.id
+              .input-group-btn
+                = button_tag(type: 'submit', id: "add", class: "btn btn-primary") do
+                  +
+
+          - @decision.comments.each do |c|
+            .row
+              .col-xs-12
+                %hr
+                %b=c.user.name
+                .pull-right
+                  =time_ago_in_words(c.created_at)
+                %br
+                =c.comment
+
+    .col-xs-1
+

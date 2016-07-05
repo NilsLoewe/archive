@@ -1,0 +1,30 @@
+- unless @decision.closed?
+  =form_tag(close_decision_path(@decision.id), method: 'POST') do
+    .row
+      .col-xs-2.nopad
+        Option
+      - unless @decision.closed?
+        .col-xs-1.nopad
+          Wähle
+
+    -@ordered_options.each do |o|
+      .row
+        - if @decision.closed?
+          - if @decision.chosen_option == o.id
+            .col-xs-2.nopad.bg-success
+              = o.title
+          - else
+            .col-xs-2.nopad
+              = o.title
+        - else
+          .col-xs-2.nopad
+            = o.title
+        - unless @decision.closed?
+          .col-xs-1.nopad
+            = hidden_field_tag "guts_value#{o.id}", o.guts_value
+            = hidden_field_tag "brain_value#{o.id}", o.brain_value
+            = radio_button_tag 'option', o.id
+    .row
+      .col-xs-4.nopad
+        %input{type: 'hidden', name: "participant", value: @participant.id}
+        = button_tag 'Entscheide', class: "btn btn-md btn-primary pull-right"

@@ -1,0 +1,76 @@
+.row
+  .col-md-6.col-md-offset-3
+    - @participant.user.fact_ratings.each do |r|
+      - if r.value == 0
+        .col-md-2.bg-warning
+          = form_for(r) do |f|
+            = f.hidden_field :value, :value => 1
+            %span
+              = button_tag(type: 'submit', id: "add", class: "btn btn-default  btn-xs btn-block") do
+                +
+          %input{type: "text", class: "form-control", disabled: "true", value: r.fact.title}
+          = form_for(r) do |f|
+            = f.hidden_field :value, :value => -1
+            %span
+              = button_tag(type: 'submit', id: "add", class: "btn btn-default btn-xs  btn-block") do
+                \-
+
+      - if r.value == 1
+        .col-md-2.bg-success
+          = form_for(r) do |f|
+            = f.hidden_field :value, :value => 2
+            %span
+              = button_tag(type: 'submit', id: "add", class: "btn btn-success btn-sm  btn-block") do
+                +
+          %input{type: "text", class: "form-control", disabled: "true", value: r.fact.title}
+          = form_for(r) do |f|
+            = f.hidden_field :value, :value => 0
+            %span
+              = button_tag(type: 'submit', id: "add", class: "btn btn-success btn-sm btn-block") do
+                \-
+
+      - if r.value == 2
+        .col-md-2.bg-success
+          = form_for(r) do |f|
+            = f.hidden_field :value, :value => 2
+            %span
+              = button_tag(type: 'submit', id: "add", class: "btn btn-success btn-lg  btn-block", disabled: "disabled") do
+                +
+          %input{type: "text", class: "form-control", disabled: "true", value: r.fact.title}
+          = form_for(r) do |f|
+            = f.hidden_field :value, :value => 1
+            %span
+              = button_tag(type: 'submit', id: "add", class: "btn btn-success btn-lg btn-block") do
+                \-
+
+      - if r.value == -1
+        .col-md-2.bg-danger
+          = form_for(r) do |f|
+            = f.hidden_field :value, :value => 0
+            %span
+              = button_tag(type: 'submit', id: "add", class: "btn btn-danger btn-md btn-block") do
+                +
+          %input{type: "text", class: "form-control", disabled: "true", value: r.fact.title}
+          = form_for(r) do |f|
+            = f.hidden_field :value, :value => -2
+            %span
+              = button_tag(type: 'submit', id: "add", class: "btn btn-danger btn-md btn-block") do
+                \-
+
+      - if r.value == -2
+        .col-md-2.bg-danger
+          = form_for(r) do |f|
+            = f.hidden_field :value, :value => -1
+            %span
+              = button_tag(type: 'submit', id: "add", class: "btn btn-danger btn-lg btn-block") do
+                +
+          %input{type: "text", class: "form-control", disabled: "true", value: r.fact.title}
+          = form_for(r) do |f|
+            = f.hidden_field :value, :value => -2
+            %span
+              = button_tag(type: 'submit', id: "add", class: "btn btn-danger btn-lg btn-block", disabled: "disabled") do
+                \-
+
+  .col-md-3
+    .alert.alert-info
+      Die Größe der Elemente gibt die Gewichtung an. Nutze die + und - Buttons um die Gewichtung zu verändern.

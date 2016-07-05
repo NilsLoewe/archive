@@ -1,0 +1,12 @@
+<%= I18n.t('mails.decisions.rate.hello') %> <%= @participant.name %>,
+
+<%= I18n.t('mails.decisions.rate.text1') %> "<%= @decision.title %>" <%= I18n.t('mails.decisions.rate.text2') %>
+<%= @admin.name %> <%= I18n.t('mails.decisions.rate.text3') %>
+<%= dashboard_url(token: @participant.invitation_token) %>
+
+<%= I18n.t('mails.decisions.rate.greet') %>
+<%= I18n.t('mails.decisions.rate.signiture') %>
+
+---------------------------------------------------------------------------------------------------------
+<%= I18n.t('mails.decisions.rate.notice') %>
+---------------------------------------------------------------------------------------------------------

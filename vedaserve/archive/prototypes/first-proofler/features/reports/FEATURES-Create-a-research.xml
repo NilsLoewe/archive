@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Create a research" tests="2" time="0.003112845" failures="0" errors="0" skipped="0">
+  <testcase name="Successful creation (PENDING)" time="0.001329045">
+  </testcase>
+  <testcase name="Researcher has to login before (PENDING)" time="0.001255535">
+  </testcase>
+  <system-out>
+  </system-out>
+  <system-err>
+  </system-err>
+</testsuite>

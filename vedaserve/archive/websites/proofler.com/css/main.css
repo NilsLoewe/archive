@@ -1,0 +1,505 @@
+.visual-green {
+  background: url(../img/visuals.png) 0 0;
+  width: 311px;
+  height: 68px;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+p {
+  font-size: 15pt;
+  font-family: "gt_walsheim_light";
+  line-height: 20pt;
+  color: #696969;
+}
+
+h1, h3 {
+  font-size: 31pt;
+  font-weight: normal;
+  font-family: "gt_walsheim_medium", sans-serif;
+  line-height: 36pt;
+  letter-spacing: 0;
+  word-spacing: 0;
+  color: #58585a;
+}
+
+h2 {
+  font-size: 15pt;
+  font-weight: normal;
+  font-family: "gt_walsheim_medium", sans-serif;
+  line-height: 20pt;
+  color: #696969;
+}
+
+h4 {
+  font-size: 13pt;
+  font-family: "gt_walsheim_medium", sans-serif;  
+  color: #58585a;
+}
+
+.handwrite {
+  font-family: 'jimbosprint_bold_italic';
+  font-size: 19pt;
+  line-height: 20pt;
+  letter-spacing: 3px;
+}
+
+.visual {
+  width: 340px;
+  height: 331px;
+  position: absolute;
+}
+
+.logo {
+  position: absolute;
+  right: 50px;
+  top: 50px;
+  background: url(../img/logo.png) no-repeat;
+  text-align: right;
+  height: 58px;
+  width: 268px;
+}
+
+.logo .name {
+  font-size: 30pt;
+  margin-top: -6pt;
+}
+
+.intro {
+  margin: 0 auto;
+
+  width: 600px;
+  margin-top: 162px;
+  text-align: center;
+}
+
+.benefits {
+  margin: 25px auto 0;
+  width: 500px;
+  text-align: center;
+  margin: 25px auto;
+}
+
+.benefits header h2 {
+  margin: 25px auto;
+}
+
+.scribble-top {
+  top: 350px;
+  left: 0;
+  position: absolute;
+  z-index: -23;
+  background: url(../img/scribbles_top.png);
+  width: 362px;
+  height: 414px;
+}
+
+.signup-for-newsletter {
+  position: absolute;
+  margin-top: -119px;
+  right: 40px;
+  height: 39px;
+
+  font-family: 'jimbosprint_bold_italic';
+  font-size: 19pt;
+  line-height: 20pt;
+  letter-spacing: 3px;
+  transform: rotate(-8deg);
+  -webkit-transform: rotate(-8deg);
+}
+
+.signup-for-newsletter a {
+  color: white;
+}
+
+.learn-more {
+  margin: 0 auto;
+  margin-top: 40px;
+  width: 180px;
+}
+
+.ideas {
+  margin-top: 180px;
+  background-color: #fafafa;
+}
+
+.ideas header {
+  margin-left: 90px;
+  padding-top: 42px;
+  width: 450px;
+}
+
+.ideas .content {
+  padding-top: 15px;
+}
+
+.signup-visual-container {
+  overflow: hidden;
+  right: 0;
+  margin-top:-191px;
+
+  position: absolute;
+  width: 273px;
+  height: 350px;
+}
+
+.ideas .visual {
+  background: url(../img/visuals.png) 0 -68px;
+  width: 341px;
+  height: 344px;
+}
+
+.ideas .people_row {
+  width: 880px;
+  height: 240px;
+  margin: 0 auto 0;
+}
+
+.ideas .scribbles {
+  margin: 54px auto 0;
+  width: 880px;
+  height: 110px;
+  text-align: center;
+}
+
+.ideas .scribbles_middle {
+  margin: 25px auto 25px;
+}
+
+.ideas .people {
+  width: 240px;
+  float: left;
+}
+
+.people-1 {
+  background: url(../img/people_1.png);
+  width: 240px;
+  height: 239px;
+}
+
+.people-2 {
+  background: url(../img/people_2.png);
+  width: 240px;
+  height: 230px;
+}
+
+.people-3 {
+  background: url(../img/people_3.png);
+  width: 240px;
+  height: 231px;
+}
+
+.people-4 {
+  background: url(../img/people_4.png);
+  width: 240px;
+  height: 243px;
+}
+
+.people-5 {
+  background: url(../img/people_5.png);
+  width: 240px;
+  height: 238px;
+}
+
+.ideas .people_top_next {
+  margin-left: 60px;
+}
+
+.ideas .people_bottom_first {
+  margin-left: 140px;
+}
+
+.ideas .people_bottom_next {
+  margin-left: 220px;
+}
+
+.ideas .text {
+  font-family: 'jimbosprint_bold_italic';
+  font-size: 16pt;
+  line-height: 20pt;
+  letter-spacing: 3px;
+  color: #58585a;
+  float: left
+}
+
+.ideas .element {
+  float:left
+}
+
+.ideas .text1 {
+  margin-top: -10px;
+  margin-left: 25px;
+}
+
+.ideas .arrow1 {
+  margin-top: 20px;
+  margin-left: 160px;
+  background: url(../img/arrows-and-bubbles.png) 0 -260px;
+  width: 65px;
+  height: 46px;
+}
+
+.ideas .thought1 {
+  margin-top: -25px;
+  margin-left: 100px;
+  background: url(../img/arrows-and-bubbles.png) 0 0;
+  width: 190px;
+  height: 130px;
+}
+
+.ideas .thought2 {
+  margin-top: 5px;
+  margin-left: 25px;
+  background: url(../img/arrows-and-bubbles.png) 0 -130px;
+  width: 190px;
+  height: 130px;
+}
+
+.ideas .arrow2 {
+  margin-top: -10px;
+  margin-left: 260px;
+  background: url(../img/arrows-and-bubbles.png) 0 -306px;
+  width: 68px;
+  height: 41px;
+}
+
+.ideas .text2 {
+  margin-left: 25px;
+}
+
+.ideas .arrow3 {
+  margin-top: -40px;
+  margin-left: 640px;
+  background: url(../img/arrows-and-bubbles.png) 0 -347px;
+  width: 74px;
+  height: 28px;
+}
+
+.ideas .text3 {
+  margin-top: -25px;
+  margin-left: 340px;
+}
+
+.research {
+  margin-top: 0;
+  background-color: #ffffff;
+}
+
+.research header {
+  padding-top: 85px;
+  padding-left: 90px;
+  width: 450px;
+}
+
+.research .content {
+  margin-top: 15px;
+}
+
+.research .text_row {
+  margin: 0 auto;
+  padding-bottom: 50px;
+  width: 880px;
+}
+
+.research .text_box {
+  width: 160px;
+  float: left;
+}
+
+.research .next {
+  margin-left: 80px;
+}
+
+.research .text_box .text {
+  margin-top: 20px;
+}
+
+.research .text_box .scribble {
+  width: 160px;
+  height: 170px;
+}
+
+.research .text_box .arrow {
+  background: url(../img/steps-sprite.png);
+  width: 71px;
+  height: 22px;
+
+  margin-top: 100px;
+  margin-left: -80px;
+}
+
+.research .text_box .step1 {
+  background: url(../img/steps-sprite.png) 0 -22px;
+  width: 160px;
+  height: 170px;
+}
+
+.research .text_box .step2 {
+  background: url(../img/steps-sprite.png) 0 -192px;
+  width: 160px;
+  height: 170px;
+}
+
+.research .text_box .step3 {
+  background: url(../img/steps-sprite.png) 0 -362px;
+  width: 160px;
+  height: 170px;
+}
+
+.research .text_box .step4 {
+  background: url(../img/steps-sprite.png) 0 -532px;
+  width: 160px;
+  height: 170px;
+}
+
+.arrow {
+  background: url(../img/arrows-and-bubbles.png) 0 -375px;
+  width: 160px;
+  height: 216px;
+  margin-top: -80px;
+  margin-left: 30px;
+  position: absolute;
+}
+
+.keep-in-touch .visual {
+  background: url(../img/visuals.png) 0 -412px;
+  width: 358px;
+  height: 349px;
+  position: absolute;
+  margin-left: -129px;
+  margin-top: -239px;
+}
+
+.keep-in-touch p {
+  transform: rotate(-7deg);
+  -webkit-transform: rotate(-7deg);
+  letter-spacing: 2px;
+  margin-left: -32px;
+  margin-top: 2px;
+  font-size: 12pt;
+}
+
+.newsletter {
+  background-color: #e5e5e5;
+  width: 100%;
+  text-align:center;
+}
+
+.newsletter header {
+  padding-top: 58px;
+}
+
+.newsletter form {
+  padding-top: 46px;
+  padding-bottom: 46px;
+  margin: 0 auto;
+  text-align: center;
+  width: 425px;
+}
+
+.newsletter form input[type=email] {
+  height: 35px;
+  width: 240px;
+  padding-left: 20px;
+  padding-right: 20px;
+  font-family: "gt_walsheim_medium";
+}
+
+footer {
+  color: white;
+  background-color: #58585a;
+  min-height: 70px;
+  word-spacing: 15px;
+}
+
+footer a, footer a:hover {
+  color: white;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+footer {
+  padding-top: 25px;
+}
+
+.footer-links {
+  margin-right: 30px;
+}
+
+.share-buttons {
+  margin-left: 30px;
+  list-style: none;
+}
+
+.share-buttons li {
+  display: inline;
+}
+
+.share-buttons a,
+.share-buttons a:hover {
+  display: block;
+  color: transparent;
+  float: left;
+  margin-right: 20px;
+}
+
+.fb-share {
+  width: 49px;
+  height: 24px;
+  background: url(../img/share-buttons.png) 0 0;
+}
+
+.twitter-share {
+  width: 55px;
+  height: 20px;
+  background: url(../img/share-buttons.png) 0 -24px;
+}
+
+.xing-share {
+  width: 55px;
+  height: 20px;
+  background: url(../img/share-buttons.png) 0 -44px;
+}
+
+@font-face {
+  font-family: 'gt_walsheim_medium';
+  src: url('../fonts/gt-walsheim-medium-web.eot#') format('embedded-opentype'), 
+       url('../fonts/gt-walsheim-medium-web.woff') format('woff'),
+       url('../fonts/gt-walsheim-medium-web.ttf') format('truetype'),
+       url('../fonts/gt-walsheim-medium-web.svg#gt_walsheim_medium') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'gt_walsheim_thin';
+  src: url('../fonts/gt-walsheim-thin-web.eot#') format('embedded-opentype'),
+       url('../fonts/gt-walsheim-thin-web.woff') format('woff'),
+       url('../fonts/gt-walsheim-thin-web.ttf') format('truetype'),
+       url('../fonts/gt-walsheim-thin-web.svg#gt_walsheim_thin') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'gt_walsheim_light';
+  src: url('../fonts/gt-walsheim-light-web.eot#') format('embedded-opentype'),
+       url('../fonts/gt-walsheim-light-web.woff') format('woff'),
+       url('../fonts/gt-walsheim-light-web.ttf') format('truetype'),
+       url('../fonts/gt-walsheim-light-web.svg#gt_walsheim_light') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'jimbosprint_bold_italic';
+  src: url('../fonts/jimbosprint-bold-italic-webfont.eot#') format('embedded-opentype'),
+       url('../fonts/jimbosprint-bold-italic-webfont.woff') format('woff'),
+       url('../fonts/jimbosprint-bold-italic-webfont.ttf') format('truetype'),
+       url('../fonts/jimbosprint-bold-italic-webfont.svg#gt_walsheim_thin') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}

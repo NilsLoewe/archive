@@ -1,0 +1,7 @@
+.panel.panel-primary
+  .row
+    .col-xs-12
+      = fact.title
+      - if fact.question
+        = link_to 'Ja', valid_fact_path(fact), class: "btn btn-sm btn-success"
+        = link_to 'Nein', invalid_fact_path(fact), class: "btn btn-sm btn-danger"

@@ -1,0 +1,33 @@
+.col-md-6.col-md-offset-3
+  - @participant.user.guts.each do |g|
+    .panel.panel-primary.boxed
+      .panel-body
+        = form_for(g) do |f|
+          Gib Dein Bauchgefühl für
+          = g.option.title
+          an: 
+          = f.text_field(:value, :maxlength => 3, :size => 2, :id => "guts_value#{g.id}", :class => "labeled")
+          '%
+          .row
+            .col-xs-1
+              =image_tag "contra.png"
+            .col-xs-9
+              :javascript
+                $(function() {
+                  $( "#slider#{g.id}" ).slider({
+                    min: 0, 
+                    max: 100, 
+                    step: 5,
+                    value: $("#guts_value#{g.id}").val(),
+                    slide: function(event, ui) {
+                      $("#guts_value#{g.id}").val(ui.value);
+                    }
+                  });
+                  $( "#guts_value#{g.id}" ).val( $( "#slider#{g.id}" ).slider( "value" ));
+                });
+              .div{:id=> "slider#{g.id}"}
+            .col-xs-1
+              = button_tag(type: 'submit', id: "add", class: "btn btn-primary") do
+                %span save
+            .col-xs-1
+              =image_tag "pro.png"

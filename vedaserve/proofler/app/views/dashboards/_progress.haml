@@ -1,0 +1,18 @@
+#dashboard-progress
+  .row
+    .col-xs-12
+      .row
+        .col-xs-9.col-xs-offset-1
+          .progress
+            .progress-bar{ :style => "width: #{progress}%", :class => "progress#{progress}" }
+      .row
+        -if @decision.state == "gather" || @decision.state == "closed" || @decision.state.nil? || @participant.admin? == false
+          .col-xs-3.col-xs-offset-1.centered.progressText{ :class => "progressGather#{progress}", :id => "progressGather" }= I18n.t('pages.dashboard.progress.collect')
+        -else
+          .col-xs-3.col-xs-offset-1.centered{ :class => "progressGather#{progress}"}
+            = bootstrap_form_for(@decision, url: (dashboard_decision_path(@token, @decision))) do |decision|
+              = decision.hidden_field :state, value: "gather"
+              = decision.submit I18n.t('pages.dashboard.progress.collect'), :class => "progress-link"
+
+        .col-xs-3.centered.progressText{ :class => "progressRate#{progress}", :id => "progressRate" }= I18n.t('pages.dashboard.progress.gather')
+        .col-xs-3.centered.progressText{ :class => "progressDecide#{progress}", :id => "progressDecide" }= I18n.t('pages.dashboard.progress.decide')

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Register" tests="6" time="0.005676184" failures="0" errors="0" skipped="0">
+  <testcase name="Researcher accesses the register page (PENDING)" time="0.000849416">
+  </testcase>
+  <testcase name="User registers with invalid email (PENDING)" time="0.000765843">
+  </testcase>
+  <testcase name="User signs up with already signed up email (PENDING)" time="0.000745718">
+  </testcase>
+  <testcase name="User signs up without password (PENDING)" time="0.000549506">
+  </testcase>
+  <testcase name="User signs up without password confirmation (PENDING)" time="0.000702675">
+  </testcase>
+  <testcase name="User signs up with mismatched password and confirmation (PENDING)" time="0.000749632">
+  </testcase>
+  <system-out>
+  </system-out>
+  <system-err>
+  </system-err>
+</testsuite>

@@ -1,0 +1,13 @@
+- research_at 'Shape & Share'
+.col-md-12
+  .panel.panel-default
+    .panel-heading
+      %h1.panel-title
+        = @research.title
+    .panel-body
+      %h3= @research.title
+      = @research.description
+      - @research.questions.each do |q|
+        - if q.enable
+          %h3= q.title
+          = q.answer

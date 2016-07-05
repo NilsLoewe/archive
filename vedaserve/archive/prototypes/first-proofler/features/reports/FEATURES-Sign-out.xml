@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Sign out" tests="1" time="0.008115701" failures="0" errors="0" skipped="0">
+  <testcase name="Researcher signs out (PENDING)" time="0.007792315">
+  </testcase>
+  <system-out>
+  </system-out>
+  <system-err>
+  </system-err>
+</testsuite>

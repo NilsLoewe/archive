@@ -1,0 +1,10 @@
+.row
+    .pull-left
+        = link_to( |
+                    image_tag("logo.png", |
+                    id: "logo", |
+                    class: "brand"), |
+          root_url, |
+          title: "Dashboard")
+    .pull-right
+        = render :partial => 'shared/searchfield', :locals => { :size => 30, :title => "ask the proofler", :breakline => false }

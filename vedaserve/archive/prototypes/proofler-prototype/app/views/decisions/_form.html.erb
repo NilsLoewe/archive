@@ -1,0 +1,29 @@
+<%= form_for(@decision) do |f| %>
+
+  <div class="field dist-top">
+    Titel<br>
+    <%= f.text_field :title, :size => '70' %>
+  </div>
+
+  <div class="field dist-top">
+	Beschreibung (optional)<br>
+    <%= f.text_area :description, :size => '70x4'%>
+  </div>
+
+  <div class="field dist-top">
+    Dein Name <br>
+    <%= f.text_field :author, :size => '70'  %>
+  </div>
+
+  <div class="field dist-top">
+    Email Adresse<br>
+    <%= f.text_field :email, :size => '70'  %>
+  </div>
+  Wir senden Dir den Link zum Administrieren der Entscheidung an diese Adresse. Es wird NICHT automatisch ein Proofler-Konto erstellt.
+  
+  <div class="actions dist-top">
+  	<%= link_to 'abbrechen', root_path, :class => "btn btn-md btn-default" %>
+    <%= f.submit :value=> 'Weiter', :class => "btn btn-md btn-primary space-left" %>
+  </div>
+
+<% end %>

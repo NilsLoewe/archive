@@ -1,0 +1,15 @@
+:javascript
+  $(function(){
+    //hover states on the static widgets
+    $('#dialog_link, ul#icons li').hover(
+    function() { $(this).addClass('ui-state-hover'); },
+    function() { $(this).removeClass('ui-state-hover'); }
+    );
+  });
+- question_at 'Select'
+
+.row
+  = render @topics
+  = render 'topics/new'
+.row
+  = link_to 'Done, selecting questions', @research

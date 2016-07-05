@@ -1,0 +1,5 @@
+#!/bin/bash
+
+. "$(dirname "${0}")/../config"
+
+curl ${CURL_OPTS} "${HOST}/decisions" | ${POST_PROCESSING}

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Describe It" tests="5" time="0.023512221" failures="0" errors="0" skipped="0">
+  <testcase name="Describe the research (PENDING)" time="0.002840047">
+  </testcase>
+  <testcase name="Add three own questions (PENDING)" time="0.009271173">
+  </testcase>
+  <testcase name="Add and Delete a question (PENDING)" time="0.002286629">
+  </testcase>
+  <testcase name="Disable and Enable a question (PENDING)" time="0.003945769">
+  </testcase>
+  <testcase name="Disable all a questions (PENDING)" time="0.003912229">
+  </testcase>
+  <system-out>
+  </system-out>
+  <system-err>
+  </system-err>
+</testsuite>

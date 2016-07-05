@@ -1,0 +1,16 @@
+#dashboard-header
+  .row
+    .col-xs-11.col-xs-offset-1
+      =link_to image_tag("proofler.png",:size => "50x50", :alt=> "proofler logo", :class => "logo"), root_path
+      .decision-title
+        - if @participant.admin?
+          .edit
+            = best_in_place @decision, :title, as: :input,
+                            url: dashboard_decision_path(@decision, dashboard_token: @token),
+                            :inner_class => "input-lg",
+                            :display_with => :truncate,
+                            :helper_options => { :length => 70 },
+                            :html_attrs => { :style => 'width:90%;' },
+                            activator: '.edit'
+        - else
+          = truncate(@decision.title, :length => 70)

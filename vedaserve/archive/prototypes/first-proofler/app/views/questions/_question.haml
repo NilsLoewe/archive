@@ -1,0 +1,33 @@
+.question.column.js-animate.test-question
+  .upper-area
+    .front.js-animate-target
+      .main
+        %a{href: answer_describe_question_path(question)}
+          = question.topic.title
+        %br/
+        %a{href: answer_process_question_path(question)}
+          = question.title
+        %p
+          = truncate question.short_answer, length: 160
+      .top-right{class: 'js-animate-toggle'}
+        .cog.glyphicon-cog.glyphicon
+
+    .back
+      = form_for(question) do |f|
+        - Search.categories.each do |name|
+          .checkbox
+            %label
+              %input{ type: 'checkbox', value: '' }
+                = check_box_tag('categories[]', name, question.category_enabled?(name), id:name)
+                = label_tag(name.to_sym, t("search.#{name}"))
+        = f.submit 'Update', class: 'btn btn-primary js-animate-toggle'
+
+  - question.research_categories.in_groups_of(2, false) do |row|
+    .question-row.cube-row
+      - row.each do |category|
+        .method.cube
+          .content.text-center
+            %p
+              %a{href: answer_gather_question_path(question, :type => category)}
+                = t("search.#{category}")
+            %p 1 <sub>(dummy)</sub>

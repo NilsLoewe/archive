@@ -1,0 +1,90 @@
+.proofler-lp-page#lp-index
+  = render 'layouts/header'
+  #visual-green.visible-lg.visible-md
+
+  .row
+    .container
+      .lp-intro
+        .row
+          .col-md-7.col-xs-12
+            .row
+              .col-xs-12
+                %h1= I18n.t('pages.lp.title')
+                %h2= I18n.t('pages.lp.subtitle')
+                .laptop-frame-images
+                  %iframe{:allowscriptaccess => "always", :allowFullScreen => "true", :frameborder => "0", :height => "400", :src => "http://www.youtube.com/embed/6OPAA62dksg", :title => "Wie benutze ich den proofler?", :width => "640"}
+          .col-md-4.col-md-offset-1.col-xs-10.col-xs-offset-1.select-form
+            .row
+              .col-xs-12
+                .btn.btn-success.btn-block#btn-prepare-car
+                  =image_tag("icon_car.png", height: "32px")
+                  = I18n.t('pages.lp.example.car')
+              .col-xs-12
+                .btn.btn-success.btn-block#btn-prepare-uni
+                  =image_tag("icon_uni.png", height: "32px")
+                  = I18n.t('pages.lp.example.uni')
+              .col-xs-12
+                .btn.btn-success.btn-block#btn-prepare-medical
+                  =image_tag("icon_medical.png", height: "32px")
+                  = I18n.t('pages.lp.example.medical')
+              .col-xs-12
+                .btn.btn-success.btn-block#btn-prepare-hr
+                  =image_tag("icon_hr.png", height: "32px")
+                  = I18n.t('pages.lp.example.hr')
+              .col-xs-12
+                .btn.btn-success.btn-block#btn-prepare-product
+                  =image_tag("icon_company.png", height: "32px")
+                  = I18n.t('pages.lp.example.product')
+              .col-xs-12
+                .btn.btn-success.btn-block#btn-clear
+                  =image_tag("icon_question.png", height: "32px")
+                  = I18n.t('pages.lp.example.custom')
+              .col-xs-1.col-xs-offset-4
+                %a{ href: "#", id: "lp-start-link" }
+                  =image_tag("button-light-green.png", width: "100%", alt: 'Testen')
+                  #lp-start-link-text= I18n.t('pages.lp.start-link')
+
+.proofler-page#lp-benefits
+  .row
+    .container
+      .row
+        .col-md-4.col-md-offset-0.col-sm-6.col-sm-offset-0.col-xs-10.col-xs-offset-1
+          .fa-item.fa.fa-bed.fa-2x
+          .benefit-text= I18n.t('pages.lp.benefits.peace')
+        .col-md-4.col-md-offset-0.col-sm-6.col-sm-offset-0.col-xs-10.col-xs-offset-1
+          .fa-item.fa.fa-compass.fa-2x
+          .benefit-text= I18n.t('pages.lp.benefits.brainbugs')
+        .clearfix.visible-sm
+        .col-md-4.col-md-offset-0.col-sm-6.col-sm-offset-0.col-xs-10.col-xs-offset-1
+          .fa-item.fa.fa-user-plus.fa-2x
+          .benefit-text= I18n.t('pages.lp.benefits.group')
+        .clearfix.visible-md.visible-lg
+        .col-md-4.col-md-offset-0.col-sm-6.col-sm-offset-0.col-xs-10.col-xs-offset-1
+          .fa-item.fa.fa-pencil-square-o.fa-2x
+          .benefit-text= I18n.t('pages.lp.benefits.options')
+        .clearfix.visible-sm
+        .col-md-4.col-md-offset-0.col-sm-6.col-sm-offset-0.col-xs-10.col-xs-offset-1
+          .fa-item.fa.fa-list-ul.fa-2x
+          .benefit-text= I18n.t('pages.lp.benefits.facts')
+        .col-md-4.col-md-offset-0.col-sm-6.col-sm-offset-0.col-xs-10.col-xs-offset-1
+          .fa-item.fa.fa-users.fa-2x
+          .benefit-text= I18n.t('pages.lp.benefits.consens')
+
+.proofler-page#lp-form
+  .row
+    .container
+      .row
+        .col-md-3.hidden-xs.hidden-sm
+          #lp-scribble-text
+            = I18n.t('pages.lp.scribble-text-1')
+            %br
+            = I18n.t('pages.lp.scribble-text-2')
+          =image_tag("lp-scribble.png", alt: I18n.t('pages.lp.scribble-description'), id: "lp-scribble")
+        .col-md-9.col-sm-12.col-xs-12
+          = render 'decisions/form'
+      .row
+        .col-md-9.col-sm-12.col-xs-12.col-md-offset-3#privacyText
+          = I18n.t('pages.lp.privacyText.first')
+          %br
+          = I18n.t('pages.lp.privacyText.second')
+

@@ -1,0 +1,5 @@
+./files/validation.pem /etc/chef/validation.pem
+./files/client.rb /etc/chef/client.rb
+./files/authorized_keys /home/chef/.ssh/authorized_keys
+./files/sshd_config /etc/ssh/sshd_config
+./files/chef-bootstrap.json /etc/chef/chef-bootstrap.json

@@ -1,0 +1,67 @@
+@import 'colors';
+
+.debugColor (@color) {
+  .bg-@{color} {
+    background-color: @@color;
+  }
+}
+
+.debugColor(red-dark);
+.debugColor(red-medium);
+.debugColor(red-light);
+
+.debugColor(blue-dark);
+.debugColor(blue-medium);
+.debugColor(blue-light);
+
+.debugColor(turquoise-dark);
+.debugColor(turquoise-medium);
+.debugColor(turquoise-light);
+
+.debugColor(green-dark);
+.debugColor(green-medium);
+.debugColor(green-light);
+
+.debugColor(yellow-dark);
+.debugColor(yellow-medium);
+.debugColor(yellow-light);
+
+.debug-panel {
+  position: fixed;
+  top: 0;
+  left: 0;
+  top: -45px;
+  width: 100%;
+  z-index: 1000;
+  transition-duration: 0.5s;
+  opacity: 0.5;
+
+  &:hover {
+    top: 0;
+    opacity: 1;
+  }
+}
+
+.debug-colors {
+  position: fixed;
+  right: -150px;
+  top: 33px;
+  transition-duration: 0.5s;
+  z-index: 1000;
+
+  ul {
+    list-style: none;
+    padding-left: 0;
+  }
+
+  li {
+    padding-bottom: 2px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 2px;
+  }
+
+  &:hover {
+    right: 0px;
+  }
+}

@@ -1,0 +1,65 @@
+%p This is the frontend styleguide of Proofler.
+%p The grid and components from Bootstrap 3 apply generally. The following links are relevant:
+
+%ul
+  %li
+    %a{:href => "http://getbootstrap.com/"} Bootstrap 3
+  %li
+    %a{:href => "http://designmodo.com/flat/"} Flat UI Pro
+
+%h1 Grid
+
+The grid is based on the <a href="http://getbootstrap.com/css/#grid">Bootstrap Grid system</a>.
+There are some customized classes which are explained below.
+
+%h2 Columns
+
+%p
+  Projects, questions and similar elements are displayed in a grid.
+
+%p
+  The grid behaves responsive. On a desktop it will display 4 elements
+  on a desktop, 2 elements on a tablet and 1 element on a mobile.
+
+.container
+  - (1..2).each do |row|
+    .row
+      - (1..4).to_a.in_groups_of(2, false) do |group|
+        - group.each do |id|
+          .column
+            .styleguide-block.text-center .column
+
+%h2 Cubes
+
+%p
+
+  Cubes is content arranged in rows and columns without borders. A
+  maximum of two column can be next to each other. A cube will always
+  have the same layout on each device (aka no responsive behavior).
+
+.container
+  .row
+    .column
+      - (1..2).each do |row|
+        .cube-row
+          - (1..2).each do |cube|
+            .cube
+              .styleguide-block.text-center
+                \.cube
+      .cube-row
+        .cube
+          .styleguide-block.text-center
+            \.cube
+
+
+%h1#research Research
+= render partial: 'research'
+
+%h1#question Question
+= render partial: 'question'
+
+%h1#accordion Accordion
+= render partial: 'accordion'
+
+%h1 Answer box
+= render partial: 'answer_box'

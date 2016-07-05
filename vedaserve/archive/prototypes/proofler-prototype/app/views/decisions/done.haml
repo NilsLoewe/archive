@@ -1,0 +1,39 @@
+.row
+  .col-xs-10.col-xs-offset-2
+    .row
+      .col-xs-8
+        %h1.front-page
+          Vielen Dank,
+          =@decision.author
+          ,
+
+        %h3 Deine Entscheidung wurde erstellt.
+
+    .row
+      .col-xs-8
+        %p    
+          Die folgenden zwei Links wurde an 
+          =@decision.email
+          in jeweils einer Email gesendet.
+        %p
+          =link_to('Wenn Du die Emails nicht bekommen hast...','#')
+
+      .col-xs-4
+        =link_to('Lege direkt los!', dashboard_participant_url(@decision.participants.first), :class => "btn btn-success btn-lg")
+        
+    .row
+      .col-xs-8
+        %h4.space-top Einladungs-Link
+        Sende diesen Link an alle Leute die Du zur Teilnahme einladen willst.
+      .col-xs-4.space-top
+        %p.space-top
+          =link_to(participate_decision_url(@decision), participate_decision_path(@decision))
+      
+    .row
+      .col-xs-8
+        %h4.space-top Administrations-Link
+        Nutze diesen Link um selber an der Entscheidung teilzunehmen. Über diesen Link kannst Du auch die finale Option auswählen.
+      .col-xs-4.space-top
+        %p.space-top
+          =link_to(dashboard_participant_url(@decision.participants.first), start_participant_url(@decision.participants.first))
+

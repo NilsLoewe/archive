@@ -1,0 +1,62 @@
+.row
+  .col-xs-3.space-top
+    = render partial: "participants/steps", :locals => { :step => "facts" }
+    = render partial: "participants/comments"
+
+  .col-xs-9.dist-top
+    .row
+      .col-xs-12
+        %h3
+          Entscheidungskriterien für "
+          %i=@decision.title
+          "
+    .row
+      .col-xs-12
+        %h4 Was ist alles wichtig für diese Entscheidung?
+        %hr
+
+    .row
+      .col-xs-4
+        .panel.panel-success.fact
+          .panel-heading
+            Weiteres Kriterium hinzufügen
+          .panel-body
+            Mit Entscheidungskriterien kannst Du die Optionen besser gegeneinander abgrenzen. Sammle hier die Kriterien die für Dich für diese Entscheidung relevant sind.
+            = form_for(@fact) do |f|
+              .input-group.space-top
+                = f.text_field(:title, :class => "form-control", :placeholder => "Was ist noch wichtig?")
+                = f.hidden_field :decision_id, :value => @decision.id
+                .input-group-btn
+                  = button_tag(type: 'submit', id: "add", class: "btn btn-success") do
+                    +
+
+      - @decision.facts.each do |o|
+        .col-xs-4
+          .panel.panel-default.option
+            .panel-heading
+              =link_to o.title, [@participant, o]
+              .pull-right
+                =link_to '', [@participant, o], method: :delete, data: { confirm: 'Bist Du sicher?' }, class: "glyphicon glyphicon-remove"
+            .panel-body 
+              .row
+                .col-xs-10
+                  -if o.description?
+                    = o.description
+                  -else
+                    %i
+                      Beschreibe dieses Kriterium indem Du auf das 
+                      .glyphicon.glyphicon-pencil
+                      Symbol oder auf den Titel klickst.
+                    %p
+                    %i
+                      Du kannst auch Quellen, Dokumente und Bilder mit der
+                      .glyphicon.glyphicon-paperclip
+                      zu diesem Kriterium hinzufügen
+
+                .col-xs-2
+                  .pull-right
+                    =link_to('',[@participant, o], :class=>"glyphicon glyphicon-pencil")
+                    %br
+                    =link_to('','#', :class=>"glyphicon glyphicon-paperclip top")
+
+

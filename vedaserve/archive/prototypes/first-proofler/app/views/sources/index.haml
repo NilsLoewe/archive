@@ -1,0 +1,29 @@
+%h4 Quellen bearbeiten
+%table{:border => "0"}
+  %tr
+    %td Title
+    %td URL
+    %td Web
+    %td Library
+    %td Survey
+    %td Interview
+    %td
+  - @sources.each do |s|
+    = form_for(s) do |f|
+      %tr
+        %td= f.text_field :title, size: 17
+        %td= f.text_field :url,   size: 23
+        %td= f.check_box :WebSearch
+        %td= f.check_box :LibrarySearch
+        %td= f.check_box :Survey
+        %td= f.check_box :Interview
+        %td= f.submit "Update", class: "btn btn-large btn-primary"
+  = form_for(@new_source) do |f|
+    %tr
+      %td= f.text_field :title, size: 17
+      %td= f.text_field :url,   size: 23
+      %td= f.check_box :WebSearch
+      %td= f.check_box :LibrarySearch
+      %td= f.check_box :Survey
+      %td= f.check_box :Interview
+      %td= f.submit "Create", class: "btn btn-large btn-primary"

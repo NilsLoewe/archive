@@ -1,0 +1,45 @@
+.row
+  .col-md-6.col-md-offset-3
+    -if @next_rating
+      .row
+        .col-md-4
+        .col-md-1
+          Darf nicht
+        .col-md-1
+          Sollte nicht
+        .col-md-1
+          Neutral
+        .col-md-1
+          Sollte
+        .col-md-1
+          Muss
+      .row
+        = form_for(@next_rating) do |f|
+          .col-md-4
+            Wie wichtig ist Dir
+            = @next_rating.fact.title
+            ?
+          .col-md-1
+            = f.radio_button :value, -2
+          .col-md-1
+            = f.radio_button :value, -1
+          .col-md-1
+            = f.radio_button :value, 0
+          .col-md-1
+            = f.radio_button :value, 1
+          .col-md-1
+            = f.radio_button :value, 2
+          .col-md-2
+            =f.hidden_field(:unset, :value => false)
+            %span.input-group-btn
+              = button_tag(type: 'submit', id: "add", class: "btn btn-success") do
+                ok
+    -else
+      = form_for(@decision) do |f|
+        = f.hidden_field :state, :value => "mind"
+        = button_tag(type: 'submit', id: "add", class: "btn btn-success") do
+          Ich habe alle Kriterien bewertet.
+
+.row
+  .col-md-12
+    %hr

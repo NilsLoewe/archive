@@ -1,0 +1,19 @@
+---
+de:
+  comment:
+    create: Ok
+    title: Neuer Kommentar
+  activerecord:
+    errors:
+      models:
+        comment:
+          attributes:
+            comment:
+              blank: Bitte gib einen Kommentar ein
+  helpers:
+    label:
+      comment:
+        comment: Kommentar
+    placeholder:
+      comment:
+        comment: Was willst Du sagen?

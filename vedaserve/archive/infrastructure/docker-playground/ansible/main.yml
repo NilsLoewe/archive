@@ -1,0 +1,14 @@
+---
+- hosts: all
+  sudo: True
+  vars:
+    docker_version: 1.3.0
+  tasks:
+    - name: Install apt-transport-https (docker dependency)
+      apt: pkg=apt-transport-https state=present
+    - name: Configure the Docker APT key
+      apt_key: url=https://get.docker.io/gpg state=present
+    - name: Configure the Docker APT repository
+      apt_repository: repo="deb https://get.docker.io/ubuntu docker main" state=present
+    - name: Install Docker
+      apt: pkg=lxc-docker-{{ docker_version }} state=present

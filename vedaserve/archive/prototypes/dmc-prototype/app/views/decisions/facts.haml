@@ -1,0 +1,108 @@
+.row
+  .col-md-12.center
+    %h1.front-page
+      Eine Entscheidung treffen
+
+    1. Allgemein
+    %b 2. Optionen und Fakten
+    3. Einladen
+    4. fertig
+    
+.row
+  .col-md-1
+  .col-md-10.dist-top
+    .row
+      .col-md-12
+        %h2
+          Fakten für
+          =@decision.title
+        %h4 Lege die bereits bekannten Entscheidungskriterien fest.
+        .row
+          .col-sm-4
+            .panel.panel-success
+              .panel-heading
+                Weiteres Kriterium anlegen
+              .panel-body
+                Wenn Du noch keine Kriterien kennst, kannst Du diese später recherchieren und hinzufügen
+                = form_for(@fact) do |f|
+                  .input-group.space-top
+                    = f.text_field(:title, :class => "form-control", :placeholder => "Welches Kriterium gibt es noch?")
+                    = f.hidden_field :decision_id, :value => @decision.id
+                    .input-group-btn
+                      = button_tag(type: 'submit', id: "add", class: "btn btn-success") do
+                        +
+          .col-sm-8
+            .row
+              - @decision.facts.each do |o|
+                .col-sm-6
+                  .row
+                    -if o.type == "undef"
+                      .panel.panel-primary
+                        .panel-heading
+                          =o.title
+                          .pull-right
+                            = link_to '', fact_path(o), method: :delete, data: { confirm: 'Bist Du sicher?' }, class: "glyphicon glyphicon-remove"
+                        .panel-body
+                          %i Kann man 
+                          %b= o.title
+                          für jede Option mit JA/NEIN beantworten, oder hat jede Option einen anderen Wert für
+                          %b= o.title
+                          ?
+                          .row.space-top
+                            .col-xs-4
+                              = link_to 'JA/NEIN', binary_fact_path(o), class: "btn btn-sm btn-success btn-block"
+                            .col-xs-8
+                              %i Ein Smartphone hat z.B. LTE oder nicht.
+                          .row.space-top
+                            .col-xs-4
+                              = link_to 'Eigene Werte', discrete_fact_path(o), class: "btn btn-sm btn-success"
+                            .col-xs-8
+                              %i Die Displaygröße eines Smartphones wäre ein Beispiel.
+
+                    -else 
+                      .panel.panel-warning
+                        .panel-heading
+                          =o.title
+                          .pull-right
+                            = link_to '', fact_path(o), method: :delete, data: { confirm: 'Bist Du sicher?' }, class: "glyphicon glyphicon-remove"
+                        .panel-body
+                          .row
+                            .col-xs-10
+                              -if o.description?
+                                = o.description
+                              -else
+                                .glyphicon.glyphicon-cog
+                                %i
+                                  Beschreibe diese Option indem Du auf das Zahnrad rechts klickst.
+                                .glyphicon.glyphicon-paperclip.space-top
+                                %i
+                                  Du kannst auch Quellen, Dokumente und Bilder zu dieser Option hinzufügen
+                            .col-xs-2
+                              =link_to('','#', :class=>"glyphicon glyphicon-cog", :id=> "toggle_eoption#{o.id}")
+                              =link_to('','#', :class=>"glyphicon glyphicon-paperclip")
+
+                          :javascript
+                            jQuery(document).ready(function(){
+                              jQuery('body').on('click', '#toggle_eoption#{o.id}', function(event) {
+                                jQuery('#eoption#{o.id}').toggle('show');
+                              });
+                            });
+
+                          .row{:id=> "eoption#{o.id}", :style=>"display: none"}
+                            .col-xs-12.spaced
+                              = form_for(o) do |f|
+                                .input-group.space-top
+                                  = f.text_field(:description, :class => "form-control", :placeholder => "Beschreibe die Option")
+                                  = f.hidden_field :decision_id, :value => @decision.id
+                                  .input-group-btn
+                                    = button_tag(type: 'submit', id: "add", class: "btn btn-success") do
+                                      ok
+                    
+    .row
+      .col-md-12            
+        .space-top
+          = link_to 'zurueck', options_decision_path(@decision), :class => "btn btn-md btn-default"
+          = link_to('weiter', invite_decision_path(@decision), :class =>"btn btn-md btn-primary space-left")
+
+  .col-md-1
+

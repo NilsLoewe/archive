@@ -1,0 +1,120 @@
+/* large desktop */
+@media (min-width: 1200px) {
+}
+
+/* Portrait table to landscape and desktop */
+@media (min-width: 768px) and (max-width: 979px) {
+}
+
+/* Landscape phone to portrait table */
+@media (max-width: 767px) {
+  body {
+    padding: 0;
+  }
+
+  header h2 {
+    padding-left: 10px;
+  }
+
+  .logo {
+    left: 14px;
+    top: 43px;
+  }
+
+  .intro {
+    width: 100%;
+  }
+
+  .ideas .visual {
+    background-image: none;
+  }
+
+  .benefits {
+    width: auto;
+  }
+
+  .ideas {
+    margin-top: 20px;
+    height: auto;
+  }
+
+  .ideas header {
+    margin-left: 0;
+    width: auto;
+  }
+
+  .research header {
+    width: auto;
+    padding-left: 15px;
+  }
+
+  .research .text_box {
+    float: none;
+  }
+
+  .text_box {
+    margin-left: 80px;
+  }
+
+  .newsletter form {
+    width: 90%;
+  }
+
+  .newsletter form .btn {
+    float: none;
+  }
+
+  .research .text_row {
+    width: auto;
+  }
+
+  .modal {
+    width: auto;
+  }
+
+  .modal-body {
+    max-height: 260px;
+  }
+
+  .modal-footer .btn {
+    padding-top: 2px;
+    padding-bottom: 2px;
+  }
+
+  .modal-footer {
+    padding: 8px 20px 8px;
+  }
+
+  footer {
+    padding-left: 15px;
+  }
+
+  .footer-links {
+    float: none;
+    padding-bottom: 20px;
+  }
+
+  .footer-links a {
+    display: block;
+    padding-bottom: 15px;
+  }
+
+  .share-buttons {
+    margin: 0;
+  }
+
+  .share-buttons li {
+    display: block;
+  }
+
+  .share-buttons a,
+  .share-buttons a:hover {
+    float: none;
+    margin-bottom: 15px;
+  }
+}
+
+/* Landscape phones and down */
+@media (max-width: 480px) {
+}
+

@@ -1,0 +1,304 @@
+.row.whitebox
+  .col-md-12
+    %h4 Optionen
+
+    .row
+      -@decision.options.each do |o|
+        %div{:class => 'col-md-4 space-top', 'data-step' => @decision.state == 'options' ? 2 : nil, 'data-intro' => @decision.state == 'options' ? 'Here you can find your option. All options that you enter will pop up here' : nil}
+          - if @decision.chosen_option == o.id
+            .option-head.bg-warning
+              =o.title
+          - else
+            .option-head
+              =o.title
+
+          .option-description
+            =o.description
+
+            -unless guest
+              :javascript
+                jQuery(document).ready(function(){
+                  jQuery('body').on('click', '#toggle_eoption#{o.id}', function(event) {
+                    jQuery('#editoption#{o.id}').toggle('show');
+                  });
+                });
+
+            - unless @decision.closed? || guest
+              .pull-right
+                %span.glyphicon.glyphicon-cog{:id=> "toggle_eoption#{o.id}"}
+
+              .row{:id=> "editoption#{o.id}", :style=>"display: none"}
+                .col-xs-12
+                  = form_for(o) do |f|
+                    .field
+                      = f.text_field(:title, :class => "form-control", :placeholder => "Lege eine weitere Option an")
+                    .field
+                      = f.text_area(:description, :class => "form-control", :placeholder => "Beschreibe die Option")
+                    .field
+                      = f.hidden_field :decision_id, :value => @decision.id
+                      = button_tag(type: 'submit', id: "add", class: "btn btn-success pull-right") do
+                        ok
+
+
+          -if o.images.count > 0
+            .option-images
+              :javascript
+                $(document).ready(function() {
+                  $('.carousel#{o.id}').carousel({
+                    interval: 0
+                  })
+                });
+
+              .carousel{:id=>"carousel#{o.id}"}
+                .slide{:id=>"slide-images#{o.id}", :data => {:ride => "carousel#{o.id}"}}
+                  .carousel-inner
+                    -o.images.each_with_index do |i, index|
+                      -if index==0
+                        .item.active.images
+                          = image_tag i.file.url(:large)
+                      -else
+                        .item.images
+                          = image_tag i.file.url(:large)
+
+                  %a.left.carousel-control{:href => "#slide-images#{o.id}", :data => {:slide => "prev"}}
+                    %span.glyphicon.glyphicon-chevron-left
+                  %a.right.carousel-control{:href => "#slide-images#{o.id}", :data => {:slide => "next"}}
+                    %span.glyphicon.glyphicon-chevron-right
+
+          -if o.allocations.count > 0
+            .option-facts
+              .row
+                .col-lg-12
+                  -o.allocations.each do |a|
+                    -unless a.question?
+                      -if a.fact.type == "binary" and a.relevant == true
+                        -if a.direction == true
+                          .btn.btn-xs.btn-success
+                            = a.fact.title
+                        -else
+                          .btn.btn-xs.btn-danger
+                            Nicht
+                            = a.fact.title
+
+                    -else
+                      -unless guest
+                        -if a.fact.type == "binary"
+                          %br
+                          .label.label-default
+                            Ist
+                            = o.title
+                            auch
+                            = a.fact.title
+                            ?
+                            = link_to 'JA', valid_allocation_path(a), class: "btn btn-xs btn-default"
+                            = link_to 'NEIN', invalid_allocation_path(a), class: "btn btn-xs btn-default"
+                            = link_to 'EGAL', irrelevant_allocation_path(a), class: "btn btn-xs btn-default"
+
+          -if o.allocations.count > 0
+            .option-facts
+              .row
+                .col-lg-12
+                  -o.allocations.each do |a|
+                    -unless a.question?
+                      -if a.fact.type == "range"
+                        .btn.btn-xs.btn-primary
+                          = a.fact.title
+                          \:
+                          =a.value
+                    -else
+                      -unless guest
+                        -if a.fact.type == "range"
+                          = form_for(a) do |f|
+                            .input-group.input-group-sm
+                              = f.text_field(:value, :size => "100%", :class => "form-control", :placeholder => "Welchen Wert hat " + a.fact.title + "?")
+                              = f.hidden_field :question, :value => false
+                              .input-group-btn
+                                = button_tag(type: 'submit', id: "add", class: "btn btn-primary btn-md") do
+                                  %span ok
+
+          -if o.option_assets.count > 0
+            :javascript
+              jQuery(document).ready(function(){
+                jQuery('body').on('click', '#toggle_links#{o.id}', function(event) {
+                  jQuery('#showlinks#{o.id}').toggle('show');
+                  jQuery('#toggle_links#{o.id}').toggle('show');
+                });
+              });
+            .option-links
+              - o.option_assets.take(3).each do |a|
+                .row
+                  .col-lg-12
+                    =link_to a.title, a.description, :target => "_blank"
+                    %hr
+              -if o.option_assets.count > 3
+                .center{:id=> "toggle_links#{o.id}"}
+                  zeige
+                  = o.option_assets.count - 3
+                  weitere Links
+                .row{:id=> "showlinks#{o.id}", :style=>"display: none"}
+                  .col-lg-12
+                    - o.option_assets.limit(o.option_assets.count-3).reverse_order.each do |a|
+                      .row
+                        .col-lg-12
+                          =link_to a.title, a.description
+                          %hr
+
+          -if o.comments.count > 0
+            :javascript
+              jQuery(document).ready(function(){
+                jQuery('body').on('click', '#toggle_comments#{o.id}', function(event) {
+                  jQuery('#showcomments#{o.id}').toggle('show');
+                  jQuery('#toggle_comments#{o.id}').toggle('show');
+                });
+              });
+
+            .option-comments
+              - o.comments.take(3).each do |c|
+                .row
+                  .col-lg-12
+                    %b=c.user.name
+                    .pull-right
+                      =time_ago_in_words(c.created_at)
+                    %br
+                    =c.comment
+                    %hr
+              -if o.comments.count > 3
+                .center{:id=> "toggle_comments#{o.id}"}
+                  zeige
+                  = o.comments.count - 3
+                  weitere Kommentare
+
+                .row{:id=> "showcomments#{o.id}", :style=>"display: none"}
+                  .col-lg-12
+                    - o.comments.limit(o.comments.count-3).reverse_order.each do |c|
+                      .row
+                        .col-lg-12
+                          %b=c.user.name
+                          .pull-right
+                            =time_ago_in_words(c.created_at)
+                          %br
+                          =c.comment
+                          %hr
+
+          - unless @decision.closed? || guest
+            .option-tabs
+              %div{ :role=>"tabpanel"}
+                %ul.nav.nav-tabs{ :role => "tablist"}
+                  %li{:role => "presentation", :class => "active"}
+                    %a{:href =>"#fact#{o.id}", "aria-controls" => "profile", :role=>"tab", "data-toggle" =>"tab"} Eigenschaft
+                  %li{:role => "presentation"}
+                    %a{:href =>"#addvalue#{o.id}", "aria-controls" => "profile", :role=>"tab", "data-toggle" =>"tab"} Wert
+                  %li{:role => "presentation"}
+                    %a{:href =>"#comment#{o.id}", "aria-controls" => "home", :role=>"tab", "data-toggle" => "tab"} Kommentar
+                  %li{:role => "presentation"}
+                    %a{:href =>"#link#{o.id}", "aria-controls" => "profile", :role=>"tab", "data-toggle" =>"tab"} Link
+                  %li{:role => "presentation"}
+                    %a{:href =>"#photo#{o.id}", "aria-controls" => "profile", :role=>"tab", "data-toggle" =>"tab"} Foto
+
+                .tab-content
+                  .tab-pane{:role=>"tabpanel", :id=>"comment#{o.id}"}
+                    = form_for(@comment) do |f|
+                      .input-group.input-group-sm
+                        .row
+                          .col-xs-12
+                            = f.text_field(:comment, :size => "100%", :class => "form-control", :placeholder => "Diskutiere mit!")
+                            = f.hidden_field :option_id, :value => o.id
+                            = f.hidden_field :user_id, :value => @participant.user.id
+                      .input-group-btn
+                        = button_tag(type: 'submit', id: "add", class: "btn btn-primary btn-md pull-right") do
+                          %span Posten
+
+                  .tab-pane{:role=>"tabpanel", :id=>"link#{o.id}"}
+                    = form_for(@option_asset) do |f|
+                      .input-group.input-group-sm
+                        .row
+                          .col-xs-12
+                            = f.text_field(:title, :size => "100%", :class => "form-control", :placeholder => "Titel")
+                            = f.hidden_field :option_id, :value => o.id
+                        .row
+                          .col-xs-12
+                            = f.text_field(:description, :size => "100%", :class => "form-control", :placeholder => "Link")
+                      .input-group-btn
+                        = button_tag(type: 'submit', id: "add", class: "btn btn-primary btn-md pull-right") do
+                          %span Posten
+
+
+                  .tab-pane{:role=>"tabpanel", :id=>"photo#{o.id}"}
+                    :javascript
+                      $().ready(function(){
+                        $('input#original_post_picture').change(function(e){
+                          var file = e.target.files[0];
+                          $('canvas').remove();
+                          $.canvasResize(file, {
+                            width   : 800,
+                            crop    : false,
+                            quality : 80,
+                            callback: function(data, width, height){
+                              $('input#image_file').val(data);
+                            }
+                          });
+                        });
+                      });
+
+                    :javascript
+                      function clear_original_post_picture() {
+                        $('input#original_post_picture').val('');
+                      }
+
+                    .option-form
+                      = form_for(@image, :html => {:multipart => true, :id => "upload"}) do |f|
+                        .input-group.input-group-sm
+                          .row
+                            .col-xs-12
+                              = file_field_tag :original_post_picture
+                              = f.hidden_field :file#{o.id}
+                              = f.hidden_field :option_id, :value => o.id
+
+                        .input-group-btn
+                          = button_tag(type: 'submit', id: "add", class: "btn btn-success btn-md pull-right", onclick: "timestamp();clear_original_post_picture();") do
+                            %span Upload
+
+
+                  .tab-pane.active{:role=>"tabpanel", :id=>"fact#{o.id}"}
+                    = form_for(@fact) do |f|
+                      .input-group.input-group-sm
+                        .row
+                          .col-xs-12
+                            = f.text_field(:title, :size => "100%", :class => "form-control", :placeholder => "Beschreibe die Eigenschaft")
+                            = hidden_field_tag :option_id, nil, :value => o.id
+                            = f.hidden_field :type, :value => "binary"
+                            = f.hidden_field :decision_id, :value => @decision.id
+                      .input-group-btn
+                        = button_tag(type: 'submit', id: "add", class: "btn btn-primary btn-md pull-right") do
+                          %span Zufügen
+
+                  .tab-pane{:role=>"tabpanel", :id=>"addvalue#{o.id}"}
+                    = form_for(@fact) do |f|
+                      .input-group.input-group-sm
+                        .row
+                          .col-xs-12
+                            = f.text_field(:title, :size => "100%", :class => "form-control", :placeholder => "Beschreibung")
+                            = hidden_field_tag :option_id, nil, :value => o.id
+                            = f.hidden_field :decision_id, :value => @decision.id
+                            = f.hidden_field :type, :value => "range"
+                        .row
+                          .col-xs-12
+                            = text_field_tag 'value', nil, class: "form-control", :placeholder => "Wert"
+                      .input-group-btn
+                        = button_tag(type: 'submit', id: "add", class: "btn btn-primary btn-md pull-right") do
+                          %span Posten
+
+
+      - unless @decision.closed? || guest
+        .col-md-4.space-top
+          .panel.panel-success{:id=> "admin_form", :style=>"display: show"}
+            .panel-body
+              = form_for(@option) do |f|
+                .field
+                  = f.text_field(:title, :class => "form-control", :placeholder => "Lege eine weitere Option an")
+                .field.space-top
+                  = f.text_area(:description, :class => "form-control", :placeholder => "Beschreibe die Option")
+                .field.space-top
+                  = f.hidden_field :decision_id, :value => @decision.id
+                  = button_tag(type: 'submit', id: "add", class: "btn btn-success pull-right") do
+                    ok

@@ -1,0 +1,32 @@
+- order = %w(front back)
+- startState = 'front' unless defined?(startState)
+- order.reverse! if startState == 'back'
+= foo if defined?(foo)
+.col-md-3
+  .research-card
+    .quickflip-wrapper
+      - order.each do |state|
+        - if state == 'front'
+          .panel.panel-default.research-panel
+            .panel-heading
+              %h3.panel-title
+                %a.quickFlipCta{:href => "#"}
+                  Add new research
+                  %span.fui-plus.pull-right
+            .panel-body
+              = hint("research_new")
+        - else
+          .panel.panel-default.research-panel
+            .panel-heading
+              %h3.panel-title
+                Enter title & content
+                %a.quickFlipCta{:href => "#"}
+                  %span.fui-cross.pull-right
+            = form_for(@new_research) do |f|
+              .panel-body
+                = f.label :title
+                = f.text_field :title, size: 20
+                = f.label :description
+                = f.text_field :description, size: 20
+              .panel-footer.bottom
+                = f.submit "Create", class: "btn btn-large btn-primary"

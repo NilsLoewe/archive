@@ -1,0 +1,11 @@
+.row
+  .col-md-1
+  .col-md-10
+    .panel.panel-success
+      .panel-heading
+        = @user.username
+      .panel-body
+        = render @user.decisions
+      .panel-footer
+        = link_to 'Edit', edit_user_path(@user)
+        = link_to 'Create decision', new_decision_path

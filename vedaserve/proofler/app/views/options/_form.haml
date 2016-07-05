@@ -1,0 +1,6 @@
+= bootstrap_form_for(@option, url: dashboard_options_path(@token), remote: true) do |option|
+  = option.text_field :title, placeholder: true, autofocus: true
+  = option.text_field :link, placeholder: true
+  .row
+    .col-sm-12
+      = option.submit I18n.t('option.create'), class: "btn btn-primary pull-right", id: "new-option"

@@ -1,0 +1,98 @@
+.row
+  .col-lg-12.dmc-heading
+    .row
+      .col-xs-2
+        =link_to(image_tag("logo.png", :width=>"100%"), root_path)
+      .col-xs-4.col-xs-offset-2
+        %h3=@decision.title
+        Entscheidung erstellt von
+        =@decision.author
+        |
+        =time_ago_in_words(@decision.created_at)
+        ago
+
+    .row
+      .col-md-12.space-top
+        =@decision.description
+
+.row.centered
+  .col-md-2
+  -@decision.options.each do |o|
+    .col-md-2
+      %h2= o.title
+
+.row
+  .col-md-2
+  -@decision.options.each do |o|
+    .col-md-2
+      = o.description
+
+.row
+  .col-md-2
+  -@decision.options.each do |o|
+    .col-md-2
+      -if o.images.count > 0
+        .option-images
+          :javascript
+            $(document).ready(function() {
+              $('.carousel#{o.id}').carousel({
+                interval: 0
+              })
+            });
+
+          .carousel{:id=>"carousel#{o.id}"}
+            .slide{:id=>"slide-images#{o.id}", :data => {:ride => "carousel#{o.id}"}}
+              .carousel-inner
+                -o.images.each_with_index do |i, index|
+                  -if index==0
+                    .item.active.images
+                      = image_tag i.file.url(:large)    
+                  -else
+                    .item.images
+                      = image_tag i.file.url(:large)
+
+              %a.left.carousel-control{:href => "#slide-images#{o.id}", :data => {:slide => "prev"}}
+                %span.glyphicon.glyphicon-chevron-left
+              %a.right.carousel-control{:href => "#slide-images#{o.id}", :data => {:slide => "next"}}
+                %span.glyphicon.glyphicon-chevron-right
+
+-if @decision.facts.count > 0
+  -@decision.facts.each do |f|
+    -if f.type == "binary"
+      .row
+        .col-md-2
+          = f.title
+        -@decision.options.each do |o|
+          -o.allocations.each do |a|
+            -if a.fact.id == f.id
+              -unless a.question?
+                -if a.relevant == true
+                  -if a.direction == true
+                    .col-md-2.bg-success.centered
+                      .glyphicon.glyphicon-ok
+                      JA              
+                  -else
+                    .col-md-2.bg-danger.centered
+                      .glyphicon.glyphicon-remove
+                      NEIN              
+
+-if @decision.facts.count > 0
+  -@decision.facts.each do |f|
+    -if f.type == "range"
+      .row
+        .col-md-2
+          = f.title
+        -@decision.options.each do |o|
+          -o.allocations.each do |a|
+            -if a.fact.id == f.id
+              -unless a.question?
+                -if a.relevant == true
+                  .col-md-2.bg-warning.centered
+                    =a.value              
+
+.row.space-top
+  .col-md-4.col-md-offset-4
+    = form_for(@decision) do |f|
+      = f.hidden_field :decision_id, :value => @decision.id
+      = submit_tag 'Wie würdest Du entscheiden?', :class => "btn btn-lg btn-success", :name => 'copy_button'
+

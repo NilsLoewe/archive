@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite errors="0" failures="0" name="Sign in" skipped="0" tests="3" time="0.310276">
+<testcase classname="Sign in" name="Researcher signs in successfully" time="0.123474">
+  <system-out/>
+  <system-err/>
+</testcase>
+<testcase classname="Sign in" name="User enters wrong email" time="0.072789">
+  <system-out/>
+  <system-err/>
+</testcase>
+<testcase classname="Sign in" name="User enters wrong password" time="0.114013">
+  <system-out/>
+  <system-err/>
+</testcase>
+  <system-out>
+    <![CDATA[]]>
+  </system-out>
+  <system-err>
+    <![CDATA[]]>
+  </system-err>
+</testsuite>

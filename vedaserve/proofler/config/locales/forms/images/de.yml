@@ -1,0 +1,19 @@
+---
+de:
+  image:
+    create: Hochladen
+    title: Neues Bild hochladen
+  activerecord:
+    errors:
+      models:
+        image:
+          attributes:
+            title:
+              blank: Bitte eine Beschreibung an
+  helpers:
+    label:
+      image:
+        title: Beschreibung
+    placeholder:
+      image:
+        title: Sage ein paar Worte zum Bild

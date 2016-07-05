@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @argument.title %>
+</p>
+
+<p>
+  <strong>Decision:</strong>
+  <%= @argument.decision_id %>
+</p>
+
+<%= link_to 'Edit', edit_argument_path(@argument) %> |
+<%= link_to 'Back', arguments_path %>

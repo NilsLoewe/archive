@@ -1,0 +1,38 @@
+.col-md-12
+  .row
+    .col-xs-2.nopad
+      Bewerten
+    -@decision.facts.each do |f|
+      .col-xs-1.nopad
+        = f.title
+
+  -@decision.participants.each do |p|
+    .row
+      .col-xs-2.nopad
+        .glyphicon.glyphicon-user
+        =p.user.name
+      -if p.user.id == @participant.user.id && !@decision.closed?
+        =form_for(@participant) do |f|
+          -@decision.facts.each do |o|
+            -p.user.fact_ratings.each do |r|
+              -if r.fact.id == o.id
+                = fields_for 'fact[]' , o do |fact_fields|
+                  = f.hidden_field :id, :value => o.id
+                  .col-xs-1.nopad
+                    -if o.type == "binary"
+                      = fact_fields.select :value, options_for_select([["Muss",2],["Sollte",1],["Egal",0],["Sollte nicht",-1],["Darf nicht",-2]], r.value), {}
+                    -else
+                      = fact_fields.select :value, options_for_select([["Hoch ist besser",2],["Egal",0],["Niedrige ist besser",-2]], r.value), {}
+          .col-xs-1.nopad
+            = f.hidden_field :type, :value => "facts"
+            = f.hidden_field :decision_id, :value => @decision.id
+            = f.hidden_field :user_id, :value => @participant.user.id
+            = f.submit 'ok', class: "btn btn-xs btn-block btn-primary pull-right"
+
+      -else
+        -@decision.facts.each do |o|
+          -p.user.fact_ratings.each do |r|
+            -if r.fact.id == o.id
+              .col-xs-1.nopad.bg-info
+                = r.value
+

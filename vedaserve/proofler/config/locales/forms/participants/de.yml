@@ -1,0 +1,24 @@
+---
+de:
+  participant:
+    create: Einladen
+    title: Neuen Teilnehmer einladen
+  activerecord:
+    errors:
+      models:
+        participant:
+          attributes:
+            email:
+              blank: Bitte gibt eine gültige Email-Adresse ein
+            name:
+              blank: Bitte gib einen Namen ein
+  helpers:
+    label:
+      participant:
+        description: Description
+        email: Bitte gibt eine Email-Adresse ein
+        name: Bitte gib einen Namen ein
+    placeholder:
+      participant:
+        email: Bitte gibt eine Email-Adresse ein
+        name: Bitte gib einen Namen ein

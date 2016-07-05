@@ -1,0 +1,42 @@
+.row
+  .col-xs-12
+    .panel.panel-primary
+      .panel-heading= argument.title
+      .panel-body
+        -if (option.ratings.find_by(argument_id: argument.id))
+          :javascript
+            $(function() {
+              $( "#slider#{option.ratings.find_by(argument_id: argument.id).id}" ).slider();
+            });
+          %br
+          .div{:id=> "slider#{option.ratings.find_by(argument_id: argument.id).id}"}
+          %br
+          %br
+        
+          -if (option.ratings.find_by(argument_id: argument.id).side == 'pro')
+            = form_for(option.ratings.find_by(argument_id: argument.id)) do |f|
+              = f.hidden_field :option_id, :value => option.id
+              = f.hidden_field :argument_id, :value => argument.id
+              = f.hidden_field :side, :value => "con"
+              = f.submit('CON', class: ' pull-right btn btn-large btn-success' )
+          -else
+            = form_for(option.ratings.find_by(argument_id: argument.id)) do |f|
+              = f.hidden_field :option_id, :value => option.id
+              = f.hidden_field :argument_id, :value => argument.id
+              = f.hidden_field :side, :value => "pro"
+              = f.submit('PRO', class: ' pull-right btn btn-large btn-success' )
+
+          = form_for((option.ratings.find_by(argument_id: argument.id)), html: { method: :delete }) do |f| 
+            = f.submit "egal", class: "btn btn-large btn-danger"
+
+        -else
+          = form_for(@rating) do |f|
+            = f.hidden_field :option_id, :value => option.id
+            = f.hidden_field :argument_id, :value => argument.id
+            = f.hidden_field :side, :value => "pro"
+            = f.submit('PRO', class: ' pull-right btn btn-large btn-success' )
+          = form_for(@rating) do |f|
+            = f.hidden_field :option_id, :value => option.id
+            = f.hidden_field :argument_id, :value => argument.id
+            = f.hidden_field :side, :value => "con"
+            = f.submit('CON', class: ' pull-right btn btn-large btn-success' )            

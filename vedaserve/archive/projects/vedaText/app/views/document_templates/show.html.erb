@@ -1,0 +1,26 @@
+<% provide(:title, @document_template.name) %>
+<div class="row">
+  <aside class="span4">
+    <section>
+      <h1>
+        <%= @document_template.name %>
+      </h1>
+    </section>
+  </aside>
+
+  <div class="span8">
+    <%= form_for(@document_template) do |f| %>
+    
+      <%= render 'shared/error_messages', object: f.object %>
+
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+
+      <%= f.label :filename %>
+      <%= f.text_field :filename %>
+      
+      <%= f.submit "save changes", class: "btn btn-large btn-primary" %>
+
+    <% end %>
+  </div>
+</div>

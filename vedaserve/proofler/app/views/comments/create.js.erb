@@ -1,0 +1,9 @@
+<%- if @comment.errors.present? %>
+  <%- if @comment.commentable_type == 'Option' %>
+    $("#newcomment<%= @comment.commentable_id %>").html("<%= escape_javascript(render 'form', locals: { comment: @comment, commentable_type: @comment.commentable_type, commentable_id: @comment.commentable_id }) %>");
+  <%- else %>
+    $("#newglobalcomment").html("<%= escape_javascript(render 'form', locals: { comment: @comment, commentable_type: @comment.commentable_type, commentable_id: @comment.commentable_id }) %>");
+  <%- end %>
+<%- else %>
+  location.reload();
+<%- end %>

@@ -1,0 +1,39 @@
+- currently_at 'Describe'
+.row
+  .panel.panel-default
+    .panel-heading
+      %h3.panel-title
+        Overview for #{@question.title}
+    .container
+      .row
+        /
+          ToDo: Info-Box mit Hilfe zu:
+          \- genau dieser Frage wenn die Frage vorgegeben ist
+          \- einem generellen Text bei eigenen Fragen
+        .alert.alert-info
+          %button.close{"aria-hidden" => "true", "data-dismiss" => "alert", :type => "button"} ×
+          Hier steht ein Hilfetext zu der konkreten Frage. Ist die Frage von uns vorgegeben,
+          schreiben wir zu dieser Frage etwas. Ist die Frage selbst erstellt, gibt es einen
+          generellen Hilfetext, wie man die passende Methode auswählt.
+      .row
+        = hint("describe_it_thoughts")
+        = form_for(@question) do |f|
+          .field
+            = f.text_area(:thoughts, :size => '30x5', :class => "short_answer", :placeholder => "Blubb")
+          = f.submit "Update", class: "btn btn-primary pull-right"
+      .row
+        / ToDo: On/Off Switches für die vier Recherchemethoden
+        .col-xs-6
+          = form_for(@question) do |f|
+            - Search.categories.each do |name|
+              %div
+                = check_box_tag("categories[]", name, @question.category_enabled?(name), id: name)
+                = label_tag(name.to_sym, t("search.#{name}"))
+            = f.submit "Update", class: "btn btn-large btn-primary"
+        / ToDo: Hilfetext zu den vier Research-Methoden
+        .col-xs-6
+          .alert.alert-info
+            %button.close{"aria-hidden" => "true", "data-dismiss" => "alert", :type => "button"} ×
+            Hilfetext zu den einzelnen Recherchemethoden. Wann sollte ich welche nehmen?
+    .panel-footer
+      %div= link_to 'Next step: configure keywords', answer_improve_question_path(@question)

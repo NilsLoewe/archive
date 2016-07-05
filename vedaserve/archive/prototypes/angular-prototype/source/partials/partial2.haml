@@ -1,0 +1,10 @@
+.row
+  .col-xs-12
+    .panel.panel-danger
+      .panel-heading
+        %h4 Debug
+      .panel-body
+        %p
+          Awesome! You already got {{ cards.constraints.length + cards.choices.length + cards.knowledge.length }} elements in total.
+        %p
+          %button.btn.btn-danger{"ng-click" => "removeEverything()"} Remove all elements

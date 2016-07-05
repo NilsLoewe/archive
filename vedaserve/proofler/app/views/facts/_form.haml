@@ -1,0 +1,16 @@
+= bootstrap_form_for(@fact, url: dashboard_facts_path(@token), layout: :horizontal, control_col: "col-sm-12", remote: true) do |fact|
+
+  .row
+    .col-sm-12
+      = fact.text_field :title, placeholder: true, class: "input-sm", hide_label: true
+      = fact.hidden_field :datatype, value: "BOOLEAN", placeholder: true
+      = fact.hidden_field :option_id, value: "#{locals[:option]}", placeholder: true
+
+  .row
+    .col-sm-12
+      = fact.fields_for :assignment do |assignment|
+        = assignment.text_field :value, :placeholder => I18n.t('assignment.value'), class: "input-sm", hide_label: true
+
+  .row
+    .col-sm-3.col-sm-offset-9
+      = fact.submit I18n.t('fact.create'), name: "commit", class: "btn btn-block btn-primary"

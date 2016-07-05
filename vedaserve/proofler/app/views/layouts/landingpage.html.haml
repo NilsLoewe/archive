@@ -1,0 +1,30 @@
+!!!
+%html
+
+  %head
+    %meta{:charset => "utf-8"}/
+    %title Proofler
+    = stylesheet_link_tag "application"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+    /[if lt IE 9]
+    %script{ src: "http://html5shim.googlecode.com/svn/trunk/html5.js"}
+    %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
+    = favicon_link_tag 'favicon.ico'
+
+    %meta{ property: "og:title", content: "Proofler" }
+    %meta{ property: "og:type", content: "website" }
+    %meta{ property: "og:image", content: "http://blog.proofler.com/wp-content/uploads/sites/2/2015/06/proofler_300px.png" }
+    %meta{ property: "og:url", content: "http://proofler.com" }
+    %meta{ property: "og:description", content: "Der proofler hilft Dir bei der Entscheidungsfindung, indem Du sowohl Kopf und Bauch, als auch Freunde und Experten zu Rate ziehst." }
+
+  %body
+
+    #modal-holder
+
+    .container-fluid
+      = yield
+
+    =render 'layouts/footer'
+
+    = piwik_tracking_tag

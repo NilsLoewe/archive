@@ -1,0 +1,25 @@
+require './app'
+
+begin
+  require 'rspec/core/rake_task'
+  RSpec::Core::RakeTask.new(:spec)
+rescue LoadError
+end
+
+task default: 'spec'
+
+desc "Launch an IRB with the environment loaded (similar to rails console)"
+task :console do
+  require 'irb'
+  ARGV.clear
+  IRB.start
+end
+
+desc "List the routes"
+task :routes do
+  App.each_route do |route|
+    puts "#{route.verb} #{route.path} (#{route.file}:#{route.line})"
+  end
+end
+
+require 'sinatra/activerecord/rake'

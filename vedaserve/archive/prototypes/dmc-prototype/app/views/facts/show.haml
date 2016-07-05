@@ -1,0 +1,160 @@
+.row
+  .col-xs-3.space-top
+    = render partial: "participants/steps", :locals => { :step => "facts" }
+    = render partial: "participants/comments"
+
+  .col-xs-9.dist-top
+    .row
+      .col-xs-12
+        %h3
+          Entscheidungskriterium: " 
+          %i=@fact.title
+          "
+    .row
+      .col-xs-4
+        =link_to 'zurück', show_facts_participant_path(@participant)
+      .col-xs-8
+        =@fact.description
+        =link_to('','#', :class=>"glyphicon glyphicon-pencil", :id=> "toggle_eoption#{@fact.id}")
+        :javascript
+          jQuery(document).ready(function(){
+            jQuery('body').on('click', '#toggle_eoption#{@fact.id}', function(event) {
+              jQuery('#eoption#{@fact.id}').toggle('show');
+            });
+          });
+
+        .row{:id=> "eoption#{@fact.id}", :style=>"display: none"}
+          .col-xs-12.spaced
+            = form_for(@fact) do |f|
+              .input-group.space-top
+                = f.text_field(:description, :class => "form-control", :placeholder => "Beschreibe das Kriterium")
+                = f.hidden_field :decision_id, :value => @decision.id
+                .input-group-btn
+                  = button_tag(type: 'submit', id: "add", class: "btn btn-success") do
+                    ok
+      %hr.top
+
+
+    .row
+      .col-xs-8
+        %h3 
+          Beschreibe
+          = @fact.title
+        .row
+          .col-xs-4
+            .panel.panel-success
+              .panel-heading
+                Sammle Infos
+              .panel-body
+                = form_for(@fact_asset) do |f|
+                  .input-group
+                    = f.label :Titel
+                    = f.text_field(:title, :class => "form-control")
+                  .input-group.top
+                    = f.label :Beschreibung
+                    = f.text_area(:description, :class => "form-control", :placeholder => "Füge Texte, Links, Fotos, ... ein")
+                    = f.hidden_field :fact_id, :value => @fact.id
+                  .input-group.pull-right.top
+                    = button_tag(type: 'submit', id: "add", class: "btn btn-success") do
+                      +          
+
+          -@fact.fact_assets.each do |a|
+            .col-xs-4
+              .panel.panel-default  
+                .panel-heading
+                  =a.title
+                  .pull-right
+                    =link_to '', '#', :class=>"glyphicon glyphicon-pencil"
+                .panel-body
+                  =a.description
+
+      .col-xs-4
+        -if @fact.type == "undef"
+          .panel.panel-default
+            .panel-heading
+              =@fact.title
+            .panel-body
+              Kann man 
+              =@fact.title
+              für jede Option mit JA/NEIN beantworten, oder gibt es pro Option unterschiedliche Werte?
+              .row.space-top
+                .col-xs-4
+                  = link_to 'JA/NEIN', binary_fact_path(@fact), class: "btn btn-sm btn-success btn-block"
+                .col-xs-8
+                  %i Ein Smartphone hat z.B. LTE oder nicht.
+              .row.space-top
+                .col-xs-4
+                  = link_to 'Eigene Werte', discrete_fact_path(@fact), class: "btn btn-sm btn-success btn-block"
+                .col-xs-8
+                  %i Die Displaygröße eines Smartphones wäre ein Beispiel.
+        -else
+          %h3 
+            Bewerte
+            =@fact.title
+            für jede Option
+
+          -@fact.allocations.each do |a|
+
+            -if a.fact.type == "binary"
+              .panel.panel-default
+                .panel-heading
+                  -if a.question == true
+                    Ist
+                    =a.option.title
+                    =a.fact.title
+                    ?
+                  -else
+                    =a.option.title
+                    \:
+                    -if a.direction == false
+                      %b Nein
+                    -else
+                      %b Ja
+                  .pull-right
+                    =link_to('','#', :class=>"glyphicon glyphicon-cog", :id=> "toggle_ea#{a.option.id}")
+
+                  :javascript
+                    jQuery(document).ready(function(){
+                      jQuery('body').on('click', '#toggle_ea#{a.option.id}', function(event) {
+                        jQuery('#ea#{a.option.id}').toggle('show');
+                      });
+                    });
+
+                  .row{:id=> "ea#{a.option.id}", :style=>"display: none"}
+                    .col-xs-12.spaced
+                      .row.space-top
+                        .col-xs-6
+                          = link_to 'JA', valid_allocation_path(a), class: "btn btn-sm btn-success btn-block"
+                        .col-xs-6
+                          = link_to 'NEIN', invalid_allocation_path(a), class: "btn btn-sm btn-danger btn-block"
+                        
+            -else
+              .panel.panel-default
+                .panel-heading
+                  =a.option.title
+                  -if a.value?
+                    \:
+                    %b=a.value
+                  -else
+                    ?
+                  .pull-right
+                    =link_to('','#', :class=>"glyphicon glyphicon-cog", :id=> "toggle_ea#{a.option.id}")
+
+                  :javascript
+                    jQuery(document).ready(function(){
+                      jQuery('body').on('click', '#toggle_ea#{a.option.id}', function(event) {
+                        jQuery('#ea#{a.option.id}').toggle('show');
+                      });
+                    });
+
+                  .row{:id=> "ea#{a.option.id}", :style=>"display: none"}
+                    .col-xs-12.spaced
+                      = form_for(a) do |f|
+                        .input-group.space-top
+                          = f.text_field(:value, :class => "form-control", :placeholder => "Wert?")
+                          .input-group-btn
+                            = button_tag(type: 'submit', id: "add", class: "btn btn-success") do
+                              ok
+
+
+

@@ -1,0 +1,13 @@
+.col-md-3
+  .research-card
+    .quickflip-wrapper
+      .panel.panel-default.research-panel
+        .panel-heading
+          %h3.panel-title= link_to research.title, research
+        .panel-body
+          = research.description
+        .panel-footer.bottom
+          Last update:
+          - if research.updated_at
+            = time_ago_in_words(research.updated_at)
+            ago.

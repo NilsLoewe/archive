@@ -1,0 +1,16 @@
+.panel.panel-primary.boxedSmall
+  .row
+    - unless fact.chosen
+      .col-xs-6
+        = fact.title
+      .col-xs-6
+        = link_to 'Pro', pro_fact_path(fact), class: "btn btn-sm btn-success"
+        = link_to 'Neutral', null_fact_path(fact), class: "btn btn-sm btn-warning"
+        = link_to 'Contra', con_fact_path(fact), class: "btn btn-sm btn-danger"
+    - else
+      .col-xs-3
+        = fact.chosen
+      .col-xs-6
+        = fact.title
+      .col-xs-3
+        = link_to '(Rückgängig)', undo_fact_path(fact), class: "btn btn-sm btn-primary"

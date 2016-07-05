@@ -1,0 +1,12 @@
+#!/bin/bash
+
+. `dirname $0`/../../config
+
+id=$1
+
+if [[ -z "${id}" ]]; then
+  echo "$0 id"
+  exit 1
+fi
+
+curl $CURL_OPTS --request POST "$HOST/decisions/$id/options" | $POST_PROCESSING

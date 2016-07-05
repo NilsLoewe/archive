@@ -1,0 +1,95 @@
+.row
+
+  -if @decision.state == "options" or @decision.state == "facts"
+    .col-md-2.centered
+      .line-right
+      .circle.orange
+      %span.info-orange
+        Create
+  -else
+    .col-md-2.centered
+      .line-right
+      .circle
+      %span.info
+        Create
+
+  - if @participant.admin
+    -if @decision.state == "users"
+      .col-md-2.centered
+        .line-right
+        .line-left
+        .circle.orange
+        %span.info-orange
+          Invite
+    -else
+      .col-md-2.centered
+        .line-right
+        .line-left
+        .circle
+        %span.info
+          Invite
+
+    -if @decision.state == "gather"
+      .col-md-2.centered
+        .line-right
+        .line-left
+        .circle.orange
+        %span.info-orange
+          Gather
+    -else
+      .col-md-2.centered
+        .line-right
+        .line-left
+        .circle
+        %span.info
+          Gather
+  -else
+    .col-md-2.centered
+      .line-right
+      .line-left
+      .circle
+      %span.info
+        Invite
+    -if @decision.state == "gather" or @decision.state == "users"
+      .col-md-2.centered
+        .line-right
+        .line-left
+        .circle.orange
+        %span.info-orange
+          Gather
+    -else
+      .col-md-2.centered
+        .line-right
+        .line-left
+        .circle
+        %span.info
+          Gather
+
+
+  -if @decision.state == "mind" or @decision.state == "rating"
+    .col-md-2.centered
+      .line-right
+      .line-left
+      .circle.orange
+      %span.info-orange
+        Rate
+  -else
+    .col-md-2.centered
+      .line-right
+      .line-left
+      .circle
+      %span.info
+        Rate
+
+  -if @decision.state == "decide"
+    .col-md-2.centered
+      .line-left
+      .circle.orange
+      %span.info-orange
+        Decide
+  -else
+    .col-md-2.centered
+      .line-left
+      .circle
+      %span.info
+        Decide

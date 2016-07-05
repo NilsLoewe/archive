@@ -1,0 +1,38 @@
+.row
+  .col-xs-1
+  .col-xs-10.dist-top
+    .row
+      .col-xs-12
+        %h2 Du wurdest zur Entscheidungsfindung eingeladen!
+        
+        %p
+          Moin,
+        %p
+          Du wurdest von
+          =@decision.author
+          eingeladen, an der Entscheidung zum Thema "
+          =@decision.title
+          " teilzunehmen. Gib bitte Deinen Namen und Deine Email-Adresse an, damit wir Dir einen
+          persönlichen Einladungs-Link zusenden können.
+        %p
+
+.row
+  .col-xs-1
+  .col-xs-10.dist-top
+    .row
+      .col-xs-12
+        = form_for(@participant) do |f|
+          = f.hidden_field :decision_id, :value => @decision.id
+          .field.dist-top
+            Dein Name
+            = f.text_field :name, :size => '70'
+          .field.dist-top
+            Email Adresse
+            =f.text_field :email, :size => '70'
+          .field.dist-top
+            Wir senden Dir den Link zur Teilnahme an der Entscheidung an diese Adresse. Es wird NICHT automatisch ein Proofler-Konto erstellt.      
+          .input-group-btn
+            = button_tag(type: 'submit', id: "add", class: "btn btn-primary") do
+              %span Teilnehmen
+  .col-xs-1
+  

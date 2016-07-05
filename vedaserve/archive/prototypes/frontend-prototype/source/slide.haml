@@ -1,0 +1,18 @@
+.container.animation
+  .row
+    %h1.text-center Slide demo
+    .question.js-animate
+      .upper-area.question-row
+        .front.js-animate-target
+          %p How much should I charge for a cup of coffee?
+          %p A cup of coffee should be sold no less than $3.5
+          %a{ href: "#", class: "js-animate-toggle"}
+            .top-right
+              %span.cog
+        .back
+          %form
+            %label.checkbox
+              %input{type: 'checkbox', checked: 'checked'} Web search
+            %label.checkbox
+              %input{type: 'checkbox'} Database search
+          %a{href: '#', class: 'js-animate-toggle'} Save

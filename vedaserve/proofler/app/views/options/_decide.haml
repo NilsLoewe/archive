@@ -1,0 +1,30 @@
+.row
+  .col-sm-12
+    = bootstrap_form_for(@decision, url: (dashboard_decision_path(@token, @decision))) do |decision|
+      = decision.hidden_field :selected_id, :value => option.id
+      = decision.hidden_field :state, :value => "closed"
+      = button_tag(type: 'submit', class: "pull-right btn btn-info btn-select") do
+        %i.fa.fa-check
+    %h4=option.title
+    #{option.description}
+
+.row
+  .col-xs-1
+    %i.fa.fa-star
+  .col-xs-10
+    .progress
+      .progress-bar{ :style => "width: #{option.assignment_rating_relative}%", :class => "progressRate" }
+
+.row
+  .col-xs-1
+    %i.fa.fa-heart
+  .col-xs-10
+    .progress
+      .progress-bar{ :style => "width: #{option.feeling_relative}%", :class => "progressFeel" }
+
+.row
+  .col-sm-12
+    -if option.images.count > 0
+      = image_tag option.images.first.file.url(:large), width: "100%"
+    -else
+      =image_tag "placeholder.jpg", width: "100%"

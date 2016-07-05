@@ -1,0 +1,31 @@
+#!/bin/bash
+
+. "$(dirname "$0")/../../../config"
+
+decision_id=$1
+rating_id=$2
+value=$3
+
+if [[ -z "${decision_id}" || -z "${rating_id}" || -z "${value}" ]]; then
+  echo "${0} decision_id rating_id value"
+  exit
+fi
+
+if [[ "${MOCK_MODE}" = "1" ]]; then
+  if [[ "${decision_id}" != "23" || "${rating_id}" != "572-52" ]]; then
+    exit
+  fi
+fi
+
+read -d '' template << EOF
+{
+  "ratings": {
+    "value": %s
+  }
+}
+EOF
+
+request=$(printf "${template}" "${value}")
+
+curl ${CURL_OPTS} --request PUT --data-binary $request \
+  "${HOST}/decisions/${decision_id}/facts/ratings/${rating_id}" | ${POST_PROCESSING}

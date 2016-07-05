@@ -1,0 +1,45 @@
+.row
+  .col-lg-12.dmc-heading
+    .row
+      .col-xs-2
+        =link_to(image_tag("logo.png", :width=>"100%"), root_path)
+
+.row
+  .col-md-6.col-md-offset-1
+    -@decisions.each do |d|
+      .row
+        .col-md-12
+          %h3= link_to d.title, search_path(d)
+          = d.description
+          -if d.options.count > 0
+            = d.options.count
+            Optionen : 
+            -d.options.each do |o|
+              = o.title
+              ,
+          -else
+            Keine Optionen
+          %br
+          -if d.facts.count > 0
+            = d.facts.count
+            Kriterien
+            -d.facts.each do |f|
+              = f.title
+              ,
+          -else
+            Keine Entscheidungskriterien
+
+  .col-md-3.col-md-offset-1
+    .panel.panel-primary
+      .panel-heading
+        Kein passendes Ergebnis dabei?
+      .panel-body
+        .row
+          .col-md-12
+            =form_for (@decision) do |f|
+              =f.text_field :title, :size => "33%", :placeholder => "Was willst Du entscheiden?"
+              %br
+              .button_row
+                = submit_tag 'Neue Entscheidung erstellen', :class => "btn btn-md btn-primary", :name => 'create_button'
+
+

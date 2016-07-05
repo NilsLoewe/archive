@@ -1,0 +1,12 @@
+.row
+  .col-xs-12
+    - if search?
+      - if search.type == type
+        %h3
+          Einstellungen
+        %div
+          = form_for([question,search], :as => :search) do |f|
+            = f.text_field :title, :size => "12"
+            = f.text_area :description, :size => "10x5"
+            .field.pull-right
+              = f.submit "Update"

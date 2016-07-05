@@ -1,0 +1,8 @@
+.panel.panel-info
+  .panel-heading
+    = link_to decision.description, decision
+    - if decision.user
+      by
+      = link_to decision.user.username, decision.user
+  .panel-body
+    = decision.constrains

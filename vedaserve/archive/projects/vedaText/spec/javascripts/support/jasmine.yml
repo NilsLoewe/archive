@@ -1,0 +1,12 @@
+src_dir: app/
+src_files:
+  - assets/jquery.js
+  - assets/documents.js
+stylesheets:
+  - stylesheets/**/*.css
+
+spec_dir: spec/javascripts
+helpers:
+  - helpers/**/*.js
+spec_files:
+  - '**/*[sS]pec.js'

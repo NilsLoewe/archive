@@ -1,0 +1,38 @@
+.row
+  .col-xs-3.space-top
+    = render partial: "participants/steps", :locals => { :step => "decide" }
+    = render partial: "participants/comments"
+
+  .col-xs-9.dist-top
+    .row
+      .col-xs-12
+        %h2
+          Entscheide Dich: "
+          %i=@decision.title
+          "
+    .row
+      .col-xs-12
+        %h4 Es sollten nun alle Daten vorliegen: Wähle eine der Optionen aus.
+        %hr
+
+    .row
+      - @orderedOptionsGut.each do |o|
+        .col-xs-4
+          .panel.panel-primary
+            .panel-heading
+              = o.title
+            .panel-body
+              Bewertung:
+              = o.value
+              .pull-right
+                = link_to 'Ich wähle ' + o.title + ' aus!', '#', :class => "btn btn-md btn-default"
+
+    .row
+      .col-xs-12
+        %h4 Erfahre mehr über die Entscheidung
+        = link_to 'Wie hätte ich nur aus dem Bauch entschieden?', '#', :class => "btn btn-sm btn-default"
+        = link_to 'Wie hätte ich nur nach Fakten entschieden?', '#', :class => "btn btn-sm btn-default space-left"
+        = link_to 'Wie haben die Teilnehmer bewertet?', '#', :class => "btn btn-sm btn-default space-left"
+
+
+

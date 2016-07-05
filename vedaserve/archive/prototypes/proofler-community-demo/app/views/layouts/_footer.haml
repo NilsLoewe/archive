@@ -1,0 +1,17 @@
+.bottom-menu
+  .container
+    .row
+      .col-md-9
+        %ul.bottom-links
+          %li
+            = link_to "Decisions", decisions_path
+          %li
+            = link_to "Users", users_path
+          %li
+            = link_to "Sources", sources_path
+          %li
+            = link_to "Documents", documents_path
+      .col-md-3
+        = link_to 'Proofler', root_path
+        by
+        = link_to 'Vedaserve', root_path

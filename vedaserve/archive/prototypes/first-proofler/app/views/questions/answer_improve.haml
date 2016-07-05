@@ -1,0 +1,66 @@
+- currently_at 'Improve'
+.row
+  .panel.panel-default
+    .panel-heading
+      %h3.panel-title
+        Keywords for #{@question.title}
+    %div
+      .container
+        .row
+          .col-xs-6
+            %h4 Define Keywords
+            - @question.terms.each do |term|
+              = link_to term.term, question_term_path(@question, term)
+              ,
+            / ToDo: Eingabefeld für eigene Keywords
+            = form_for([@question,@new_term]) do |f|
+              = f.text_field :term, placeholder: "Add keyword..."
+              = f.submit "+", class: "btn btn-large btn-primary"
+          .col-xs-6
+            / ToDo: Info-Box mit Hilfe zu Keywords generell
+            .alert.alert-info
+              %button.close{"aria-hidden" => "true", "data-dismiss" => "alert", :type => "button"} ×
+              Hier steht ein Hilfetext zu dem Sinn und Unsinn von Keywords. Warum? Wie finde ich gute?
+        / ToDo: Keyword-Optimierer
+        .row
+          .col-xs-6
+            %h4 Optimize Keywords
+            - unless term?
+              %b No keyword is selected
+              %div
+                Please select or create a new keyword to optimize it
+            - else
+              %b
+                You selected the keyword
+                %i= current_term.term
+              %ul
+                %li= link_to 'Check synonyms', answer_improve_question_path(@question, :query => "synonyms")
+                %li= link_to 'Check statistics', answer_improve_question_path(@question, :query => "stats")
+                %li Check for spelling errors
+                %li Try other languages
+          .col-xs-6
+            .alert.alert-info
+              %button.close{"aria-hidden" => "true", "data-dismiss" => "alert", :type => "button"} ×
+              Hier steht ein Hilfetext zu den unterschiedlichen Methoden, um ein keyword zu verbessern
+            - if @synonyms
+              %ul
+                - @synonyms.each do |i|
+                  %li
+                    = i
+            - if @stats
+              %table{:border => "0"}
+                %tr
+                  %td Keyword
+                  %td Suchanfragen
+                  %td Treffer
+                  %td
+                  %td
+                - @stats.each do |i|
+                  %tr
+                    %td= i["keyword"]
+                    %td= i["queries"]
+                    %td= i["results"]
+                    %td/
+                  %td/
+    .panel-footer
+      = link_to 'Next step: Gather data', answer_gather_question_path(@question)

@@ -1,0 +1,47 @@
+- currently_at 'Analyze'
+
+.row
+  .panel.panel-default
+    .panel-heading
+      %h3.panel-title
+        Berrypicker for #{@question.title}
+    .container
+      .row
+        .col-xs-6
+          %h4 Unsortierte Daten
+          %ul
+            - @unscored.each do |d|
+              %li= link_to d.title, sti_dataobject_path(d.type, d)
+          %h4 Bereits bewertete Daten
+          %ul
+            - @scored.each do |d|
+              %li= link_to d.title, sti_dataobject_path(d.type, d)
+        .col-xs-6
+          %div
+            - unless dataobject?
+              .well Load a dataobject to modify it
+            - else
+              %b
+                (#{@dataobject.type}) #{@dataobject.title}
+              = form_for(@dataobject, :as => :dataobject) do |f|
+                = f.label :title
+                = f.text_field :title, placeholder: "What did you find?"
+                %br/
+                = f.label :content
+                = f.text_field :content, placeholder: "Describe the details"
+                %br/
+                = f.label :score
+                [1
+                = f.radio_button :score, 1
+                = f.radio_button :score, 2
+                = f.radio_button :score, 3
+                = f.radio_button :score, 4
+                = f.radio_button :score, 5
+                5]
+                %br/
+                = f.label :note
+                = f.text_area :note
+                %br/
+                = f.submit "Update", class: "btn btn-xs btn-primary"
+    .panel-footer
+      = link_to 'Next step: Answer your question', answer_shape_question_path(@question)

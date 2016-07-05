@@ -1,0 +1,23 @@
+=render 'layouts/logo'
+.row
+  .col-xs-4.col-xs-offset-3
+    = form_for(@new_decision) do |f|
+      .field.space-top
+        %h3 Welche Entscheidung willst Du treffen?
+        = f.text_area(:title, :size => '70x4')
+      .field.space-top
+        Dein Name
+        %br
+        = f.text_field :author, :size => '70'
+      .field.space-top
+        Email Adresse
+        %br
+        = f.text_field :email, :size => '70'
+        = f.hidden_field :clone_id, :value => @decision.id
+        %br
+        Wir senden Dir den Link zum Administrieren der Entscheidung an diese Adresse. Es wird NICHT automatisch ein Proofler-Konto erstellt.
+      
+      .actions.dist-top
+        = submit_tag 'Diese Entscheidung selber treffen', :class => "btn btn-md btn-primary", :name => 'copy_button'
+
+

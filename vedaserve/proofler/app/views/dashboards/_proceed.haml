@@ -1,0 +1,10 @@
+-if @participant.admin? && @decision.options.count >= 2
+  .proceed
+    = bootstrap_form_for(@decision, url: (dashboard_decision_path(@token, @decision))) do |decision|
+      = decision.hidden_field :state, value: "rate"
+      = decision.submit I18n.t('pages.dashboard.gather.rate'),
+                :class => "proceed-btn",
+                data: { confirm: I18n.t('pages.dashboard.gather.proceed.warning') + (@decision.options.length < 3 ? "<br><br><b>" + I18n.t('pages.dashboard.gather.proceed.message') + "</b>" : "" ) + (@decision.facts.length == 0 ? "<br><br><b>" + I18n.t('pages.dashboard.gather.proceed.facts') + "</b>" : "" ),
+                commit: I18n.t('pages.dashboard.gather.proceed.commit'),
+                cancel: I18n.t('pages.dashboard.gather.proceed.cancel') },
+                title: I18n.t('pages.dashboard.gather.proceed.title')

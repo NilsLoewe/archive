@@ -1,0 +1,16 @@
+#!/bin/bash
+
+. "$(dirname "$0")/../../../config"
+
+decision_id=$1
+
+if [[ -z "${decision_id}" ]]; then
+  echo "${0} decision_id"
+  exit
+fi
+
+if [[ "${decision_id}" != "23" && "${MOCK_MODE}" = "1" ]]; then
+  exit
+fi
+
+curl ${CURL_OPTS} "${HOST}/decisions/${decision_id}/facts/ratings" | ${POST_PROCESSING}

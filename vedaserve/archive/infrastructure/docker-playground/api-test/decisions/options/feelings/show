@@ -1,0 +1,13 @@
+#!/bin/bash
+
+. "$(dirname "${0}")/../../../config"
+
+decision_id=$1
+feeling_id=$2
+
+if [[ -z "${decision_id}" || -z "${feeling_id}" ]]; then
+  echo "${0} decision_id feeling_id"
+  exit 1
+fi
+
+curl ${CURL_OPTS} "${HOST}/decisions/${id}/options/feelings/${feeling_id}" | ${POST_PROCESSING}

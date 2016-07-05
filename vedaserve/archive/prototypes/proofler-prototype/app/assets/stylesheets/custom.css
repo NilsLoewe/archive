@@ -1,0 +1,301 @@
+.border {
+  border-width: 2px;
+  border-style: solid;	
+}
+
+.greybox {
+  background-color: #eee;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.titlebox {
+  background-color: #eee;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.nopad {
+  padding-top: 5px;
+  margin: 0px;
+  border: solid 1px #ddd;
+  text-align: center;
+  min-height: 42px;
+}
+
+.whitebox {
+  background-color: #fff;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.boxedBig {
+  min-height: 40px;
+  text-align: center;
+  font-size: 20px;
+}
+
+.centered {
+  text-align: center;
+}
+
+.boxedSmall {
+  min-height: 40px;
+  height:40px; 
+  line-height:40px;
+  text-align: center;
+}
+
+.dmc-heading {
+	background-color: #fff;
+	padding-top: 25px;
+	padding-bottom: 25px;
+}
+
+.dmc-footer {
+	background-color: #fff;
+	border: 1px solid #ccc;
+	margin-top: 25px;
+}
+
+.content {
+	background-color: #fefefe;
+	padding-top: 25px;
+	padding-bottom: 25px;
+}
+
+.navbar-fixed-bottom {
+	background-color: #ddd;
+}
+
+body {
+	background-color: #fff;
+  padding-bottom: 70px;
+}
+
+.frontpage {
+	padding-top: 25px;
+	text-align: center;
+}
+
+a.header-link {
+	color: #666;
+	font-size: 21px;
+	padding-right: 35px;
+}
+
+.dist-top {
+	padding-top: 25px;
+}
+
+.top {
+  margin-top: 25px;
+}
+
+
+.space-top {
+  padding-top: 25px;
+}
+
+.space-left {
+  margin-left: 15px;
+}
+
+.labeled {
+  border: 0; 
+  color:#f6931f; 
+  font-weight:bold;
+}
+
+.bigButton {
+  height: 150px;
+  margin-top: 25px;
+}
+
+.midButton {
+  height: 75px;
+  margin-top: 25px;
+  padding-top: 25px;
+  font-weight: bold;
+}
+
+.nav-pills > li > a {
+  background: #ccc;
+}
+
+.option {
+  min-height: 200px;
+}
+
+.fact {
+  min-height: 250px;
+}
+
+.panel {
+  margin: 5px;
+}
+
+.panel.primary > .panel-heading > a        { color: #fff; }
+.panel.primary > .panel-heading > a:active { color: #fff; }
+.panel.primary > .panel-heading > a:hover  { color: #fff; }
+
+.option-head {
+  color: #11bbff;
+  font-weight: bold;
+  font-size: 20pt;
+  text-align: center;
+  border: solid 1px #ccc;
+}
+
+.option-images {
+  border: solid 1px #ccc;
+}
+
+.option-images img {
+  width: auto;
+  height: 225px;
+  min-height: 225px;
+  max-height: 225px;
+}
+
+.option-description {
+  border: solid 1px #ccc;
+  min-height: 48px;
+  padding-top:16px;
+}
+
+
+.option-buttons {
+  border: solid 1px #ccc;
+}
+
+.option-new-image {
+  border: solid 1px #ccc;
+}
+
+.option-tabs {
+  border: solid 1px #ccc;
+  padding-top:16px;
+}
+
+.option-form {
+  padding-top: 16px;
+}
+
+.option-comments {
+  border: solid 1px #ccc;
+  padding-top:16px;
+}
+
+.option-links {
+  border: solid 1px #ccc;
+  padding-top:4px;
+}
+
+.option-facts {
+  border: solid 1px #ccc;
+  padding-top:1px;
+}
+
+.center {
+  text-align: center;
+}
+
+#decide {
+  font-size: 1.2em;
+  border: solid 1px #ccc;
+}
+
+#decide thead {
+  cursor: pointer;
+  background: #c9dff0;
+}
+
+#decide thead tr th { 
+  font-weight: bold;
+}
+
+#decide thead tr th span { 
+  padding-right: 20px;
+  background-repeat: no-repeat;
+  background-position: 100% 100%;
+}
+
+#decide thead tr th.headerSortUp, #decide thead tr th.headerSortDown {
+  background: #acc8dd;
+}
+
+#decide thead tr th.headerSortUp span {
+  background-image: url('up-arrow.png');
+}
+
+#decide thead tr th.headerSortDown span {
+  background-image: url('down-arrow.png');
+}
+
+#decide tbody tr { 
+}
+
+#decide tbody tr td {
+  text-align: center;
+}
+
+#decide tbody tr td.lalign {
+  text-align: left;
+}
+
+.logo_row {
+  padding-top: 100px;
+  text-align: center;
+}
+
+.form_row {
+  padding-top: 35px;
+  text-align: center;
+}
+
+.button_row {
+  padding-top: 15px;
+  text-align: center;
+}
+
+.circle {
+  width:24px;
+  height:24px;
+  border-radius:12px;
+  font-size:10px;
+  color:grey;
+  line-height:50px;
+  text-align:center;
+  background:grey;
+  margin: auto;
+  margin-top:-12px;
+}
+
+.info {
+  color:grey;
+  padding-top:50px
+}
+
+.info-orange {
+  color:orange;
+}
+
+.orange {
+  color: orange;
+  background-color: orange;
+}
+
+.line-left {
+  width: 50%;
+  height: 1px;
+  margin-right: 50px;
+  background: grey;
+}
+
+.line-right {
+  width: 80%;
+  height: 1px;
+  margin-left: 50px;
+  background: grey;
+}

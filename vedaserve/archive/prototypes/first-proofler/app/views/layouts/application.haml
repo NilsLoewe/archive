@@ -1,0 +1,54 @@
+!!!
+%html
+
+  %head
+    %meta{:charset => "utf-8"}/
+    %title= full_title(yield(:title))
+    = stylesheet_link_tag    "application"
+    = javascript_include_tag "application"
+    - if debug_enabled?
+      = stylesheet_link_tag("debug")
+    = csrf_meta_tags
+    /[if lt IE 9]
+      %script{ src: "http://html5shim.googlecode.com/svn/trunk/html5.js"}
+    %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
+
+  %body
+    = render 'layouts/header'
+
+    .container
+      = yield :sub_navigation
+      %section#content
+        - flash.each do |key, value|
+          = content_tag(:div, value, class: "alert alert-#{key}")
+        = yield
+
+    = render 'layouts/footer'
+
+    - if debug_enabled?
+      %nav.debug-panel.navbar.navbar-default.navbar-inverse
+        %ul.nav
+          %li= link_to "Styleguide", "/styleguide"
+          %li
+            %a.js-remove-debug-panels{:href => "#"} Remove debug panels
+
+      .debug-colors
+        %ul
+          %li.bg-red-dark red-dark
+          %li.bg-red-medium red-medium
+          %li.bg-red-light red-light
+          %li.bg-blue-dark blue-dark
+          %li.bg-blue-medium blue-medium
+          %li.bg-blue-light blue-light
+          %li.bg-turquoise-dark turquoise-dark
+          %li.bg-turquoise-medium turqoise-medium
+          %li.bg-turquoise-light turqoise-light
+          %li.bg-green-dark green-dark
+          %li.bg-green-medium green-medium
+          %li.bg-green-light green-light
+          %li.bg-yellow-dark yellow-dark
+          %li.bg-yellow-medium yellow-medium
+          %li.bg-yellow-light yellow-light
+
+  - if debug_enabled?
+    = debug(params) if Rails.env.development?

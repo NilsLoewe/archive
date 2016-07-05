@@ -1,0 +1,13 @@
+.show-grid {
+  margin-bottom: 15px;
+}
+
+.show-grid [class^="col-"] {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border: 1px solid gray;
+}
+
+.show-background {
+  background-color: #CDEEE7;
+}

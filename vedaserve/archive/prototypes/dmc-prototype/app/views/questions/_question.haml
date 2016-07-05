@@ -1,0 +1,21 @@
+- unless question.done
+  .panel.panel-primary
+    Was ist wichtiger:
+    = link_to question.fact1.title, fact1_question_path(question), :class => "btn btn-sm btn-default"
+    oder
+    = link_to question.fact2.title, fact2_question_path(question), :class => "btn btn-sm btn-default"
+    ?
+    
+- else
+  .panel.panel-success
+    .panel-heading
+      Schon beantwortet:
+      - if question.chosen == question.fact1_id 
+        = question.fact1.title
+        ist wichtiger als
+        = question.fact2.title
+      - else
+        = question.fact2.title
+        ist wichtiger als
+        = question.fact1.title
+      

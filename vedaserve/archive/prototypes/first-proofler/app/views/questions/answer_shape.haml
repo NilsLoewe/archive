@@ -1,0 +1,52 @@
+- currently_at 'Shape'
+:javascript
+  $(function(){
+    //hover states on the static widgets
+    $('#dialog_link, ul#icons li').hover(
+    function() { $(this).addClass('ui-state-hover'); },
+    function() { $(this).removeClass('ui-state-hover'); }
+    );
+  });
+.row
+  .panel.panel-default
+    .panel-heading
+      %h3.panel-title
+        Answer #{@question.title}
+    .container
+      .row
+        .col-xs-4
+          %h4 Gesammelte Daten
+          .accordion
+            - @scored.each do |d|
+              %h3
+                = d.type
+                = d.title
+              %div
+                Score:
+                = d.score
+                %br/
+                = d.note
+        .col-xs-8
+          .accordion2
+            / ToDo: Kurzantwort geben: Einfaches Textfeld
+            %h3 Kurz und Knapp
+            %div
+              .alert.alert-info
+                %button.close{"aria-hidden" => "true", "data-dismiss" => "alert", :type => "button"} ×
+                Ein Hilfetext zu dem Sinn der Kurzantwort. U.a. erscheint diese in der Übersicht.
+              = form_for(@question) do |f|
+                .field
+                  = f.text_area(:short_answer, :size => '30x3', :class => "short_answer")
+                = f.submit "Update", class: "btn btn-primary pull-right"
+            / ToDo: Lange Antwort geben
+            %h3 Text: Was steht im Report?
+            %div
+              .alert.alert-info
+                %button.close{"aria-hidden" => "true", "data-dismiss" => "alert", :type => "button"} ×
+                Ein Hilfetext zu der langen Antwort. Wie wird diese in dem Bericht erscheinen? Was ist mit Referenzen? Etc.
+              = form_for(@question) do |f|
+                .field
+                  = f.text_area(:answer, :size => '30x10', :class => "short_answer")
+                = f.submit "Update", class: "btn btn-primary pull-right"
+    .panel-footer
+      = link_to 'Go back to the questions', question_path(@question)

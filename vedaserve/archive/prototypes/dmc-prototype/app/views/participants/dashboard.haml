@@ -1,0 +1,109 @@
+.row
+  .col-lg-12
+    .row
+      .col-xs-2
+        =link_to(image_tag("logo.png", :width=>"100%"), root_path)
+      .col-xs-6.col-xs-offset-1
+        .row
+          .col-md-12
+            = render partial: 'participants/processbar'
+        - if @participant.admin
+          .row
+            .col-md-12
+              = render partial: 'participants/process'
+      .col-xs-3
+        :javascript
+          jQuery(document).ready(function(){
+            jQuery('body').on('click', '#toggle_users_table', function(event) {
+              jQuery('#users_table').toggle('show');
+              jQuery('#facts_table').hide();
+              jQuery('#options_table').hide();
+              jQuery('#decide_table').hide();
+            });
+
+            jQuery('body').on('click', '#toggle_facts_table', function(event) {
+              jQuery('#facts_table').toggle('show');
+              jQuery('#users_table').hide();
+              jQuery('#options_table').hide();
+              jQuery('#decide_table').hide();
+            });
+
+            jQuery('body').on('click', '#toggle_options_table', function(event) {
+              jQuery('#options_table').toggle('show');
+              jQuery('#facts_table').hide();
+              jQuery('#users_table').hide();
+              jQuery('#decide_table').hide();
+            });
+
+            jQuery('body').on('click', '#toggle_decide_table', function(event) {
+              jQuery('#decide_table').toggle('show');
+              jQuery('#facts_table').hide();
+              jQuery('#options_table').hide();
+              jQuery('#users_table').hide();
+            });
+
+          });
+
+        .btn.btn-danger.btn-sm.pull-right{:id=> "toggle_users_table"}
+          %i.fa.fa-users
+
+.row.titlebox
+  .col-md-9.centered
+    :javascript
+      jQuery(document).ready(function(){
+        jQuery('body').on('click', '#toggle_decisionedit', function(event) {
+          jQuery('#editdecision').toggle('show');
+        });
+      });
+    %h3
+      =@decision.title
+      %span.glyphicon.glyphicon-cog{:id=> "toggle_decisionedit"}
+  .col-xs-3
+    .input-group{:id=> "editdecision", :style=>"display: none"}
+      = form_for(@decision) do |f|
+        =f.text_field(:title, :size => 25, :class => "form-control")
+        %span.input-group-btn
+          = button_tag(type: 'submit', id: "add", class: "btn btn-success") do
+            ok
+
+
+
+.row.whitebox{:id=> "showoptions"}
+  -if @participant.admin
+    = render partial: "participants/users"
+
+  -if @decision.state == "mind"
+    .row{:id=> "options_table"}
+      = render partial: "participants/bauch"
+  -else
+    .row{:id=> "options_table", :style=>"display: none"}
+      = render partial: "participants/bauch"
+
+  -if @decision.state == "rating"
+    .row{:id=> "facts_table"}
+      = render partial: "participants/rating"
+  -else
+    .row{:id=> "facts_table", :style=>"display: none"}
+      = render partial: "participants/rating"
+
+  -if @decision.state == "decide"
+    .row{:id=> "decide_table"}
+      = render partial: "participants/decide"
+  -else
+    .row{:id=> "decide_table", :style=>"display: none"}
+      = render partial: "participants/decide"
+
+= render partial: "participants/options", :locals => {:guest => false}
+
+- if @decision.options.length < 1
+  %script
+    introJs().setOption('showProgress', true).start()
+
+- # explain the first option object
+- if @decision.state == 'options' && @decision.options.length == 1
+  %script
+    introJs().setOption('showProgress', true).goToStep(2).start()
+
+- if @decision.state == 'facts' && @decision.facts.length < 1
+  %script
+    introJs().setOption('showProgress', true).start()

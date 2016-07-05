@@ -1,0 +1,17 @@
+<% provide(:title, 'Create Document') %>
+<h1>Create Document</h1>
+
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(@document) do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+      <%= f.label :title %>
+      <%= f.text_field :title %>
+      
+      <%= f.label :document_template %>
+      <%= select(:document, :document_template_id, DocumentTemplate.all.collect {|t| [ t.name, t.id ] }) %>
+
+      <%= f.submit "Create Document", class: "btn btn-large btn-primary" %>
+    <% end %>
+  </div>
+</div>

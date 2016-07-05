@@ -1,0 +1,43 @@
+#dashboard-decide.js-spinner
+  .row.js-eq-height-target
+    =render "progress", progress: "100"
+
+    .row
+      .col-xs-10.col-xs-offset-1
+        %h2
+          = I18n.t('pages.dashboard.decide.question')
+
+    -if @decision.participants.length > 1
+      .participants
+        .row.text
+          .col-md-6.col-md-offset-3.col-xs-10.col-xs-offset-1.centered
+            = I18n.t('pages.dashboard.decide.friends')
+        .row.icons
+          .col-md-6.col-md-offset-3.col-xs-10.col-xs-offset-1.centered
+            .row
+              -@decision.participants.each do |p|
+                .col-xs-2.participant
+                  = image_tag "user-#{ p.rated? ? "ok" : "no"}.png", width: "50%"
+                  %br
+                  #{p.name}
+
+    .row
+      .col-xs-10.col-xs-offset-1.intro
+        = I18n.t('pages.dashboard.decide.intro')
+
+    .row.hide.js-spinner-show
+      .col-sm-10.col-sm-offset-1.col-xs-10.col-xs-offset-1
+        .row
+          -@options.each_with_index do |option, idx|
+            = render option,
+              wrapper: "col-xs-12 col-sm-6 col-lg-4",
+              editoption: false,
+              deletelink: false,
+              selectbutton: true,
+              rating: true,
+              disablefacts: true,
+              newfact: false,
+              comments: false,
+              newcomment: false,
+              review: false,
+              index: idx

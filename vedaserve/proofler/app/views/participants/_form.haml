@@ -1,0 +1,10 @@
+= bootstrap_form_for(@participant,
+    layout: :horizontal, control_col: "col-sm-12",
+    url: dashboard_participants_path(token: @token),
+    remote: request.xhr?, html: { data: { modal: true } }) do |participant|
+  .modal-body
+    = participant.text_field :name, placeholder: true, hide_label: true
+    = participant.email_field :email, placeholder: true, hide_label: true
+
+  .modal-footer
+    = participant.submit I18n.t('participant.create'), class: "btn btn-primary"

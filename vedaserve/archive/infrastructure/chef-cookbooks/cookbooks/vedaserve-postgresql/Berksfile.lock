@@ -1,0 +1,18 @@
+{
+  "sources": {
+    "postgresql": {
+      "locked_version": "0.11.2",
+      "git": "https://github.com/phlipper/chef-postgresql.git",
+      "ref": "79e70f1d318836a9846545a178cf7b1529ba4e22"
+    },
+    "vedaserve-postgresql": {
+      "path": "."
+    },
+    "apt": {
+      "locked_version": "2.0.0"
+    },
+    "dpkg_autostart": {
+      "locked_version": "0.1.6"
+    }
+  }
+}

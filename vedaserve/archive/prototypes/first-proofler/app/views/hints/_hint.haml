@@ -1,0 +1,7 @@
+.alert.alert-info
+  - if @hint.show_disable
+    %button.close{"aria-hidden" => "true", "data-dismiss" => "alert", :type => "button"} ×
+  - if @hint.show_title
+    %strong= @hint.title
+    %br/
+  = @hint.text

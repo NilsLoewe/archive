@@ -1,0 +1,137 @@
+#fb-root
+:javascript
+  (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/de_DE/sdk.js#xfbml=1&version=v2.3";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+
+  !function(d,s,id){
+    var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';
+    if(!d.getElementById(id)){
+      js=d.createElement(s);
+      js.id=id;js.src=p+'://platform.twitter.com/widgets.js';
+      fjs.parentNode.insertBefore(js,fjs);
+    }
+  }(document, 'script', 'twitter-wjs');
+
+  ;(function (d, s) {
+    var x = d.createElement(s),
+      s = d.getElementsByTagName(s)[0];
+      x.src = "https://www.xing-share.com/plugins/share.js";
+      s.parentNode.insertBefore(x, s);
+  })(document, "script");
+
+
+#dashboard-closed
+  .row.js-eq-height-target
+    =render "progress", progress: "100"
+
+    .row
+      .col-sm-9.col-xs-offset-1
+        %h2= I18n.t('pages.dashboard.closed.intro')
+
+    .row
+      = render @option,
+            wrapper: "col-md-4 col-md-offset-1 col-sm-5 col-sm-offset-1 col-xs-10 col-xs-offset-1",
+                editoption: false,
+                deletelink: false,
+                selectbutton: false,
+                rating: true,
+                disablefacts: false,
+                newfact: false,
+                comments: false,
+                newcomment: false,
+                review: false,
+                index: nil
+
+      .col-md-3.col-md-offset-0.col-sm-4.col-sm-offset-1.col-xs-8.col-xs-offset-2
+        .option
+          .option-header
+            .row
+              .col-xs-12
+                %h4= I18n.t('pages.dashboard.closed.how')
+                -if @option.assignments.any?
+                  .description= I18n.t('pages.dashboard.closed.description')
+                  -@option.assignments.each do |a|
+                    .row
+                      .col-md-6.col-md-offset-0.col-xs-12
+                        =a.fact.title
+                      .col-md-6.col-md-offset-0.col-xs-12
+                        .progress
+                          .progress-bar{ :style => "width: #{a.fact.rating_relative}%", :class => "progressFeel" }
+                  .description
+                    = I18n.t('pages.dashboard.closed.details')
+                    = @option.title
+                    = I18n.t('pages.dashboard.closed.details2')
+                  -@option.assignments.each do |a|
+                    .row
+                      .col-md-6.col-md-offset-0.col-xs-12
+                        =a.fact.title
+                      .col-md-6.col-md-offset-0.col-xs-12
+                        .progress
+                          .progress-bar{ :style => "width: #{a.rating_relative}%", :class => "progressFeel" }
+                -else
+                  .description= I18n.t('pages.dashboard.closed.no-facts')
+
+      .col-md-2.col-md-offset-1.col-sm-10.col-sm-offset-1.col-xs-12.col-xs-offset-0
+        .row
+          .col-md-12.col-md-offset-0.col-sm-3.col-sm-offset-1.col-xs-6.col-xs-offset-3
+            .social-box
+              %h6= I18n.t('pages.dashboard.closed.share')
+              %ul
+                %li=link_to "Tweet", "https://twitter.com/share",  class:"twitter-share-button", :data => { :size => "small", :count => "none", :text => 'Ich habe gerade eine #Enscheidung mit dem @proofler getroffen!' }
+                %li
+                  %div{ "data-type" => "xing/share" }
+                %li{ style: "margin-top: -10px;" }
+                  .fb-share-button{ "data-href" => dashboard_url, "data-layout" => "button" }
+                %li
+                  .g-plus{ data: { action: "share", annotation: "none" } }
+
+          .col-md-12.col-md-offset-0.col-sm-3.col-sm-offset-1.col-xs-6.col-xs-offset-3
+            .social-box
+              %h6= I18n.t('pages.dashboard.closed.follow.twitter')
+              %li=link_to "Follow @proofler", "https://twitter.com/proofler",  class:"twitter-follow-button centered", :data => { :size => "large", "show-count" => "false" }
+
+          .col-md-12.col-md-offset-0.col-sm-3.col-sm-offset-1.col-xs-6.col-xs-offset-3
+            .social-box
+              %h6= I18n.t('pages.dashboard.closed.follow.facebook')
+              .fb-page{ "data-href"           => "https://www.facebook.com/proofler",
+                        "data-small-header"   => "false",
+                        "data-width"          => "100%",
+                        "data-hide-cover"     => "true",
+                        "data-show-facepile"  => "true",
+                        "data-show-posts"     =>"false" }
+                .fb-xfbml-parse-ignore
+                  %blockquote{ cite:"https://www.facebook.com/proofler" }
+                    =link_to "https://www.facebook.com/proofler", "Proofler"
+
+    .row
+      .col-sm-9.col-xs-offset-1
+        %h5= I18n.t('pages.dashboard.closed.others')
+
+    .row
+      .col-xs-10.col-xs-offset-1
+        .col-md-4.col-sm-6.col-xs-12
+          = render 'subscribe'
+        -@decision.options.each do |o|
+          -unless @option.id == o.id
+            = render o,
+                  wrapper: "col-md-4 col-sm-6 col-xs-12",
+                      editoption: false,
+                      deletelink: false,
+                      selectbutton: false,
+                      rating: true,
+                      disablefacts: false,
+                      newfact: false,
+                      comments: false,
+                      newcomment: false,
+                      review: true,
+                      index: nil
+
+
+
+<script src="https://apis.google.com/js/platform.js" async defer>{lang: 'de'}</script>
+

@@ -1,0 +1,84 @@
+@import 'configuration';
+
+.RoundBorders (@radius) {
+  border-radius: @radius;
+  -moz-border-radius: @radius;
+  -webkit-border-radius: @radius;
+}
+
+/* General Card Layout */
+
+.card {
+  border: solid 1px #777;
+  background-color: @card-color;
+  color: @proofler-text;
+  width: 250px;
+  height: 250px;
+  margin: 0px 10px 0px;
+  vertical-align:middle;
+  text-align:center;
+  .RoundBorders(10px);
+
+  a {
+    color: @proofler-text;
+  }
+}
+
+.card-front {
+  .RoundBorders(5px);
+}
+
+.card-back {
+  .RoundBorders(5px);
+}
+
+.card-flipper {
+  text-align: right;
+}
+
+.card-content {
+}
+
+
+
+/* Results */
+
+.result {
+  float: left;
+  border: solid 1px #777;
+  background-color: @card-color;
+  color: @proofler-text;
+  width: 128px;
+  height: 128px;
+  vertical-align:middle;
+  text-align:center;
+  .RoundBorders(10px);
+
+  a {
+    color: @proofler-text;
+  }  
+}
+
+.search {
+  border: solid 1px #777;
+  width: 100%;
+  height: 35px;
+  margin-top: 5px;
+  vertical-align:middle;
+  text-align:center;
+  background-color: @green-light;
+  color: @proofler-text;
+}
+
+.new {
+  background-color: @green-medium;
+}
+
+.dataobject {
+  border: solid 1px #777;
+  vertical-align:middle;
+  text-align:center;
+  background-color: @green-light;
+  color: @proofler-text;
+}
+

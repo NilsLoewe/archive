@@ -1,0 +1,5 @@
+#!/bin/bash
+
+inventory="$(dirname "$0")/hosts"
+
+ansible-playbook --inventory-file=$inventory "${@}"

@@ -1,0 +1,12 @@
+= render 'header'
+
+#dashboard-content
+  .row.js-eq-height
+    -unless @decision.closed? || @partial == "decide" || @partial == "pending"
+      .col-md-10.dashboard-main-area
+        =render @partial
+      .col-md-2.col-sm-12.dashboard-sidebar-area.js-eq-height-source
+        =render 'sidebar'
+    -else
+      .col-sm-12
+        =render @partial

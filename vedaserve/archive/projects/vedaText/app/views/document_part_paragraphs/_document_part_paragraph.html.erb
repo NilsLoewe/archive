@@ -1,0 +1,6 @@
+<% @part = DocumentPartParagraph.find(document_part_paragraph.id) %>
+
+<%= form_for(@part) do |f| %>
+  <%= f.text_area :content, :size => 12 %>
+  <%= f.submit "update", class: "btn btn-small btn-primary" %>
+<% end %>

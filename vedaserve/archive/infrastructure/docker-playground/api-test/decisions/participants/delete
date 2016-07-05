@@ -1,0 +1,15 @@
+#!/bin/bash
+
+. `dirname $0`/../../config
+
+decision_id=$1
+id=$2
+
+if [[ -z "${decision_id}" || -z "${id}" ]]; then
+  echo "$0 decision_id id"
+  echo " i.e. $0 23 52"
+  exit 1
+fi
+
+
+curl $CURL_OPTS --request DELETE "$HOST/decisions/${decision_id}/participants/${id}" | $POST_PROCESSING

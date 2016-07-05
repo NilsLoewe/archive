@@ -1,0 +1,6 @@
+= bootstrap_form_for(@assignment, url: (dashboard_assignment_path(params[:dashboard_token], @assignment)), layout: :horizontal, label_col: "col-sm-3", control_col: "col-sm-9", remote: request.xhr?, html: { data: { modal: true } }) do |fact|
+  .modal-body
+    = fact.text_field :value, placeholder: true
+
+  .modal-footer
+    = fact.submit I18n.t('fact.create')

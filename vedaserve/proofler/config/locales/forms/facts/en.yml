@@ -1,0 +1,19 @@
+---
+en:
+  fact:
+    create: Erstellen
+    title: Neues Kriterium erstellen
+  activerecord:
+    errors:
+      models:
+        fact:
+          attributes:
+            title:
+              blank: Bitte gib einen Namen für das Kriterium ein
+  helpers:
+    label:
+      fact:
+        title: Titel
+    placeholder:
+      fact:
+        title: Welches Kriterium ist wichtig für die Entscheidung?

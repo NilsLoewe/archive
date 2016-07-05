@@ -1,0 +1,35 @@
+{
+  "sha": "6bfd0051df1fa68ff0ad555c1e2f9102a75a891e",
+  "sources": {
+    "ruby": {
+      "path": "."
+    },
+    "build-essential": {
+      "locked_version": "1.4.0"
+    },
+    "rbenv": {
+      "locked_version": "1.4.2"
+    },
+    "git": {
+      "locked_version": "2.5.2"
+    },
+    "dmg": {
+      "locked_version": "1.1.0"
+    },
+    "yum": {
+      "locked_version": "2.2.4"
+    },
+    "windows": {
+      "locked_version": "1.9.0"
+    },
+    "chef_handler": {
+      "locked_version": "1.1.4"
+    },
+    "runit": {
+      "locked_version": "1.1.4"
+    },
+    "ohai": {
+      "locked_version": "1.1.10"
+    }
+  }
+}

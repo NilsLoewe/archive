@@ -1,0 +1,10 @@
+- provide(:title, 'Home')
+- if user_signed_in?
+  %h3 Researches
+  %p
+    = render 'researches/all'
+- else
+  %h1 Proofler
+  %p This is the start page for the Proofler application.
+  .span4
+    = link_to('Register', new_user_registration_path, :class => "btn btn-large btn-primary")

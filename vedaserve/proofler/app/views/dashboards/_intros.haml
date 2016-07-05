@@ -1,0 +1,15 @@
+- if @participant.admin?
+  - if @decision.options.length == 0
+    = I18n.t('pages.dashboard.gather.intro.admin.first')
+  - else
+    - if @decision.options.length == 1
+      = I18n.t('pages.dashboard.gather.intro.admin.more')
+    - if @decision.facts.length == 0
+      = I18n.t('pages.dashboard.gather.intro.admin.facts')
+    - if @decision.participants.length == 1
+      = I18n.t('pages.dashboard.gather.intro.admin.users')
+    - if @decision.participants.length > 1 && @decision.facts.length > 0 && @decision.options.length > 1
+      = I18n.t('pages.dashboard.gather.intro.admin.rate')
+
+- else
+  #{ I18n.t('pages.dashboard.gather.intro.participant.p1') } #{ @decision.admin.name } #{ I18n.t('pages.dashboard.gather.intro.participant.p2') } #{ @decision.admin.name } #{ I18n.t('pages.dashboard.gather.intro.participant.p3') }

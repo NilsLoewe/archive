@@ -1,0 +1,98 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<hudson>
+  <disabledAdministrativeMonitors/>
+  <version>1.512</version>
+  <numExecutors>1</numExecutors>
+  <mode>NORMAL</mode>
+  <useSecurity>true</useSecurity>
+  <authorizationStrategy class="hudson.security.GlobalMatrixAuthorizationStrategy">
+    <permission>hudson.model.Computer.Configure:jan</permission>
+    <permission>hudson.model.Computer.Configure:nils</permission>
+    <permission>hudson.model.Computer.Connect:jan</permission>
+    <permission>hudson.model.Computer.Connect:nils</permission>
+    <permission>hudson.model.Computer.Create:jan</permission>
+    <permission>hudson.model.Computer.Create:nils</permission>
+    <permission>hudson.model.Computer.Delete:jan</permission>
+    <permission>hudson.model.Computer.Delete:nils</permission>
+    <permission>hudson.model.Computer.Disconnect:jan</permission>
+    <permission>hudson.model.Computer.Disconnect:nils</permission>
+    <permission>hudson.model.Hudson.Administer:jan</permission>
+    <permission>hudson.model.Hudson.Administer:nils</permission>
+    <permission>hudson.model.Hudson.ConfigureUpdateCenter:jan</permission>
+    <permission>hudson.model.Hudson.ConfigureUpdateCenter:nils</permission>
+    <permission>hudson.model.Hudson.Read:jan</permission>
+    <permission>hudson.model.Hudson.Read:nils</permission>
+    <permission>hudson.model.Hudson.RunScripts:jan</permission>
+    <permission>hudson.model.Hudson.RunScripts:nils</permission>
+    <permission>hudson.model.Hudson.UploadPlugins:jan</permission>
+    <permission>hudson.model.Hudson.UploadPlugins:nils</permission>
+    <permission>hudson.model.Item.Build:github</permission>
+    <permission>hudson.model.Item.Build:jan</permission>
+    <permission>hudson.model.Item.Build:nils</permission>
+    <permission>hudson.model.Item.Cancel:jan</permission>
+    <permission>hudson.model.Item.Cancel:nils</permission>
+    <permission>hudson.model.Item.Configure:jan</permission>
+    <permission>hudson.model.Item.Configure:nils</permission>
+    <permission>hudson.model.Item.Create:jan</permission>
+    <permission>hudson.model.Item.Create:nils</permission>
+    <permission>hudson.model.Item.Delete:jan</permission>
+    <permission>hudson.model.Item.Delete:nils</permission>
+    <permission>hudson.model.Item.Discover:jan</permission>
+    <permission>hudson.model.Item.Discover:nils</permission>
+    <permission>hudson.model.Item.Read:anonymous</permission>
+    <permission>hudson.model.Item.Read:github</permission>
+    <permission>hudson.model.Item.Read:jan</permission>
+    <permission>hudson.model.Item.Read:nils</permission>
+    <permission>hudson.model.Item.Workspace:jan</permission>
+    <permission>hudson.model.Item.Workspace:nils</permission>
+    <permission>hudson.model.Run.Delete:jan</permission>
+    <permission>hudson.model.Run.Delete:nils</permission>
+    <permission>hudson.model.Run.Update:jan</permission>
+    <permission>hudson.model.Run.Update:nils</permission>
+    <permission>hudson.model.View.Configure:jan</permission>
+    <permission>hudson.model.View.Configure:nils</permission>
+    <permission>hudson.model.View.Create:jan</permission>
+    <permission>hudson.model.View.Create:nils</permission>
+    <permission>hudson.model.View.Delete:jan</permission>
+    <permission>hudson.model.View.Delete:nils</permission>
+    <permission>hudson.model.View.Read:jan</permission>
+    <permission>hudson.model.View.Read:nils</permission>
+    <permission>hudson.scm.SCM.Tag:jan</permission>
+    <permission>hudson.scm.SCM.Tag:nils</permission>
+  </authorizationStrategy>
+  <securityRealm class="hudson.security.HudsonPrivateSecurityRealm">
+    <disableSignup>true</disableSignup>
+    <enableCaptcha>false</enableCaptcha>
+  </securityRealm>
+  <projectNamingStrategy class="jenkins.model.ProjectNamingStrategy$DefaultProjectNamingStrategy"/>
+  <workspaceDir>${ITEM_ROOTDIR}/workspace</workspaceDir>
+  <buildsDir>${ITEM_ROOTDIR}/builds</buildsDir>
+  <markupFormatter class="hudson.markup.RawHtmlMarkupFormatter">
+    <disableSyntaxHighlighting>false</disableSyntaxHighlighting>
+  </markupFormatter>
+  <jdks/>
+  <viewsTabBar class="hudson.views.DefaultViewsTabBar"/>
+  <myViewsTabBar class="hudson.views.DefaultMyViewsTabBar"/>
+  <clouds/>
+  <slaves/>
+  <quietPeriod>5</quietPeriod>
+  <scmCheckoutRetryCount>0</scmCheckoutRetryCount>
+  <views>
+    <hudson.model.AllView>
+      <owner class="hudson" reference="../../.."/>
+      <name>All</name>
+      <filterExecutors>false</filterExecutors>
+      <filterQueue>false</filterQueue>
+      <properties class="hudson.model.View$PropertyList"/>
+    </hudson.model.AllView>
+  </views>
+  <primaryView>All</primaryView>
+  <slaveAgentPort>0</slaveAgentPort>
+  <label></label>
+  <crumbIssuer class="hudson.security.csrf.DefaultCrumbIssuer">
+    <excludeClientIPFromCrumb>true</excludeClientIPFromCrumb>
+    <PROXY__HEADER>X-Forwarded-For</PROXY__HEADER>
+  </crumbIssuer>
+  <nodeProperties/>
+  <globalNodeProperties/>
+</hudson>

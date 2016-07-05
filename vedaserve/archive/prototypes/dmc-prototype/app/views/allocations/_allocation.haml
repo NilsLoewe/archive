@@ -1,0 +1,38 @@
+- if allocation.question
+  .panel.panel-warning
+    .panel-heading
+      .row
+        .col-xs-12
+          %i Ist 
+          %b= allocation.option.title
+          %i auch 
+          %b= allocation.fact.title
+          ?
+          %br
+          = link_to allocation.fact.title, valid_allocation_path(allocation), class: "btn btn-sm btn-success"
+          = link_to 'Irrelevant', irrelevant_allocation_path(allocation), class: "btn btn-sm btn-warning"
+          = link_to 'Nicht ' + allocation.fact.title, invalid_allocation_path(allocation), class: "btn btn-sm btn-danger"
+
+-else
+  -unless allocation.relevant      
+    .panel.panel-default
+      .panel-heading
+        .row
+          .col-xs-12
+            Irrelevant:
+            = allocation.fact.title
+  -else
+    -if allocation.direction == false
+      .panel.panel-danger
+        .panel-heading
+          .row
+            .col-xs-12
+              Nicht
+              = allocation.fact.title
+    - else
+      .panel.panel-success
+        .panel-heading
+          .row
+            .col-xs-12
+              = allocation.fact.title
+

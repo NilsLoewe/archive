@@ -1,0 +1,9 @@
+%p#notice= notice
+
+%p
+  %b Title:
+  = @constraint.title
+
+= link_to 'Edit', edit_constraint_path(@constraint)
+\|
+= link_to 'Back', constraints_path

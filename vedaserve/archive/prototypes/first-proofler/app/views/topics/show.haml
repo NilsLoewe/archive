@@ -1,0 +1,22 @@
+.row.pull-right
+  = link_to 'back', :controller => "researches", :action => "select", :id => @research.id
+.row
+  - @topic.questions.each do |question|
+    .question.column
+      .upper-area
+        .front
+          .main
+            %b.panel-title= question.title
+            %p
+              = check_box_tag 'enable', question.id , question.enable, :class => "question-enable"
+              Use question?
+              :javascript
+                $(".question-enable").bind('change', function(){
+                  $.ajax({
+                    url: '/questions/'+this.value+'/enable',
+                    type: 'POST',
+                    data: {"enable": this.checked}
+                  });
+                });
+              
+  = render 'questions/new'

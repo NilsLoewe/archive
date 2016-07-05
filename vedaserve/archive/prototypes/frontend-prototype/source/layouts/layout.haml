@@ -1,0 +1,43 @@
+!!! 5
+
+%html
+  %head
+    %meta{charset: 'utf-8'}
+    %meta{'http-equiv' => 'X-UA-Compatible', :content => 'IE=edge'}
+    %meta{name: 'viewport', content: 'width=device-width, initial-scale=1'}
+    %title Proofler cards bootstrap
+    %link{ rel: 'stylesheet', href: 'stylesheets/application.css' }
+
+  %body
+    .container
+      %ul.nav.nav-pills
+        %li{class: ('active' if current_page.url == '/index.html')}
+          = link_to 'Index', 'index.html', relative: true
+        %li{class: ('active' if current_page.url.end_with? 'select.html')}
+          = link_to 'Select', 'select.html', relative: true
+        %li{class: ('active' if current_page.url.end_with? 'slide.html')}
+          = link_to 'Slide', 'slide.html', relative: true
+        %li{class: ('active' if current_page.url.end_with? 'questions.html')}
+          = link_to 'Question', 'questions.html', relative: true
+
+    = yield
+
+    .container
+      .row
+        .debug
+          .alert.alert-success.visible-xs
+            %button{type: 'button', class: 'close', 'data-dismiss' => 'alert', 'aria-hidden' => 'true'} &times;
+            <strong>Debug</strong>: Your device is an <strong>extra small device</strong>. Try to turn your device.
+          .alert.alert-info.visible-sm
+            %button{type: 'button', class: 'close', 'data-dismiss' => 'alert', 'aria-hidden' => 'true'} &times;
+            <strong>Debug</strong>: Your device is a <strong>small device</strong>. Resize your window or turn the device.
+          .alert.alert-warning.visible-md
+            %button{type: 'button', class: 'close', 'data-dismiss' => 'alert', 'aria-hidden' => 'true'} &times;
+            <strong>Debug</strong>: Your device is a <strong>medium device</strong>. Resize your window or turn the device.
+          .alert.alert-danger.visible-lg
+            %button{type: 'button', class: 'close', 'data-dismiss' => 'alert', 'aria-hidden' => 'true'} &times;
+            <strong>Debug</strong>: Your device is a <strong>large device</strong>. Resize your browser window.
+
+    %script{ src: 'http://code.jquery.com/jquery-1.10.1.min.js', language: 'javascript' }
+    %script{ src: 'javascripts/application.js', language: 'javascript' }
+    %script{ src: 'javascripts/bootstrap/alert.js', language: 'javascript' }

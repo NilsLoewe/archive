@@ -1,0 +1,6 @@
+---
+de:
+  activerecord:
+    errors:
+      messages:
+        record_invalid: Please check your data

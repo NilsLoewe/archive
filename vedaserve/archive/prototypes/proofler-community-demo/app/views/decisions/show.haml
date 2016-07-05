@@ -1,0 +1,54 @@
+= render :partial => "shared/firstline"
+.row.top
+  .col-md-12
+    .panel.panel-success
+      .panel-heading
+        %h6= @decision.title
+      .panel-body
+        .row
+          .col-md-4
+            .row
+              .col-md-12
+                .panel.panel-success
+                  .panel-heading
+                    Created by
+                  .panel-body
+                    .row
+                      .col-md-6
+                        = image_tag("cat.jpg")
+                      .col-md-6
+                        = @decision.user.username
+            .row
+              .col-md-12
+                .panel.panel-success
+                  .panel-heading
+                    Constraints
+                  .panel-body
+                    = @decision.constrains
+  
+          .col-md-8
+            .row
+              .col-md-12
+                .panel.panel-success
+                  .panel-heading
+                    What is it about
+                  .panel-body
+                    = @decision.description
+            .row
+              .col-md-12
+                .panel.panel-success
+                  .panel-heading
+                    That is the result
+                  .panel-body
+                    = @decision.answer
+            .row
+              .col-md-12
+                .panel.panel-success
+                  .panel-heading
+                    Used Sources
+                  .panel-body
+                    Liste der Quellen
+  
+      .panel-footer
+        = link_to 'Edit Decision', edit_decision_path(@decision)
+        = link_to 'Proof it again', dashboard_decision_path(@decision)

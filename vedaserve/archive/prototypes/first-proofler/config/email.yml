@@ -1,0 +1,15 @@
+development:
+  :address: smtp.mandrillapp.com
+  :port: 587
+  :authentication: plain
+  :user_name: Vedaserve
+  :password: 2AJTNXUZ5PU7gU6DQqMXuA
+  :enable_starttls_auto: true
+
+production:
+  :address: smtp.mandrillapp.com
+  :port: 587
+  :authentication: plain
+  :user_name: Vedaserve
+  :password: 2AJTNXUZ5PU7gU6DQqMXuA
+  :enable_starttls_auto: true

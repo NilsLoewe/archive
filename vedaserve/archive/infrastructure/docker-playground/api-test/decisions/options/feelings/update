@@ -1,0 +1,24 @@
+#!/bin/bash
+
+. "$(dirname "${0}")/../../../config"
+
+decision_id=$1
+feeling_id=$2
+rating=$3
+
+if [[ -z "${decision_id}" || -z "${feeling_id}" ]]; then
+  echo "${0} decision_id feeling_id rating"
+  exit 1
+fi
+
+read -d '' template << EOF
+{
+  "feelings": {
+    "rating": %s
+  }
+}
+EOF
+request=$(printf "${template}" "${rating}")
+
+curl ${CURL_OPTS} --request PUT "${request}"\
+  "${HOST}/decisions/${id}/options/feelings/${feeling_id}" | ${POST_PROCESSING}

@@ -1,0 +1,80 @@
+#dashboard-rate
+  .row.js-eq-height-target
+    =render "progress", progress: "66"
+
+    .row
+      .col-sm-9.col-xs-offset-1
+        %h2
+          %small
+            #{@participant.rated_facts} / #{@decision.facts.count}
+          #{ I18n.t('pages.dashboard.rate.question') } #{ @fact_rating.fact.title }
+
+    .row
+      .col-sm-9.col-xs-11.col-xs-offset-1
+        = bootstrap_form_for(@fact_rating, url: (dashboard_fact_rating_path(@token, @fact_rating))) do |rating|
+          .row.fact-rating
+            .col-md-6-col-md-offset-3.centered
+              .btn-group{ "data-toggle" => "buttons" }
+                %label.btn.btn-info{:class => ("active" if @fact_rating.value == 1)}
+                  %input{ :type => "radio", :id => "fact_rating_value", :name => "fact_rating[value]", :value => "1", :autocomplete => "off", checked: @fact_rating.value == 1 }
+                    %i.fa.fa-minus
+                    %i.fa.fa-minus
+                %label.btn.btn-info{:class => ("active" if @fact_rating.value == 2)}
+                  %input{ :type => "radio", :id => "fact_rating_value", :name => "fact_rating[value]", :value => "2", :autocomplete => "off", checked: @fact_rating.value == 2 }
+                    %i.fa.fa-minus
+                %label.btn.btn-info{:class => ("active" if @fact_rating.value == 3 || @fact_rating.value.nil?)}
+                  %input{ :type => "radio", :id => "fact_rating_value", :name => "fact_rating[value]", :value => "3", :autocomplete => "off", checked: @fact_rating.value == 3 || @fact_rating.value.nil? }
+                    %i.fa.fa-dot-circle-o
+                %label.btn.btn-info{:class => ("active" if @fact_rating.value == 4)}
+                  %input{ :type => "radio", :id => "fact_rating_value", :name => "fact_rating[value]", :value => "4", :autocomplete => "off", checked: @fact_rating.value == 4 }
+                    %i.fa.fa-plus
+                %label.btn.btn-info{:class => ("active" if @fact_rating.value == 5)}
+                  %input{ :type => "radio", :id => "fact_rating_value", :name => "fact_rating[value]", :value => "5", :autocomplete => "off", checked: @fact_rating.value == 5 }
+                    %i.fa.fa-plus
+                    %i.fa.fa-plus#tourFactId
+
+          .row
+            .col-sm-10.col-sm-offset-1.text
+              = I18n.t('pages.dashboard.rate.options')
+
+          .row
+            -@assignment_ratings.each do |a|
+              .col-sm-6.col-xs-12.assignment-rating
+                .row
+                  .col-xs-11
+                    .form-group
+                      .input-group.input-group-lg.has-success
+                        -if a.assignment.option.images.count > 0
+                          %span.input-group-addon#img
+                            = image_tag a.assignment.option.images.first.file.url(:thumb), height: "100%"
+                        -else
+                          %span.input-group-addon
+                            %i.fa.fa-tag
+                        %input.form-control{ :value => a.assignment.option.title, :type => "text" }
+                        %span.input-group-addon
+                          =a.assignment.value
+
+                  .col-xs-11.centered
+                    .btn-group{ "data-toggle" => "buttons" }
+                      %label.btn.btn-info{:class => ("active" if a.rating.present? && a.rating.value == 1)}
+                        %input{ :type => "radio", :id => "fact_rating_value", :name => "fact_rating[assignment_ratings]#{a.id}", :value => "1", :autocomplete => "off" }
+                          %i.fa.fa-minus
+                          %i.fa.fa-minus
+                      %label.btn.btn-info{:class => ("active" if a.rating.present? &&  a.rating.value == 2)}
+                        %input{ :type => "radio", :id => "fact_rating_value", :name => "fact_rating[assignment_ratings]#{a.id}", :value => "2", :autocomplete => "off" }
+                          %i.fa.fa-minus
+                      %label.btn.btn-info{:class => ("active" if (a.rating.present? &&  a.rating.value == 3) || a.rating.nil?) }
+                        %input{ :type => "radio", :id => "fact_rating_value", :name => "fact_rating[assignment_ratings]#{a.id}", :value => "3", :autocomplete => "off" }
+                          %i.fa.fa-dot-circle-o
+                      %label.btn.btn-info{:class => ("active" if a.rating.present? &&  a.rating.value == 4)}
+                        %input{ :type => "radio", :id => "fact_rating_value", :name => "fact_rating[assignment_ratings]#{a.id}", :value => "4", :autocomplete => "off" }
+                          %i.fa.fa-plus
+                      %label.btn.btn-info{:class => ("active" if a.rating.present? &&  a.rating.value == 5)}
+                        %input{ :type => "radio", :id => "fact_rating_value", :name => "fact_rating[assignment_ratings]#{a.id}", :value => "5", :autocomplete => "off" }
+                          %i.fa.fa-plus
+                          %i.fa.fa-plus#tourFactId
+
+
+          .row.proceed
+            .col-xs-2.col-xs-offset-9
+              = rating.submit I18n.t('pages.dashboard.rate.next'), :class => "proceed-btn"

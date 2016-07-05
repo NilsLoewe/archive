@@ -1,0 +1,46 @@
+:javascript
+  $(function(){
+    //hover states on the static widgets
+    $('#dialog_link, ul#icons li').hover(
+    function() { $(this).addClass('ui-state-hover'); },
+    function() { $(this).removeClass('ui-state-hover'); }
+    );
+  });
+%h4 Hilfetexte bearbeiten
+.container
+  .accordion
+    - @hints.each do |h|
+      %h3= h.title
+      = form_for(h) do |f|
+        %div
+          .row
+            .col-xs-4
+              .field
+                = f.label :tag
+                = f.text_field :tag, :readonly => true
+              .field
+                = f.label :title
+                = f.text_field :title
+              .field
+                = f.label :show_title
+                = f.check_box :show_title
+              .field
+                = f.label :show_disable
+                = f.check_box :show_disable
+              .field
+                = f.label :note
+                = f.text_area :note, :size => '21x5'
+            .col-xs-8
+              .field
+                Hilfetext
+                %br/
+                = f.text_area :text, :size => '50x10'
+          .row
+            .field
+              = f.submit "Update", class: "btn btn-large btn-primary"
+= form_for(@new_hint) do |f|
+  = f.label :tag
+  = f.text_field :tag, size: 30
+  = f.label :title
+  = f.text_field :title, size: 30
+  = f.submit "Create", class: "btn btn-large btn-primary"

@@ -1,0 +1,22 @@
+#!/bin/bash
+
+. `dirname $0`/../config
+
+title=$1
+description=$2
+name=$3
+email=$4
+
+mock_title="Which beer should we drink?"
+mock_description="We want to drink a beer, but don't know which one. Let's proof what is the best for us!"
+mock_name='John'
+mock_email='john.doe@email.invalid'
+
+if [[ -z "${title}" || -z "${description}" || -z "${name}" || -z "${email}" ]]; then
+  printf "%s title description name email\n" "${0}"
+  printf '  i.e. %s "%s" "%s" "%s" "%s"\n' "${0}" "${mock_title}" "${mock_description}" "${mock_name}" "${mock_email}"
+  exit 1
+fi
+
+
+curl $CURL_OPTS --request POST "${HOST}/decisions" | $POST_PROCESSING

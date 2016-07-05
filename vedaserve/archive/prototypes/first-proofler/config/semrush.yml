@@ -1,0 +1,7 @@
+development:
+  apikey: 9b6e8a1cba6335746246ed1f7a7df115
+  host: http://de.api.semrush.com/
+
+production:
+  apikey: 9b6e8a1cba6335746246ed1f7a7df115
+  host: http://de.api.semrush.com/

@@ -1,0 +1,40 @@
+.row
+  .col-md-6.col-md-offset-2
+    %h2
+      Einstellungen
+.row
+  .col-md-2
+    =link_to('1. Allgemein', general_decision_path(@decision))
+    %br
+    =link_to('2. Optionen', options_decision_path(@decision))
+    %br
+    %b 3. Einstellungen
+    %br
+    4. Einladen
+
+  .col-md-6
+    .row
+      .col-md-2.dist-top
+        =image_tag "settings.png"
+
+      .col-md-10
+        .space-top
+          .row
+            .col-md-12
+              =check_box_tag '0', '1', {:checked => "checked"} 
+              Als Admin selber an der Entscheidungsfindung teilnehmen
+            .col-md-12
+              =check_box_tag '0', '1', {:checked => "checked"} 
+              Teilnehmer dürfen Optionen anlegen
+            .col-md-12
+              =check_box_tag '1', '2'
+              Teilnehmer dürfen nur eine Option auswählen
+            .col-md-12
+              =check_box_tag '1'
+              Ja-Nein-Vielleicht Auswahl aktivieren (Standard ist Ja-Nein)
+.row
+  .col-md-6.col-md-offset-2                    
+    .row.space-top
+      .col-md-12
+        = link_to('zurueck', options_decision_path(@decision), :class => "btn btn-md btn-default")
+        = link_to('weiter', invite_decision_path(@decision), :class => "btn btn-md btn-primary pull-right")

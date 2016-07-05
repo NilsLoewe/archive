@@ -1,0 +1,24 @@
+# == Schema Information
+#
+# Table name: points
+#
+#  id             :integer          not null, primary key
+#  fact_id        :integer
+#  participant_id :integer
+#  value          :integer
+#  created_at     :datetime
+#  updated_at     :datetime
+#  user_id        :integer
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  fact_id: 1
+  participant_id: 1
+  value: 1
+
+two:
+  fact_id: 1
+  participant_id: 1
+  value: 1

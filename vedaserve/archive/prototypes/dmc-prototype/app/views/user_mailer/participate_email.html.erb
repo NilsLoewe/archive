@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=ASCII' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Hallo <%= @user.name %></h1>
+    <p>
+      Du wurdest von <%= @decision.author %> eingeladen, an der Entscheidung <%= @decision.title %>
+      teilzunehmen. <%= @decision.author %> hat die Entscheidung so beschrieben:<br><br>
+      
+      <%= @decision.description %> 
+    </p>
+    <p>
+      Um zu der Entscheidung zu gelangen, folge diesem Link: <%= link_to "Jetzt mitmachen!", @url %>
+    </p>
+    <p>
+      Beste Grüße,<br>
+      Das Proofler-Team
+    </p>
+  </body>
+</html>
+
+
+
+
+ 

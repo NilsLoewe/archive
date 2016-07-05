@@ -1,0 +1,36 @@
+#dashboard-sidebar
+
+  #dashboard-sidebar-users
+    .row
+      - @existing_participants.each do |p|
+        .col-xs-12
+          .user
+            %span.fa.fa-user{:class => ("green" if p.admin? || p.status == "accepted")}
+            %span.user-name= p.name
+    .row
+      .col-xs-11
+        = link_to new_dashboard_participant_path(dashboard_token: @token),
+                  data: { modal: true }, class: "btn btn-block btn-inverse", id: "invite-link" do
+          %i.fa.fa-users
+          %b= t('pages.dashboard.header.invite')
+
+  #dashboard-sidebar-comments
+    -@decision.comments.each do |c|
+      .row
+        .col-xs-11
+          .comment
+            %b.fa.fa-user
+            %b.commenter= c.participant.name
+            .comment-text
+              -if c.commentable_type == "Option"
+                %span.comment-entity #{c.commentable.title}:
+                %br
+              = c.comment
+
+    .row
+      .col-xs-11
+        .btn.btn-block.btn-inverse.js-new-global-comment#addglobalcomment
+          %i.fa.fa-comment-o
+          %b=t('pages.option.new.comment')
+      .col-xs-11{:id=> "newglobalcomment", :style=>"display: none"}
+        = render 'comments/form', locals: { commentable_id: @decision.id, commentable_type: 'Decision' }

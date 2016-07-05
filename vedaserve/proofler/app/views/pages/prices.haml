@@ -1,0 +1,175 @@
+.proofler-lp-page#lp-prices
+  = render 'layouts/header'
+  #visual-green.visible-lg.visible-md
+
+  .row
+    .container
+      .row
+        .col-sm-12.col-sm-offset-0.col-xs-10.col-xs-offset-1
+          %h1= I18n.t('pages.lp.price')
+          .description= I18n.t('pages.prices.description')
+
+      .prices-boxes
+        .row
+          .col-sm-4.col-sm-offset-0.col-xs-10.col-xs-offset-1
+            .price-box
+              .title= I18n.t('pages.prices.free.title')
+              .price
+                %span.currency= I18n.t('pages.prices.currency')
+                = I18n.t('pages.prices.free.price')
+                %span.month= I18n.t('pages.prices.month')
+              .abo
+                = I18n.t('pages.prices.free.abo-price')
+              .action
+                =link_to I18n.t('pages.prices.free.action'), '/#lp-form', class: "btn btn-try"
+          .col-sm-4.col-sm-offset-0.col-xs-10.col-xs-offset-1
+            .price-box
+              .title= I18n.t('pages.prices.pro.title')
+              .price
+                %span.currency= I18n.t('pages.prices.currency')
+                = I18n.t('pages.prices.pro.price')
+                %span.month= I18n.t('pages.prices.month')
+              .abo
+                = I18n.t('pages.prices.pro.abo-price')
+                = I18n.t('pages.prices.abo')
+              .action
+                =link_to I18n.t('pages.prices.business.action'), '#', class: "btn btn-try",
+                data: { confirm: I18n.t('pages.dashboard.decide.email.text') + "<hr><form action='https://vedaserve.us6.list-manage.com/subscribe/post?u=d3c39406b3fe4eddbf1f85588&amp;id=8454f70732' method='post' name='mc-embedded-subscribe-form' class='clearfix'><div class='input-group'><input type='email' name='EMAIL' class='form-control email pull-left' id='mce-EMAIL' placeholder='Deine Email-Adresse' required><span class='input-group-btn'><button class='btn btn-subscribe' type='button'  value='Anmelden' name='subscribe' id='mc-embedded-subscribe'>Ja, ich will die Proofler-News</button></span></div></form>",
+                commit: I18n.t('pages.prices.newsletter.ok'),
+                cancel: "" },
+                title: I18n.t('pages.prices.newsletter.title')
+          .col-sm-4.col-sm-offset-0.col-xs-10.col-xs-offset-1
+            .price-box
+              .title= I18n.t('pages.prices.business.title')
+              .price
+                %span.currency= I18n.t('pages.prices.currency')
+                = I18n.t('pages.prices.business.price')
+                %span.month= I18n.t('pages.prices.month')
+              .abo
+                = I18n.t('pages.prices.business.abo-price')
+                = I18n.t('pages.prices.abo')
+              .action
+                =link_to I18n.t('pages.prices.business.action'), '#', class: "btn btn-try",
+                data: { confirm: I18n.t('pages.dashboard.decide.email.text') + "<hr><form action='https://vedaserve.us6.list-manage.com/subscribe/post?u=d3c39406b3fe4eddbf1f85588&amp;id=8454f70732' method='post' name='mc-embedded-subscribe-form' class='clearfix'><div class='input-group'><input type='email' name='EMAIL' class='form-control email pull-left' id='mce-EMAIL' placeholder='Deine Email-Adresse' required><span class='input-group-btn'><button class='btn btn-subscribe' type='button'  value='Anmelden' name='subscribe' id='mc-embedded-subscribe'>Ja, ich will die Proofler-News</button></span></div></form>",
+                commit: I18n.t('pages.prices.newsletter.ok'),
+                cancel: I18n.t('pages.prices.newsletter.ok')},
+                title: I18n.t('pages.prices.newsletter.title')
+
+        .row
+          .col-xs-12.centered
+            .lp-prices-netto= I18n.t('pages.prices.netto')
+
+  .row
+    .container
+      .feature-table-wrap
+        .row
+          .col-xs-12
+            %table.feature-table.table
+              %thead
+                %tr
+                  %th.feature-table-section-heading{ scope: "col"}= I18n.t('pages.prices.features.prices.heading')
+                  %th.feature-table-heading{ scope: "col"}= I18n.t('pages.prices.free.title')
+                  %th.feature-table-heading{ scope: "col"}= I18n.t('pages.prices.pro.title')
+                  %th.feature-table-heading{ scope: "col"}= I18n.t('pages.prices.business.title')
+              %tbody
+                %tr
+                  %th= I18n.t('pages.prices.features.prices.monthly.title')
+                  %td.feature-table-no –
+                  %td= I18n.t('pages.prices.features.prices.monthly.pro')
+                  %td= I18n.t('pages.prices.features.prices.monthly.business')
+                %tr.feature-table-grey
+                  %th= I18n.t('pages.prices.features.prices.annual.title')
+                  %td.feature-table-no –
+                  %td= I18n.t('pages.prices.features.prices.annual.pro')
+                  %td= I18n.t('pages.prices.features.prices.annual.business')
+                %tr
+                  %th.feature-table-section-heading{ colspan: "4",  scope: "col"}= I18n.t('pages.prices.features.options.heading')
+                = render 'pages/tablerow',
+                  title: I18n.t('pages.prices.features.options.unlimited.title'),
+                  description: I18n.t('pages.prices.features.options.unlimited.description'),
+                  grey: false, free: true, pro: true, business: true
+                = render 'pages/tablerow',
+                  title: I18n.t('pages.prices.features.options.guide.title'),
+                  description: I18n.t('pages.prices.features.options.guide.description'),
+                  grey: true, free: true, pro: true, business: true
+                = render 'pages/tablerow',
+                  title: I18n.t('pages.prices.features.options.images.title'),
+                  description: I18n.t('pages.prices.features.options.images.description'),
+                  grey: false, free: true, pro: true, business: true
+                = render 'pages/tablerow',
+                  title: I18n.t('pages.prices.features.options.opengraph.title'),
+                  description: I18n.t('pages.prices.features.options.opengraph.description'),
+                  grey: true, free: true, pro: true, business: true
+
+                %tr
+                  %th.feature-table-section-heading{ colspan: "4",  scope: "col"}= I18n.t('pages.prices.features.facts.heading')
+                = render 'pages/tablerow',
+                  title: I18n.t('pages.prices.features.facts.unlimited.title'),
+                  description: I18n.t('pages.prices.features.facts.unlimited.description'),
+                  grey: false, free: true, pro: true, business: true
+                = render 'pages/tablerow',
+                  title: I18n.t('pages.prices.features.facts.guide.title'),
+                  description: I18n.t('pages.prices.features.facts.guide.description'),
+                  grey: true, free: true, pro: true, business: true
+                = render 'pages/tablerow',
+                  title: I18n.t('pages.prices.features.facts.defaults.title'),
+                  description: I18n.t('pages.prices.features.facts.defaults.description'),
+                  grey: false, free: true, pro: true, business: true
+
+                %tr
+                  %th.feature-table-section-heading{ colspan: "4",  scope: "col"}= I18n.t('pages.prices.features.users.heading')
+                = render 'pages/tablerow',
+                  title: I18n.t('pages.prices.features.users.invite.title'),
+                  description: I18n.t('pages.prices.features.users.invite.description'),
+                  grey: true, free: true, pro: true, business: true
+                = render 'pages/tablerow',
+                  title: I18n.t('pages.prices.features.users.experts.title'),
+                  description: I18n.t('pages.prices.features.users.experts.description'),
+                  grey: false, free: false, pro: true, business: true
+                = render 'pages/tablerow',
+                  title: I18n.t('pages.prices.features.users.team.title'),
+                  description: I18n.t('pages.prices.features.users.team.description'),
+                  grey: true, free: false, pro: false, business: true
+
+                %tr
+                  %th.feature-table-section-heading{ colspan: "4",  scope: "col"}= I18n.t('pages.prices.features.analytics.heading')
+                = render 'pages/tablerow',
+                  title: I18n.t('pages.prices.features.analytics.basic.title'),
+                  description: I18n.t('pages.prices.features.analytics.basic.description'),
+                  grey: false, free: true, pro: true, business: true
+                = render 'pages/tablerow',
+                  title: I18n.t('pages.prices.features.analytics.advanced.title'),
+                  description: I18n.t('pages.prices.features.analytics.advanced.description'),
+                  grey: true, free: false, pro: true, business: true
+                = render 'pages/tablerow',
+                  title: I18n.t('pages.prices.features.analytics.team.title'),
+                  description: I18n.t('pages.prices.features.analytics.team.description'),
+                  grey: false, free: false, pro: false, business: true
+                = render 'pages/tablerow',
+                  title: I18n.t('pages.prices.features.analytics.export.title'),
+                  description: I18n.t('pages.prices.features.analytics.export.description'),
+                  grey: true, free: false, pro: true, business: true
+
+                %tr
+                  %th.feature-table-section-heading{ colspan: "4",  scope: "col"}= I18n.t('pages.prices.features.documentation.heading')
+                = render 'pages/tablerow',
+                  title: I18n.t('pages.prices.features.documentation.review.title'),
+                  description: I18n.t('pages.prices.features.documentation.review.description'),
+                  grey: false, free: false, pro: true, business: true
+                = render 'pages/tablerow',
+                  title: I18n.t('pages.prices.features.documentation.reuse.title'),
+                  description: I18n.t('pages.prices.features.documentation.reuse.description'),
+                  grey: true, free: false, pro: true, business: true
+                = render 'pages/tablerow',
+                  title: I18n.t('pages.prices.features.documentation.archive.title'),
+                  description: I18n.t('pages.prices.features.documentation.archive.description'),
+                  grey: false, free: false, pro: false, business: true
+
+  .row
+    .container-fluid
+      .try-now-box
+        .row
+          .col-xs-12
+            =link_to I18n.t('pages.prices.test.action'), '/#lp-form', class: "btn btn-lg btn-try centered"
+            .test-now= I18n.t('pages.prices.test.now')
+            .test-description=I18n.t('pages.prices.test.description')

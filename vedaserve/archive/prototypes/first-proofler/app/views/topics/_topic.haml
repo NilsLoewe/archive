@@ -1,0 +1,16 @@
+/%h3
+/  = topic.title
+/%div
+/  - topic.questions.each do |question|
+/    = render :partial => 'questions/select_question', :locals => {:question => question}
+/  = render :partial => 'questions/new', :locals => {:topic => topic}
+.question.column
+  .upper-area
+    .front
+      = link_to topic.title, topic
+      %br/
+      Questions:
+      = topic.questions.count
+      %br/
+      Used:
+      = topic.questions.enabled.count

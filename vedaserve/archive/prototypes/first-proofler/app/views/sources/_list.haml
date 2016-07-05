@@ -1,0 +1,9 @@
+.row
+  .col-xs-12
+    - if search? and search.type == type
+      %h3
+        Quellen
+      %div
+        - sources.each do |s|
+          = link_to s.title, s.url, :target => "_blank"
+          %br/

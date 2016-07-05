@@ -1,0 +1,17 @@
+.row
+  .col-xs-12
+    .badge= link_to 'Optionen', options_decision_path(@decision)
+    .badge= link_to 'Daten', facts_decision_path(@decision)
+
+    -unless @decision.options.count > 0
+      .badge Bewertung
+    -else
+      .badge= link_to 'Bewertung', arguments_decision_path(@decision)
+
+    -unless @decision.options.count > 0
+      .badge Entscheidung
+    -else
+      - if @decision.options.chosen.count > 0
+        .badge= link_to 'Entscheidung', review_decision_path(@decision)
+      -else
+        .badge= link_to 'Entscheidung', decide_decision_path(@decision)

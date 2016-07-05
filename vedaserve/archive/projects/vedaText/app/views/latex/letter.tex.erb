@@ -1,0 +1,26 @@
+\documentclass[
+  fontsize=12pt
+, addrfield=true
+, backaddress=true
+, fromalign=location
+, DIN
+]{scrlttr2}
+
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+
+\setkomafont{addressee}{\ttfamily}
+\setkomafont{backaddress}{\ttfamily}
+
+\setkomavar{fromname}{<%= locals[:sender_name] %>}
+\setkomavar{fromaddress}{<%= locals[:sender_address] %>}
+\setkomavar{title}{<%= locals[:title] %>}
+
+\begin{document}
+  \begin{letter}{<%= locals[:recipient] %>}
+    \opening{<%= locals[:opening] %>}
+    <%= locals[:content] %>
+    \closing{<%= locals[:closing] %>}
+  \end{letter}
+\end{document}

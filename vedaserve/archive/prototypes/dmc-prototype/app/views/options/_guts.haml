@@ -1,0 +1,17 @@
+.panel.panel-primary.boxed
+  .panel-heading
+    Wie ist Dein Bauchgef&uuml;hl f&uuml;r
+    =option.title
+    ?
+  .panel-body
+    .row
+      .col-xs-1
+        =image_tag "contra.png"
+      .col-xs-10
+        :javascript
+          $(function() {
+            $( "#slider#{option.id}" ).slider({min: 0, max: 10, value: 5, step: 1});
+          });
+        .div{:id=> "slider#{option.id}"}
+      .col-xs-1
+        =image_tag "pro.png"

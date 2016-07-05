@@ -1,0 +1,45 @@
+.row
+  .col-md-6.col-md-offset-3
+    -if @next_bauch
+      .row
+        .col-md-4
+        .col-md-1
+          Ganz doof
+        .col-md-1
+          Doof
+        .col-md-1
+          Egal
+        .col-md-1
+          OK
+        .col-md-1
+          Geil!
+      .row
+        = form_for(@next_bauch) do |f|
+          .col-md-4
+            Wie findest Du
+            = @next_bauch.option.title
+            ?
+          .col-md-1
+            = f.radio_button :value, -2
+          .col-md-1
+            = f.radio_button :value, -1
+          .col-md-1
+            = f.radio_button :value, 0
+          .col-md-1
+            = f.radio_button :value, 1
+          .col-md-1
+            = f.radio_button :value, 2
+          .col-md-2
+            =f.hidden_field(:unset, :value => false)
+            %span.input-group-btn
+              = button_tag(type: 'submit', id: "add", class: "btn btn-success") do
+                ok
+    -else
+      = form_for(@decision) do |f|
+        = f.hidden_field :state, :value => "decide"
+        = button_tag(type: 'submit', id: "add", class: "btn btn-info") do
+          Ich habe alle Optionen bewertet.
+
+.row
+  .col-md-12
+    %hr

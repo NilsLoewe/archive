@@ -1,0 +1,47 @@
+.row
+  .col-md-3
+    %h4 Template
+    .research-card
+      .panel.panel-default.research-panel
+        .panel-heading
+          %h3.panel-title My revenue projection
+        .panel-body
+          Short description goes here.
+        .panel-footer
+          Last update: 2 days ago
+  %h4 Objekt
+  = render @research
+
+%hr/
+
+.row
+  .col-md-3
+    .research-card
+      .panel.panel-default.research-panel
+        .panel-heading
+          %h3.panel-title
+            Add new research
+            %span.fui-plus.pull-right
+        .panel-body
+          %i Here we should perhaps write a small text for motivation?
+  = render 'researches/new'
+
+.row
+  .col-md-3
+    .research-card
+      .panel.panel-default.research-panel
+        .panel-heading
+          %h3.panel-title
+            Enter title & content
+            %span.fui-cross.pull-right
+        %form
+          .panel-body
+            Title:
+            %br/
+            %input{:size => "20", :type => "textfield"}/
+            Description:
+            %br/
+            %input{:size => "20", :type => "textfield"}/
+          .panel-footer
+            %button.btn.btn-primary{:type => "submit"} Create
+  = render partial: 'researches/new', locals: {research: @new_research, startState: 'back'}

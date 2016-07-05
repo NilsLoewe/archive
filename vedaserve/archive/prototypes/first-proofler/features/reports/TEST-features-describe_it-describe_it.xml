@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite errors="0" failures="0" name="Describe It" skipped="0" tests="5" time="1.594534">
+<testcase classname="Describe It" name="Describe the research" time="0.241958">
+  <system-out/>
+  <system-err/>
+</testcase>
+<testcase classname="Describe It" name="Add three own questions" time="0.423454">
+  <system-out/>
+  <system-err/>
+</testcase>
+<testcase classname="Describe It" name="Add and Delete a question" time="0.241392">
+  <system-out/>
+  <system-err/>
+</testcase>
+<testcase classname="Describe It" name="Disable and Enable a question" time="0.285434">
+  <system-out/>
+  <system-err/>
+</testcase>
+<testcase classname="Describe It" name="Disable all a questions" time="0.402295">
+  <system-out/>
+  <system-err/>
+</testcase>
+  <system-out>
+    <![CDATA[]]>
+  </system-out>
+  <system-err>
+    <![CDATA[]]>
+  </system-err>
+</testsuite>

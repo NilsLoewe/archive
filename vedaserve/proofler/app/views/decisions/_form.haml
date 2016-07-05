@@ -1,0 +1,9 @@
+= bootstrap_form_for(@decision, url: decisions_path, remote: true) do |decision|
+  %h3#form-heading Überschrift
+  #form-title
+    = decision.text_field :title, placeholder: true
+  = decision.fields_for :admin do |admin|
+    = admin.text_field :name, placeholder: true
+    = admin.email_field :email, placeholder: true
+  .decision-template
+  = decision.submit I18n.t('decision.create'), class: "lp-form-btn pull-right", id: "create_decision"

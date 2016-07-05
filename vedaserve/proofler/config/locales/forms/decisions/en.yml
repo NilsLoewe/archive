@@ -1,0 +1,33 @@
+---
+en:
+  decision:
+    check_your_email_html: Toll! Wir haben dir eine Email mit deinem persönlichen
+      Link an <strong>%{email}</strong> geschickt. Bis gleich!
+    create: Jetzt entscheiden
+  activerecord:
+    errors:
+      models:
+        decision:
+          attributes:
+            title:
+              blank: Bitte gib einen Titel ein
+        participant:
+          attributes:
+            email:
+              blank: Bitte gibt eine gültige Email-Adresse ein
+            name:
+              blank: Bitte gib einen Namen ein
+  helpers:
+    label:
+      decision:
+        description: Description
+        title: Which decision do you want to make?
+      decision[admin_attributes]:
+        email: Your email address
+        name: Your name
+    placeholder:
+      decision:
+        title: Welche Entscheidung willst du treffen?
+      decision[admin_attributes]:
+        email: E-Mail Adresse
+        name: Dein Name

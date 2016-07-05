@@ -1,0 +1,54 @@
+.row
+  .col-md-6.col-md-offset-2
+    %h2
+      Teilnehmer
+.row
+  .col-md-2
+    =link_to('1. Allgemein', general_decision_path(@decision))
+    %br
+    =link_to('2. Optionen', options_decision_path(@decision))
+    %br
+    =link_to('3. Einstellungen', settings_decision_path(@decision))
+    %br
+    %b 4. Einladen
+
+  .col-md-10.dist-top
+    .row
+      .col-md-1
+        =image_tag "mail_single.png"
+
+      .col-md-11
+        .row
+          .col-md-12
+            %h4 Nutze den proofler um Einladungen zu versenden
+
+            .panel.panel-default
+              %table.table
+                - @decision.participants.each do |p|
+                  %tr
+                    %td=p.user.name
+                    %td=p.user.email
+                    %td
+                      - unless p.invited
+                        = link_to 'Einladung an ' + p.user.name + ' senden', invite_participant_path(p), :class => "btn btn-primary"
+                      - else
+                        = link_to 'Einladung erneut an ' + p.user.name + ' senden', invite_participant_path(p), :class => "btn btn-default"
+            = form_for(@user) do |f|
+              =f.text_field(:name, :size => 25, :placeholder => "Wer soll mitentscheiden?")
+              =f.text_field(:email, :size => 25, :placeholder => "Gib eine Email Adresse an")
+              =f.hidden_field :decision_id, :value => @decision.id
+              =f.submit 'einladen', class: "btn btn-primary"
+
+        %br
+        %br
+        Um die Teilnehmer selber einzuladen, kopiere einfach den folgenden Einladungslink und versende ihn z.B. per Email.
+        %br
+        %br
+        =link_to(participate_decision_url(@decision), participate_decision_path(@decision))
+
+.row
+  .col-md-6.col-md-offset-2                    
+    .row.space-top
+      .col-md-12
+        = link_to('zurueck', settings_decision_path(@decision), :class => "btn btn-md btn-default")
+        = link_to('Jetzt loslegen!', dashboard_participant_url(@decision.participants.first), :class => "btn btn-md btn-primary pull-right")    

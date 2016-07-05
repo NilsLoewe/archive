@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Title:
+  = @source.title
+%p
+  %b Decision:
+  = @source.decision_id
+
+= link_to 'Edit', edit_source_path(@source)
+\|
+= link_to 'Back', sources_path

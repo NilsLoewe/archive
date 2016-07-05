@@ -1,0 +1,10 @@
+<% provide(:title, 'All documents') %>
+
+<%= link_to "Create new template", create_template_path, 
+                                class: "btn btn-small btn-primary" %>
+                                
+<h1>All Templates</h1>
+
+<ul class="templates">
+  <%= render @document_templates %>
+</ul>

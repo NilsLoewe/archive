@@ -1,0 +1,10 @@
+= bootstrap_form_for(@comment, url: dashboard_comments_path(@token), remote: true) do |comment|
+  .row
+    .col-sm-12
+      = comment.text_area :comment, placeholder: true, hide_label: true
+      = comment.hidden_field :commentable_id, value: locals[:commentable_id], placeholder: true
+      = comment.hidden_field :commentable_type, value: locals[:commentable_type], placeholder: true
+
+  .row
+    .col-sm-4.col-sm-offset-8
+      = comment.submit I18n.t('comment.create'), class: "btn btn-inverse btn-block"

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Sign in" tests="3" time="0.008824526" failures="0" errors="0" skipped="0">
+  <testcase name="Researcher signs in successfully (PENDING)" time="0.001271467">
+  </testcase>
+  <testcase name="User enters wrong email (PENDING)" time="0.005365375">
+  </testcase>
+  <testcase name="User enters wrong password (PENDING)" time="0.001390256">
+  </testcase>
+  <system-out>
+  </system-out>
+  <system-err>
+  </system-err>
+</testsuite>

@@ -1,0 +1,116 @@
+-if @decision.state == "options"
+  .row
+    .col-md-8
+      %div{'data-step' => 1, :class => 'alert alert-info', 'data-intro' => 'Tell proofler what you already know. Write down all the known options for your decision.'}
+        %b Lege eine (weitere) Option an
+        %br
+        = form_for(@option) do |f|
+          .input-group
+            = f.text_field(:title, :class => "form-control")
+            = f.hidden_field :decision_id, :value => @decision.id
+            %span.input-group-btn
+              = button_tag(type: 'submit', id: "add", class: "btn btn-info") do
+                +
+    .col-md-2
+      = form_for(@decision) do |f|
+        %div{:class => 'input-group', 'data-step' => @decision.options.length == 1 ? 3 : nil, 'data-intro' => @decision.options.length == 1 ? 'Click here when you entered all your options. We\'ll then continue to the next step.' : nil}
+          = f.hidden_field :state, :value => "facts"
+          = button_tag(type: 'submit', id: "add", class: "btn btn-info") do
+            Ich habe genug Optionen
+
+
+
+-if @decision.state == "facts"
+  .row
+    .col-md-8
+      %div{'data-step' => 1, :class => 'alert alert-success', 'data-intro' => 'What is important for your options? Enter your criteria.'}
+        %b Welche Kriterien sind wichtig für die Entscheidung?
+        %br
+        = form_for(@fact) do |f|
+          .input-group
+            = f.text_field(:title, :class => "form-control")
+            = f.hidden_field :decision_id, :value => @decision.id
+            = f.hidden_field :type, :value => "binary"
+            %span.input-group-btn
+              = button_tag(type: 'submit', id: "add", class: "btn btn-success") do
+                +
+    .col-md-2
+      = form_for(@decision) do |f|
+        %div{:class => 'input-group', 'data-step' => 2, 'data-intro' => 'Tell us when you selected all criteria!'}
+          = f.hidden_field :state, :value => "users"
+          = button_tag(type: 'submit', id: "add", class: "btn btn-success") do
+            Ich habe genug Kriterien
+
+
+
+-if @decision.state == "users"
+  .row
+    .col-md-12
+      .alert.alert-danger
+        .row
+          -if @decision.participants.count == 1
+            .col-md-6
+              .btn.btn-danger{:id=> "toggle_users_table"}
+                %i.fa.fa-users
+                  Wer soll mit entscheiden?
+
+          -if @decision.participants.count > 1
+            .col-md-6.pull-right
+              = form_for(@decision) do |f|
+                = f.hidden_field :state, :value => "gather"
+                = button_tag(type: 'submit', id: "add", class: "btn btn-danger") do
+                  Ich habe alle eingeladen
+          -else
+            .col-md-6.pull-right
+              = form_for(@decision) do |f|
+                = f.hidden_field :state, :value => "gather"
+                = button_tag(type: 'submit', id: "add", class: "btn btn-danger") do
+                  Ich arbeite allein
+
+
+
+
+-if @decision.state == "gather"
+  .row
+    .col-md-12
+      .alert.alert-warning
+        .row
+          .col-md-8
+            Recherchiere nun die Daten zu den Kriterien die Du festgelegt hast. Trage die Daten zu den Optionen ein.
+          .col-md-4
+            = form_for(@decision) do |f|
+              = f.hidden_field :state, :value => "rating"
+              = button_tag(type: 'submit', id: "add", class: "btn btn-warning") do
+                Ich habe genug
+                %br
+                Daten gesammelt
+
+
+
+-if @decision.state == "rating"
+  .row
+    .col-md-12
+      .alert.alert-success
+        .row
+          .col-md-8
+            Wie wichtig ist Dir welches Kriterium?
+
+
+
+-if @decision.state == "mind"
+  .row
+    .col-md-12
+      .alert.alert-info
+        .row
+          .col-md-8
+            Du hast nun Optionen, Kriterien und Daten gesammelt. Bewerte aus dem Bauch heraus die Optionen!
+
+
+
+-if @decision.state == "decide"
+  .row
+    .col-md-12
+      .alert.alert-warning
+        .row
+          .col-md-8
+            Du kannst nun entscheiden!

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=ASCII' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Hallo <%= @user.name %></h1>
+    <p>
+      bei der Entscheidung <%= @decision.title %> können jetzt die Bewertungen vorgenommen werden.<br><br>
+    </p>
+    <p>
+      Um zu der Entscheidung zu gelangen, folge diesem Link: <%= link_to "Jetzt bewerten!", @url %>
+    </p>
+    <p>
+      Beste Grüße,<br>
+      Das Proofler-Team
+    </p>
+  </body>
+</html>

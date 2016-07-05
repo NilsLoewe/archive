@@ -1,0 +1,38 @@
+---
+de:
+  mails:
+    decisions:
+      new:
+        subject: 'Proofler: Link zur Entscheidung "%{title}"'
+        hello: Liebe(r)
+        text1: danke, dass du den proofler nutzt! Du hast die Entscheidung
+        text2: 'erstellt, hier kannst du sie bearbeiten:'
+        text3: 'Lade weitere Leute ein, die dir bei der Entscheidungsfindung helfen!'
+        greet: 'Viel Spass,'
+        signiture: 'dein proofler-Team!'
+        notice: 'Du solltest diese Mail nicht an andere weiterleiten, da diese sonst Zugriff auf deine Entscheidung haben.'
+      rate:
+        subject: 'Proofler: Bewerte die Fakten für "%{title}"'
+        hello: Liebe(r)
+        text1: die Suche nach Optionen für die Entscheidung
+        text2: ist nun abgeschlossen.
+        text3: 'bittet dich,  die einzelnen Möglichkeiten zu bewerten. Hier kannst du abstimmen:'
+        greet: 'Viel Spass,'
+        signiture: 'dein proofler-Team!'
+        notice: 'Du solltest diese Mail nicht an andere weiterleiten, da diese sonst Zugriff auf deine Entscheidung haben.'
+      close:
+        subject: 'Proofler: Die Entscheidung "%{title}" wurde getroffen'
+        hello: Liebe(r)
+        text1: es ist geschafft, die Entscheidung
+        text2: 'wurde getroffen. Hier kannst du sehen, welche Option ausgewählt wurde:'
+        greet: 'Danke, dass du den proofler nutzt,'
+        signiture: 'bis zum nächsten Mal!'
+    participants:
+      new:
+        subject: 'Proofler: Nimm an der Entscheidung "%{title}" teil'
+        hello: Liebe(r)
+        text1: nutzt den proofler und hat dich eingeladen, an der Entscheidung
+        text2: 'teilzunehmen. Hier kannst du direkt mitmachen:'
+        greet: 'Viel Spass,'
+        signiture: 'dein proofler-Team!'
+        notice: 'Du solltest diese Mail nicht an andere weiterleiten, da diese sonst Zugriff auf deine Entscheidung haben.'

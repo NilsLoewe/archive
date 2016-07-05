@@ -1,0 +1,27 @@
+---
+en:
+  option:
+    create: Erstellen
+    title: Neue Option
+  activerecord:
+    errors:
+      models:
+        option:
+          attributes:
+            description:
+              blank: Bitte gib eine Beschreibung an
+            title:
+              blank: Bitte gib einen Titel ein
+            link:
+              blank: Gib einen Link an
+  helpers:
+    label:
+      option:
+        description: Beschreibung
+        title: Titel
+        link: Link
+    placeholder:
+      option:
+        description: Beschreibe die Option mit ein paar Worten
+        title: Welche Option willst Du anlegen?
+        link: Gibt es einen Link zur Option?

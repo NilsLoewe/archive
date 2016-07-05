@@ -1,0 +1,46 @@
+.row
+  .col-xs-12
+    - unless search? and search.type == type
+      %b
+        Please select or create a search
+    - else
+      .row
+        %h4= search.title
+      - if dataobject? and search.dataobjects.include?(@dataobject)
+        .row
+          %h4
+            Aktueller Treffer:
+            %i= @dataobject.title
+          = form_for(@dataobject, :as => :dataobject) do |f|
+            = f.label :title
+            = f.text_field :title, placeholder: "What did you find?"
+            %br/
+            = f.label :content
+            = f.text_field :content, placeholder: "Describe the details"
+            %br/
+            = f.hidden_field :search_id, :value => @search.id
+            = f.submit "Update", class: "btn btn-xs btn-primary"
+      - else
+        Please create or select a search result
+      .row
+        %h4
+          Suchergebnisse
+        - @search.dataobjects.each do |dataobject|
+          .col-xs-3
+            .dataobject.panel
+              .panel-body
+                %small
+                  = dataobject.type
+                  = link_to '[X]', sti_dataobject_path(dataobject.type, dataobject), method: :delete, data: { confirm: 'Are you sure?' }
+                %br/
+                = link_to dataobject.title, sti_dataobject_path(dataobject.type, dataobject)
+      .row
+        %h4
+          Neues Suchergebnis
+        = form_for(@new_dataobject) do |f|
+          = f.label :type
+          = f.select :type, Dataobject.types.map {|r| [r.humanize, r.camelcase]}, {}
+          = f.text_field :title, placeholder: "What did you find?"
+          = f.hidden_field :search_id, :value => @search.id
+          = f.hidden_field :score, :value => "0"
+          = f.submit "Add", class: "btn btn-xs btn-primary"

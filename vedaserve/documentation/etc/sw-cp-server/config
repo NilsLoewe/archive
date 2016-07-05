@@ -1,0 +1,12 @@
+server.modules = ()
+server.document-root = "/dev/null"
+server.port = 10001
+server.bind = "127.0.0.1"
+server.pid-file = "/var/run/sw-cp-server.pid"
+server.errorlog-use-syslog = "disable"
+server.errorlog = "/var/log/sw-cp-server/error_log"
+server.username = "sw-cp-server"
+server.groupname = "sw-cp-server"
+
+include_shell "/usr/share/sw-cp-server/applications-conf.sh"
+

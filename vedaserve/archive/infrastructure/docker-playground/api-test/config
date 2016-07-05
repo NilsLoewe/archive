@@ -1,0 +1,10 @@
+HOST="http://private-09569-proofler.apiary-mock.com"
+
+CURL_OPTS="-s"
+
+# POST_PROCESSING="cat"
+# POST_PROCESSING="jq ."
+POST_PROCESSING="json_pp ."
+
+# behave like only the mocked IDs exist
+MOCK_MODE=1

@@ -1,0 +1,13 @@
+#new_constraint.modal.fade{:tabindex => "-2", "data-focus-on" => "input:first"}
+  .modal-header
+    %h4.modal-title New Constraint
+  .modal-body
+    .modal-body-content
+      = form_for(@constraint) do |f|
+        .field
+          = f.label :title
+          = f.text_field(:title, :size => '10')
+        .field
+          = f.hidden_field :decision_id, :value => @decision.id
+          = f.submit "Save changes", class: "btn btn-large btn-primary"
+          %button.btn{"data-dismiss" => "modal", :type => "button"} Close

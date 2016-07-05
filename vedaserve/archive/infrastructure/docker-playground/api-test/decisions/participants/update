@@ -1,0 +1,28 @@
+#!/bin/bash
+
+. `dirname $0`/../../config
+
+decision_id=$1
+id=$2
+name=$3
+email=$4
+
+mock_decision_id=23
+mock_id=52
+mock_name="Jonny"
+mock_email="jonny-the-doe@email.invalid"
+
+if [[ -z "${decision_id}" || -z "${id}" ]]; then
+  echo "$0 decision_id id name email"
+  printf ' i.e. %s "%s" "%s" "%s" "%s"\n' ${0} ${mock_decision_id} ${mock_id} ${mock_name} ${mock_email}
+  exit 1
+fi
+
+if [[ "${MOCK_MODE}" = "1" ]]; then
+  if [[ ${decision_id} != "23" || "${id}" != "52" ]]; then
+    exit
+  fi
+fi
+
+
+curl $CURL_OPTS --request PUT "$HOST/decisions/${decision_id}/participants/${id}" | $POST_PROCESSING

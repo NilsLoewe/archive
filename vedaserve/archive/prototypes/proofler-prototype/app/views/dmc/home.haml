@@ -1,0 +1,26 @@
+.row
+  .col-md-6
+    .row
+      .col-lg-12
+        =link_to(image_tag("proofler.png", width: '40%'), root_path)
+
+.row.top
+  .col-md-8.col-md-offset-2
+
+    .row.top
+      .col-md-12.centered
+        %h1 Der Proofler hilft Dir bei der Entscheidungsfindung
+
+    .row.top
+      .col-md-12.centered
+        %h4 Triff eine Entscheidung allein oder in der Gruppe. Der Proofler bietet Dir einen Ansatz zur wissensbasierten Entscheidungsfindung, bei dem Du sowohl Kopf als auch Bauch zu Rate ziehst.
+
+    .row.top
+      .col-lg-12.centered
+        =form_for (@search) do |f|
+          =f.text_field :title, :size => "75%", :placeholder => "Was willst Du entscheiden?"
+          = submit_tag 'Jetzt entscheiden', :class => "btn btn-md btn-primary", :name => 'create_button'
+
+    .row.top
+      .col-lg-offset-2.col-md-8.top
+        =image_tag("intro.png", width: '100%')

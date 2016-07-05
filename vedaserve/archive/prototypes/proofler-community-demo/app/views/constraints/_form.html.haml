@@ -1,0 +1,13 @@
+= form_for @constraint do |f|
+  - if @constraint.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@constraint.errors.count, "error")} prohibited this constraint from being saved:"
+      %ul
+        - @constraint.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :title
+    = f.text_field :title
+  .actions
+    = f.submit 'Save'

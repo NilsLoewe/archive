@@ -1,0 +1,6 @@
+<%- container = '#new_decision' %>
+<%- if @decision.errors.present? -%>
+  $("<%= container %>").html("<%= escape_javascript(render 'form', locals: { decision: @decision }) %>");
+<%- else -%>
+  $("<%= container %>").html("<%= t('decision.check_your_email_html', email: @decision.admin_email) %>");
+<%- end %>

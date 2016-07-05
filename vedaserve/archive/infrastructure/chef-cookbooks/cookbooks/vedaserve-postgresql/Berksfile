@@ -1,0 +1,6 @@
+site :opscode
+
+# special dependencies, that can't be resolved from http://community.opscode.com
+cookbook 'postgresql', git: 'https://github.com/phlipper/chef-postgresql.git', tag: "0.11.2"
+
+metadata

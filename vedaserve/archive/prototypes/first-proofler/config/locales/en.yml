@@ -1,0 +1,14 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+en:
+  hello: "Hello world"
+  result:
+    web_search_result: "Web search"
+    database_search_result: "Database search"
+    library_search_result: "Library search"
+    interview_result: "Interview"
+    WebSearch: "Web search"
+    DatabaseSearch: "Database search"
+    LibrarySearch: "Library search"
+    Interview: "Interview"

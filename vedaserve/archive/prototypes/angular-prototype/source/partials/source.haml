@@ -1,0 +1,49 @@
+.row
+  .col-xs-12
+    .panel.panel-warning
+      .panel-heading
+        %h4 {{ cards.sources[optionId] }}
+      .panel-body
+        .row
+          .col-xs-12
+            .row.text-center
+              Dies ist die Ansicht der Quelle {{cards.sources[optionId] }}. Hier beschreiben wir kurz,
+              was man dort findet und was man ggf. bei der Suche in der Quelle beachten muss.
+              %br
+              %br
+              %button.btn.btn-success Ab zu {{cards.sources[optionId]}}
+.row
+  .col-xs-12
+    .panel.panel-warning
+      .panel-heading
+        %h4 Quellen
+      .panel-body
+        .row
+          .col-xs-12
+            %form.form-horizontal{:role => "form"}
+              .form-group
+                .col-xs-3
+                  %select
+                    %option Alle
+                    %option Freie Quellen
+                    %option Datenbanken
+                    %option Literatur
+                    %option Experten
+                    %option Die Massen
+                .col-xs-3
+                  %input{ :type=>"checkbox" } Vorschläge anderer User?
+                .col-xs-4
+                  %input.form-control{"ng-model" => "noteknowledge"}/
+                .col-xs-2
+                  %button.btn.btn-warning Filter
+        %hr
+        .row
+          .col-xs-12
+            .row.text-center
+            %div{"ng-model" => "cards.sources", "ui-sortable" => "sortableOptions"}
+              .col-xs-4{"ng-repeat" => "card in cards.sources"}
+                .panel.panel-warning.is-draggable
+                  .panel-heading
+                    %a{:href => "#/source/{{$index}}", 'ng-class' => "{active: $location.path() == '/source'}"} {{ card }}
+                  .panel-body
+                    Einige Worte zu {{ card }}

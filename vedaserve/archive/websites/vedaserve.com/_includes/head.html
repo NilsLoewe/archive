@@ -1,0 +1,23 @@
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="description" content="{{ site.description }}">
+    <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
+
+    <link rel="stylesheet" href="{{ "/startup/flat-ui/bootstrap/css/bootstrap.css" | prepend: site.baseurl }}">
+    <link rel="stylesheet" href="{{ "/startup/flat-ui/css/flat-ui.css" | prepend: site.baseurl }}">
+    <link rel="stylesheet" href="{{ "/startup/common-files/css/icon-font.css" | prepend: site.baseurl }}">
+    <link rel="stylesheet" href="{{ "/startup/common-files/css/animations.css" | prepend: site.baseurl }}">
+    <link rel="stylesheet" href="{{ "/startup/ui-kit/ui-kit-header/css/style.css" | prepend: site.baseurl }}">
+    <link rel="stylesheet" href="{{ "/startup/ui-kit/ui-kit-content/css/style.css" | prepend: site.baseurl }}">
+    <link rel="stylesheet" href="{{ "/startup/ui-kit/ui-kit-blog/css/style.css" | prepend: site.baseurl }}">
+    <link rel="stylesheet" href="{{ "/startup/ui-kit/ui-kit-contacts/css/style.css" | prepend: site.baseurl }}">
+    <link rel="stylesheet" href="{{ "/startup/ui-kit/ui-kit-crew/css/style.css" | prepend: site.baseurl }}">
+    <link rel="stylesheet" href="{{ "/startup/ui-kit/ui-kit-price/css/style.css" | prepend: site.baseurl }}">
+    <link rel="stylesheet" href="{{ "/startup/ui-kit/ui-kit-projects/css/style.css" | prepend: site.baseurl }}">
+    <link rel="stylesheet" href="{{ "/startup/ui-kit/ui-kit-footer/css/style.css" | prepend: site.baseurl }}">
+
+    <link rel="stylesheet" href="{{ "/css/main.css" | prepend: site.baseurl }}">
+</head>

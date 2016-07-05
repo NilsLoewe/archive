@@ -1,0 +1,6 @@
+---
+de:
+  activerecord:
+    errors:
+      messages:
+        record_invalid: Bitte prüfe Deine Eingaben

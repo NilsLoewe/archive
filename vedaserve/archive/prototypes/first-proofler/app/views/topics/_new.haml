@@ -1,0 +1,7 @@
+.question.column
+  .upper_area
+    .front
+      = form_for(@new_topic) do |f|
+        = f.label :title
+        = f.text_field :title, size: 10
+        = f.submit "Create", class: "btn btn-large btn-primary"

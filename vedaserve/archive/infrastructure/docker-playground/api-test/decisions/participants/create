@@ -1,0 +1,17 @@
+#!/bin/bash
+
+. `dirname $0`/../../config
+
+id=$1
+name=${2}
+email=${3}
+
+if [[ -z "${id}" || -z "${name}" || -z "${email}" ]]; then
+  echo "$0 id name email"
+  exit
+fi
+
+request=$(printf '{"participants":{"name":"%s","email":"%s"}}' ${name} ${email})
+
+curl $CURL_OPTS --request POST --data-binary $request \
+  "$HOST/decisions/${id}/participants" | $POST_PROCESSING

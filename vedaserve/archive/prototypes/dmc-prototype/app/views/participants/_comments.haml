@@ -1,0 +1,24 @@
+.top
+  .panel.panel-default
+    .panel-body
+      - @decision.comments.take(5).each do |c|
+        .row
+          .col-lg-12
+            %b=c.user.name
+            .pull-right
+              =time_ago_in_words(c.created_at)
+            %br
+            =c.comment
+            %hr
+      =link_to 'alle Kommentare', comments_participant_path(@participant)
+      %hr
+      = form_for(@comment) do |f|
+        .input-group
+          = f.text_field(:comment, :class => "form-control", :placeholder => "Diskutiere mit!")
+          = f.hidden_field :decision_id, :value => @decision.id
+          = f.hidden_field :user_id, :value => @participant.user.id
+          .input-group-btn
+            = button_tag(type: 'submit', id: "add", class: "btn btn-primary") do
+              +
+
+

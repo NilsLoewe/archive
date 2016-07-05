@@ -1,0 +1,52 @@
+.row
+  .col-xs-3.space-top
+    = render partial: "participants/steps", :locals => { :step => "rate" }
+    = render partial: "participants/comments"
+
+  .col-xs-9.dist-top
+    .row
+      .col-xs-12
+        %h3
+          Bewerte die Optionen für "
+          %i=@decision.title
+          "
+
+    .row
+      .col-xs-12
+        %h4 Bewerte wie gut welche Option welches Kriterium erfüllt, was Dir wie wichtig ist und was dein Bauch dazu sagt!
+        %hr
+
+    .row
+      - @user.guts.each do |g|
+        .col-xs-6
+          .panel.panel-primary.boxed
+            .panel-heading
+              Wie findest Du
+              =g.option.title
+              ?
+            .panel-body
+              = form_for(g) do |f|
+                .row
+                  .col-xs-1
+                    =image_tag "contra.png"
+                  .col-xs-10
+                    :javascript
+                      $(function() {
+                        $( "#slider#{g.id}" ).slider({
+                          min: 0, 
+                          max: 100, 
+                          value: $("#guts_value#{g.id}").val(),
+                          slide: function(event, ui) {
+                            $("#guts_value#{g.id}").val(ui.value);
+                          }
+                        });
+                      });
+                    .div{:id=> "slider#{g.id}"}
+                  .col-xs-1
+                    =image_tag "pro.png"
+                .row
+                  .col-xs-12
+                    = f.hidden_field(:value, :maxlength => 3, :size => 2, :id => "guts_value#{g.id}")
+                    = button_tag(type: 'submit', id: "add", class: "btn btn-primary pull-right") do
+                      %span OK
+

@@ -1,0 +1,22 @@
+%nav.navbar.navbar-default#footer
+  .container
+    .row
+      .col-md-3.col-sm-4.col-xs-6
+        Proofler &copy; by
+        =link_to 'Vedaserve', 'http://vedaserve.com'
+
+      .col-md-3.col-sm-4.col-xs-6
+        =link_to '', 'https://www.facebook.com/proofler', :class => "fa fa-2x fa-facebook-square"
+        =link_to '', 'https://twitter.com/proofler', :class => "fa fa-2x fa-twitter-square"
+        =link_to '', 'https://www.youtube.com/c/Proofler', :class => "fa fa-2x fa-youtube-square"
+        =link_to '', 'https://plus.google.com/+Proofler/posts', :class => "fa fa-2x fa-google-plus-square"
+        =link_to '', 'http://feeds.feedburner.com/proofler', :class => "fa fa-2x fa-rss-square"
+
+      .col-md-1.col-sm-2.hidden-xs
+        =link_to 'Blog', 'http://blog.proofler.com'
+      .col-md-1.col-sm-2.hidden-xs
+        =link_to 'Help', 'http://help.proofler.com'
+      .col-md-2.col-sm-2.hidden-xs
+        =link_to 'Impressum', pages_imprint_path
+      .col-md-2.hidden-sm.hidden-xs
+        =link_to 'Haftungsausschluss', pages_privacy_path

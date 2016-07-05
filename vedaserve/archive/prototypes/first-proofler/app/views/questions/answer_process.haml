@@ -1,0 +1,84 @@
+.row
+  .panel.panel-default
+    .panel-heading
+      %h3.panel-title
+        = @question.title
+    .container
+      .row
+        %ul.nav.nav-tabs.nav-append-content
+          %li.active
+            %a(href="#tab_own" data-toggle="tab") Eigenes Wissen
+          %li
+            %a(href="#tab_web" data-toggle="tab") Frag das Web
+          %li
+            %a(href="#tab_books" data-toggle="tab") Schau in die Bücher
+          %li
+            %a(href="#tab_survey" data-toggle="tab") Frag die Masse
+          %li
+            %a(href="#tab_interview" data-toggle="tab") Frag die Experten
+
+        .tab-content
+          .tab-pane.active#tab_own
+            .row
+              .col-xs-3
+                = render :partial => 'searches/new', :locals => {:question => @question, :type => 'Knowledge'}
+                - @question.searches.with_type("Knowledge").each do |search|
+                  = render :partial => 'searches/select', :locals => {:question => @question, :search => search}
+              .col-xs-6
+                = render :partial => 'searches/search', :locals => {:question => @question, :search => @search, :type => 'Knowledge' }
+              .col-xs-3
+                .accordion
+                  = render :partial => 'searches/edit', :locals => {:question => @question, :search => @search, :type => 'Knowledge' }
+
+          .tab-pane#tab_web
+            .row
+              .col-xs-3
+                = render :partial => 'searches/new', :locals => {:question => @question, :type => 'WebSearch'}
+                - @question.searches.with_type("WebSearch").each do |search|
+                  = render :partial => 'searches/select', :locals => {:question => @question, :search => search}
+              .col-xs-6
+                = render :partial => 'searches/search', :locals => {:question => @question, :search => @search, :type => 'WebSearch' }
+              .col-xs-3
+                .accordion
+                  = render :partial => 'searches/edit', :locals => {:question => @question, :search => @search, :type => 'WebSearch' }
+                  = render :partial => 'sources/list', :locals => {:sources => @sources, :search => @search, :type => 'WebSearch' }
+                  = render :partial => 'searches/keywords', :locals => {:sources => @sources, :search => @search, :type => 'WebSearch' }
+
+          .tab-pane#tab_books
+            .row
+              .col-xs-3
+                = render :partial => 'searches/new', :locals => {:question => @question, :type => 'LibrarySearch'}
+                - @question.searches.with_type("LibrarySearch").each do |search|
+                  = render :partial => 'searches/select', :locals => {:question => @question, :search => search}
+              .col-xs-6
+                = render :partial => 'searches/search', :locals => {:question => @question, :search => @search, :type => 'LibrarySearch' }
+              .col-xs-3
+                .accordion
+                  = render :partial => 'searches/edit', :locals => {:question => @question, :search => @search, :type => 'LibrarySearch' }
+                  = render :partial => 'sources/list', :locals => {:sources => @sources, :search => @search, :type => 'LibrarySearch' }
+
+          .tab-pane#tab_survey
+            .row
+              .col-xs-3
+                = render :partial => 'searches/new', :locals => {:question => @question, :type => 'Survey'}
+                - @question.searches.with_type("Survey").each do |search|
+                  = render :partial => 'searches/select', :locals => {:question => @question, :search => search}
+              .col-xs-6
+                = render :partial => 'searches/search', :locals => {:question => @question, :search => @search, :type => 'Survey' }
+              .col-xs-3
+                .accordion
+                  = render :partial => 'searches/edit', :locals => {:question => @question, :search => @search, :type => 'Survey' }
+                  = render :partial => 'sources/list', :locals => {:sources => @sources, :search => @search, :type => 'Survey' }
+
+          .tab-pane#tab_interview
+            .row
+              .col-xs-3
+                = render :partial => 'searches/new', :locals => {:question => @question, :type => 'Interview'}
+                - @question.searches.with_type("Interview").each do |search|
+                  = render :partial => 'searches/select', :locals => {:question => @question, :search => search}
+              .col-xs-6
+                = render :partial => 'searches/search', :locals => {:question => @question, :search => @search, :type => 'Interview' }
+              .col-xs-3
+                .accordion
+                  = render :partial => 'searches/edit', :locals => {:question => @question, :search => @search, :type => 'Interview' }
+                  = render :partial => 'sources/list', :locals => {:sources => @sources, :search => @search, :type => 'Interview' }

@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Side:</strong>
+  <%= @rating.side %>
+</p>
+
+<p>
+  <strong>Option:</strong>
+  <%= @rating.option_id %>
+</p>
+
+<p>
+  <strong>Argument:</strong>
+  <%= @rating.argument_id %>
+</p>
+
+<p>
+  <strong>Value:</strong>
+  <%= @rating.value %>
+</p>
+
+<%= link_to 'Edit', edit_rating_path(@rating) %> |
+<%= link_to 'Back', ratings_path %>

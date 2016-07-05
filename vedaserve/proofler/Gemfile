@@ -1,0 +1,68 @@
+source 'https://rubygems.org'
+
+ruby '2.1.5' # see also the `.ruby-version` file
+
+gem 'rails', '4.2.1'
+gem 'rails_12factor', group: :production # needed for Heroku
+gem 'pg'
+gem 'jbuilder', '~> 2.0'
+
+gem 'responders'
+
+gem 'wisper' # Publish subscribe for Rails internal events
+gem 'wisper-activerecord'
+
+gem 'puma' # HTTP/1.1 Rack server, suggested by Heroku
+gem 'rack-timeout' # needed for puma
+
+gem 'mail_form'
+
+gem 'paperclip', '~> 4.2.1'
+gem 'paperclip-storage-ftp'
+
+gem 'piwik_analytics', '~> 1.0.2' # TODO: this gem seems to be unmaintained (last release in 2012)
+
+# Frontend related gem
+gem 'sass-rails'
+gem 'haml'
+gem 'best_in_place' # in-place form editing with jQuery
+gem 'data-confirm-modal', github: 'ifad/data-confirm-modal' # Nice conform modals
+gem 'uglifier', '>= 1.3.0'
+gem 'jquery-rails'
+gem 'coffee-rails', '~> 4.1.0'
+gem 'bootstrap_form' # Rails form helper for bootstrap
+gem 'therubyracer' # as an execjs runtime
+gem "opengraph_parser"
+
+group :development do
+  gem 'spring'
+  gem 'capistrano-rails'
+  gem 'annotate'
+  gem 'rubocop'
+  gem 'guard-rubocop'
+  gem "rails-erd" # Generate Entity-Relationship Diagrams for Rails Applications
+  gem 'i18n-tasks' # Manage translations and localization with static analysis
+  gem 'better_errors' # Help debugging crashes in views
+end
+
+group :test do
+  gem 'byebug'
+  gem 'rspec-rails', '~> 3.2.0'
+
+  gem 'capybara'
+  gem 'capybara-screenshot'
+  gem 'launchy' # automatically open Capybara `save_and_open_page` pages
+  gem 'poltergeist'
+
+  gem 'guard-rspec'
+  gem 'ci_reporter'
+  gem 'ci_reporter_rspec'
+  gem 'rspec-legacy_formatters'
+
+  gem 'simplecov'
+  gem 'simplecov-rcov'
+
+  gem 'factory_girl'
+  gem 'database_cleaner' # more flexibility with cleaning ActiveRecord models (in combination with factory_girl)
+  gem 'test_after_commit' # needed to test wisper
+end

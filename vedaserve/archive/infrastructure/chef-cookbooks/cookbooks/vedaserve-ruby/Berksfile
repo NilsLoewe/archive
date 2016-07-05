@@ -1,0 +1,4 @@
+site :opscode
+
+# all common dependencies are defined in metadata.rb
+metadata
