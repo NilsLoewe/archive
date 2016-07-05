@@ -1,0 +1,96 @@
+<?php
+function theme_uploader_menu() {
+    $items = array();
+
+    $items['admin/theme_uploader'] = array(
+	'title' => 'Theme Uploader',
+	'description' => 'Theme Uploader',
+	'page callback' => 'drupal_get_form',
+	'page arguments' => array('theme_uploader_admin'),
+	'access arguments' => array('access administration pages'),
+	'type' => MENU_NORMAL_ITEM,
+    );
+    return $items;
+}
+function theme_uploader_admin() {
+    $form['theme_uploader'] = array(
+	'#type' => 'file',
+        '#title' => t('Theme File'),
+	'#size' => 40,
+	'#maxlength' => 40,
+	'#description' => t("Theme file to upload."),
+    );
+    $form['submit'] = array (
+	'#type' => 'submit',
+	'#value' => t('Upload'),
+    );
+    $form['#attributes'] = array('enctype' => 'multipart/form-data');    
+    return ($form);
+}
+function theme_uploader_admin_validate($form_id, $form_values) {
+}
+function theme_uploader_admin_submit($form_id, $form_values) {
+    $themes_dir = 'sites/all/themes';
+    if (user_access('access administration pages')) {
+        $src_file = $_FILES['files']['tmp_name']['theme_uploader'];
+        $dst_file = $themes_dir.'/'.$_FILES['files']['name']['theme_uploader'];
+        if(copy($src_file, $dst_file)) {
+	    $errors = array();
+    	    $regex = '/\.('. ereg_replace(' +', '|', preg_quote('tar.gz')) .')$/i';
+	    if (!preg_match($regex, $dst_file)) {
+		$errors[] = t('Only files with the following extensions are allowed: %files-allowed.', array('%files-allowed' => '.tar.gz'));
+	    }
+	    if (empty($errors)) { 
+    		require_once('pclerror.lib.php');
+		require_once('pcltrace.lib.php');
+		require_once('pcltar.lib.php');
+		$err = PclTarExtract($dst_file, $themes_dir);
+		if ($err == 0) {
+		    $errors[] = t("Can't extract package.");
+    		}
+                $theme_name = '';
+		$is_correct_theme = false;
+		foreach($err as $arc_file_id => $arc_file){
+		    $my_f = $arc_file['filename'];
+		    if(!$theme_name){
+		        $tmp_name = $my_f;
+		        $start_pos = strpos($my_f, $themes_dir.'/');
+		        if($start_pos !== false){
+		            $tmp_name = substr($my_f, $start_pos + strlen($themes_dir.'/'));
+		            $end_pos = strpos($tmp_name, '/');
+		            if($end_pos !== false){
+		                $theme_name = substr($tmp_name, 0, $end_pos);
+		            }
+		        }
+		    }
+		    if($theme_name){
+		        $pos = strpos($my_f, $theme_name.'.info');
+		        if($pos !== false){
+		            $is_correct_theme = true;
+		        }
+		    }
+                }
+                if(!$is_correct_theme){
+                    $errors[] = t("Incorrect theme package for theme=".$theme_name.".");
+                }
+	    }
+	    if (!empty($errors)) {
+		$message = t('The selected file %name could not be uploaded.', array('%name' => $_FILES['files']['name']['module_uploader']));
+		if (count($errors) > 1) {
+		    $message .= '<ul><li>'. implode('</li><li>', $errors) .'</li></ul>';
+		}
+		else {
+		    $message .= ' '. array_pop($errors);
+		}
+		file_delete($dst_file);
+		form_set_error(theme_uploader, $message);    
+	    }
+	    else {
+		file_delete($dst_file);
+    		drupal_set_message(t('Theme has been uploaded'));
+	    }
+	}
+    }
+    return 'theme_uploader';
+}
+?>

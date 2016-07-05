@@ -1,0 +1,4 @@
+; $Id: theme_uploader.info,v 1.1.1.1 2008/10/02 09:13:43 ilobachev Exp $
+name = Theme uploader
+description = Theme uploader.
+core = 6.x

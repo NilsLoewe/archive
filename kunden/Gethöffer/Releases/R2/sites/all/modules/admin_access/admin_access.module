@@ -1,0 +1,218 @@
+<?php
+// $Id: admin_access.module,v 1.1 2009/03/25 17:22:28 emptyvoid Exp $
+/**
+ * @file admin_access.module
+ * Custom module to override administration access pages to enforce security rights for
+ * modules and menu items.
+ * 
+ */
+
+/**
+  *  Valid permissions for this module
+  *  @return array An array of valid permissions for the menu_access module
+  */
+function admin_access_perm() {
+  return array(
+  'access admin listing',
+  );
+}
+
+/**
+ * Implementation of hook_theme()
+ */
+function admin_access_theme() {
+  return array(
+    'admin_access_node_add_list' => array(
+      'arguments' => array('content' => NULL),
+      'file' => 'admin_access.node.pages.inc',
+    ), );
+}
+
+
+
+
+/**
+ * Implementation of hook_menu().
+ */
+function admin_access_menu() {
+
+  $items['node/add'] = array(
+    'title' => 'Create content',
+    'page callback' => 'admin_access_node_add_page',
+    'access callback' => '_admin_access_node_add_access',
+    'weight' => 1,
+    'file' => 'admin_access.node.pages.inc',
+  );
+
+  $items['admin'] = array(
+    'title' => 'Administer',
+    'access arguments' => array('access administration pages'),
+    'page callback' => 'admin_access_main_admin_page',
+    'weight' => 9,
+    'file' => 'admin_access.admin.inc',
+  );
+
+  $items['admin/by-module'] = array(
+    'title' => 'By module',
+    'page callback' => 'admin_access_admin_by_module',
+    'access arguments' => array('access administration pages'),
+    'file' => 'admin_access.admin.inc',
+    'type' => MENU_LOCAL_TASK,
+    'weight' => 2,
+  );
+
+
+  $items['admin/content'] = array(
+    'title' => 'Content management',
+    'description' => "Manage your site's content.",
+    'position' => 'left',
+    'weight' => -10,
+    'page callback' => 'admin_access_admin_menu_block_page',
+    'access arguments' => array('access administration pages'),
+    'file' => 'admin_access.admin.inc',
+  );
+
+  $items['admin/build'] = array(
+    'title' => 'Site building',
+    'description' => 'Control how your site looks and feels.',
+    'position' => 'right',
+    'weight' => -10,
+    'page callback' => 'admin_access_admin_menu_block_page',
+    'access arguments' => array('access administration pages'),
+    'file' => 'admin_access.admin.inc',
+  );
+
+  $items['admin/settings'] = array(
+    'title' => 'Site configuration',
+    'description' => 'Adjust basic site configuration options.',
+    'position' => 'right',
+    'weight' => -5,
+    'page callback' => 'admin_access_settings_overview',
+    'access arguments' => array('access administration pages'),
+    'file' => 'admin_access.admin.inc',
+  );
+
+  $items['admin/user'] = array(
+    'title' => 'User management',
+    'description' => "Manage your site's users, groups and access to site features.",
+    'position' => 'left',
+    'page callback' => 'admin_access_admin_menu_block_page',
+    'access arguments' => array('access administration pages'),
+    'file' => 'admin_access.admin.inc',
+  );
+
+  $items['admin/reports'] = array(
+    'title' => 'Reports',
+    'description' => 'View reports from system logs and other status information.',
+    'page callback' => 'admin_access_admin_menu_block_page',
+    'access arguments' => array('access site reports'),
+    'weight' => 5,
+    'position' => 'left',
+    'file' => 'admin_access.admin.inc',
+  );
+
+
+  /** Help Overrides **/
+  $items['admin/help'] = array(
+    'title' => 'Help',
+    'page callback' => 'admin_access_help_main',
+    'access arguments' => array('access administration pages'),
+    'weight' => 9,
+    'file' => 'admin_access.help.inc',
+  );
+
+  foreach (module_implements('help', TRUE) as $module) {
+    $items['admin/help/'. $module] = array(
+      'title' => $module,
+      'page callback' => 'admin_access_help_page',
+      'page arguments' => array(2),
+      'access arguments' => array('access administration pages'),
+      'type' => MENU_CALLBACK,
+      'file' => 'admin_access.help.inc',
+    );
+  }
+
+
+  return $items;
+}
+
+
+
+
+/**
+ * Utility methods
+ */
+
+function admin_access_node_access($op, $node, $account = NULL) {
+  global $user;
+
+  if (!$node) {
+    return FALSE;
+  }
+  // Convert the node to an object if necessary:
+  if ($op != 'create') {
+    $node = (object)$node;
+  }
+  // If no user object is supplied, the access check is for the current user.
+  if (empty($account)) {
+    $account = $user;
+  }
+  // If the node is in a restricted format, disallow editing.
+  if ($op == 'update' && !filter_access($node->format)) {
+    return FALSE;
+  }
+
+  if (!user_access('access content', $account)) {
+    return FALSE;
+  }
+
+  // Can't use node_invoke(), because the access hook takes the $op parameter
+  // before the $node parameter.
+  $module = node_get_types('module', $node);
+  if ($module == 'node') {
+    $module = 'node_content'; // Avoid function name collisions.
+  }
+  $access = module_invoke($module, 'access', $op, $node, $account);
+  if (!is_null($access)) {
+    return $access;
+  }
+
+  // If the module did not override the access rights, use those set in the
+  // node_access table.
+  if ($op != 'create' && $node->nid && $node->status) {
+    $grants = array();
+    foreach (node_access_grants($op, $account) as $realm => $gids) {
+      foreach ($gids as $gid) {
+        $grants[] = "(gid = $gid AND realm = '$realm')";
+      }
+    }
+
+    $grants_sql = '';
+    if (count($grants)) {
+      $grants_sql = 'AND ('. implode(' OR ', $grants) .')';
+    }
+
+    $sql = "SELECT COUNT(*) FROM {node_access} WHERE (nid = 0 OR nid = %d) $grants_sql AND grant_$op >= 1";
+    $result = db_query($sql, $node->nid);
+    return (db_result($result));
+  }
+
+  // Let authors view their own nodes.
+  if ($op == 'view' && $account->uid == $node->uid && $account->uid != 0) {
+    return TRUE;
+  }
+
+  return FALSE;
+}
+
+
+function _admin_access_node_add_access() {
+  $types = node_get_types();
+  foreach ($types as $type) {
+    if (node_hook($type->type, 'form') && admin_access_node_access('create', $type->type)) {
+      return TRUE;
+    }
+  }
+  return FALSE;
+}
+

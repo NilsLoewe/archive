@@ -1,0 +1,113 @@
+<?php
+// $Id: widgeditor.module,v 1.4 2008/12/04 05:05:34 Gurpartap Exp $
+
+function widgeditor_perm() {
+  return array('use widgEditor');
+}
+
+function widgeditor_menu() {
+  $items = array();
+
+  $items['admin/settings/widgeditor'] = array(
+    'title' => t('widgEditor'),
+    'description' => t('Enable widgEditor for specific textareas and toggle default behavior.'),
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('widgeditor_admin_settings'),
+    'access callback' => 'user_access',
+    'access arguments' => array('administer site configuration'),
+    'type' => MENU_NORMAL_ITEM,
+  );
+
+  return $items;
+}
+
+function widgeditor_admin_settings() {
+  $form = array();
+
+  $form['widgeditor']['widgeditor_default_enabled'] = array(
+    '#type' => 'checkbox',
+    '#title' => t("Enable widgEditor by default"),
+    '#default_value' => variable_get('widgeditor_default_enabled', 1),
+  );
+  $form['widgeditor']['widgeditor_textareas'] = array(
+    '#type' => 'textarea',
+    '#title' => t("Enable widgEditor for textareas with these IDs"),
+		'#description' => t('Enter one ID per line. Default is:<br /><em>edit-body<br />edit-comment</em>'),
+    '#default_value' => variable_get('widgeditor_textareas', "edit-body\nedit-comment"),
+  );
+
+  return system_settings_form($form);
+}
+
+function widgeditor_form_alter(&$form, $form_state, $form_id) {
+	static $js_added = FALSE;
+	$textareas = variable_get('widgeditor_textareas', "edit-body\nedit-comment");
+	$textareas = trim($textareas);
+  $textareas = str_replace(array("\r\n", "\n", "\r"), ',', $textareas);
+  $textareas = str_replace(' ', '', $textareas);
+
+  // Convert textareas into an array.
+  $textareas = explode(',', $textareas);
+
+  $def_enabled = variable_get('widgeditor_default_enabled', 1);
+  if (!user_access('use widgEditor')) return;
+
+  if (count($textareas) > 0 && !$js_added) {
+	  widgeditor_add_javascript($textareas, $def_enabled);
+	  $js_added = TRUE;
+	}
+}
+
+function widgeditor_add_javascript($textareas = array(), $def_enabled) {
+  $query = '';
+  $path = drupal_get_path('module', 'widgeditor');
+
+  foreach ($textareas as $i => $ta) {
+    $pattern = '/(\d+)-(\w+)/i';
+    $replacement = 'edit-$2';
+    $query .= "    textareas[$i] = \"" . preg_replace($pattern, $replacement, $ta) . "\";\n";
+  }
+
+  drupal_add_js($path . '/' . 'scripts/widgEditor.js');
+  drupal_add_css($path . '/' . 'scripts/css/widgEditor.css');
+  drupal_add_js(array(
+	  'widgeditor' => array(
+		  'imce' => module_exists('imce'),
+		  'widgContent' => base_path() . drupal_get_path('module', 'widgeditor') . '/scripts/css/widgContent.css'
+		),
+	), 'setting');
+  if ($def_enabled) {
+  drupal_add_js('
+if (Drupal.jsEnabled) {
+  $(document).ready(function() {
+    var textareas = new Array();
+' . $query . '
+    for (i=0;i<textareas.length;i++) {
+      $("textarea#"+textareas[i]).attr("class", "widgEditor");
+    }
+  });
+}
+', 'inline');}
+  else {
+    drupal_add_js('
+if (Drupal.jsEnabled) {
+  $(document).ready(function() {
+    var textareas = new Array();
+' . $query . '
+    for (i=0;i<textareas.length;i++) {
+      $("textarea#"+textareas[i]).after(\'<div><a style="cursor: pointer;" id="widgEditor-id" class="widgEditor-\' + textareas[i] +\'">' . t('Enable rich text editor') . '</a></div>\');
+    }
+    $("a#widgEditor-id").click(function(){
+      var string1= $(this).attr("class");
+      var pattern=/(widgEditor)-(\w+)-(\w+)/i;
+      if (pattern.test(string1) == true) {
+        $("textarea#"+string1.replace(/widgEditor-/, "")).attr("class", "widgEditor");
+        widgInit();
+        $(this).hide("slow");
+      }
+    });
+  });
+}
+', 'inline');
+  }
+}

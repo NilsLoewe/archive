@@ -1,0 +1,4 @@
+	background-image:url('./img/bgrepeat.jpg');
+	background-color:#00196D;
+	background-repeat:repeat-x;
+	background-position:top;

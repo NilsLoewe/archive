@@ -1,0 +1,4 @@
+; $Id: module_uploader.info,v 1.1.1.1 2008/10/02 09:13:43 ilobachev Exp $
+name = Module uploader
+description = Module uploader.
+core = 6.x

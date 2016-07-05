@@ -1,0 +1,153 @@
+body
+{
+	font-family:Arial,Tahoma,Verdana,Sans-serif;
+	font-size:12px;
+	color:#333333;
+	background-image:url('./img/bgrepeat.jpg');
+	background-color:#00196D;
+	background-repeat:repeat-x;
+	background-position:top;
+	margin:0px;
+	text-align:center;
+}
+
+table
+{
+	background-color:#FFFFFF;
+	font-size:12px;
+	border-spacing:0px
+}
+
+td
+{
+	background-color:#FFFFFF;
+	vertical-align:top;
+}
+
+tr
+{
+	background-color:#FFFFFF;
+}
+
+.maintable
+{
+	font-size:12px;
+	background-color:#FFFFFF;
+	margin-top:0;
+	border:none;
+	width:770px;
+	table-layout:fixed;
+}
+
+td.slides
+{
+	padding-left:0px;
+	padding-top:4px;
+	padding-right:0px;
+	padding-bottom:4px;
+	background-color:#FFFFFF;
+	width:100%;
+}
+
+td.line
+{
+	padding-left:0px;
+	padding-top:0px;
+	padding-right:0px;
+	padding-bottom:0px;
+	margin-top:0px;
+	margin-bottom:0px;
+	border-width:0px;
+	width:100%;
+}
+
+td.navi
+{
+	vertical-align:top;
+	font-size:12px;
+	color:#001d7f;
+	font-weight:bold;
+	text-decoration:none;
+	padding-left:35px;
+	padding-top:12px;
+	padding-right:4px;
+	padding-bottom:30px;
+	text-align:left;
+	width:25%;
+}
+
+td.content
+{
+	border-top:0px;
+	font-size:12px;
+	text-align:left;
+	vertical-align:top;
+	background-image:url('./img/borderleft.jpg');
+	background-repeat:repeat-y;
+	background-position:left top;
+	padding-top:0px;
+	padding-left:30px;
+	padding-right:10px;
+	padding-bottom:30px;
+	width:75%;
+}
+
+td.foot
+{
+	text-align:center;
+	background-color:#cdcdcD;
+	padding-top:3px;
+	padding-bottom:3px;
+}
+
+a 
+{
+	color:#d50017;
+	font-weight:bold;
+	text-decoration:none;
+} 
+a:hover 
+{
+	color:#001d57;
+	font-weight:bold;
+	text-decoration:underline;
+} 
+
+a.navi 
+{
+	font-size:12px;
+	color:#001d7f;
+	font-weight:bold;
+	text-decoration:none;
+} 
+a.navi:hover 
+{
+	color:#d50017;
+	font-weight:bold;
+	text-decoration:none;
+} 
+div.navi1
+{
+	margin-top:5px;
+}
+
+div.navi2
+{
+	margin-top:5px;
+	margin-left:10px;
+}
+
+h1 
+{
+	font-family:Arial,Tahoma,Verdana,Sans-serif;
+	font-size:18px;
+	color:#001d7f;
+	margin-top:10px;
+	margin-bottom:5px;
+}
+
+table.history
+{
+	font-size:12px;
+	border-spacing:10px;
+}

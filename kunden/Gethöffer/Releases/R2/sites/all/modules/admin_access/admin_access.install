@@ -1,0 +1,22 @@
+<?php
+// $Id: admin_access.install,v 1.1 2009/03/25 17:22:28 emptyvoid Exp $
+/** 
+  * @file admin_access.install
+  * This file provides the install and uninstall for the administration access module.
+ **/
+
+function admin_access_install() {
+  
+}
+
+function admin_access_uninstall() {
+
+}
+
+function admin_access_enable() {
+
+}
+
+function admin_access_disable() {
+
+}

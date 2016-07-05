@@ -1,0 +1,96 @@
+<?php
+function module_uploader_menu() {
+    $items = array();
+
+    $items['admin/module_uploader'] = array(
+	'title' => 'Module Uploader',
+	'description' => 'Module Uploader',
+	'page callback' => 'drupal_get_form',
+	'page arguments' => array('module_uploader_admin'),
+	'access arguments' => array('access administration pages'),
+	'type' => MENU_NORMAL_ITEM,
+    );
+    return $items;
+}
+function module_uploader_admin() {
+    $form['module_uploader'] = array(
+	'#type' => 'file',
+        '#title' => t('Module File'),
+	'#size' => 40,
+	'#maxlength' => 40,
+	'#description' => t("Module file to upload."),
+    );
+    $form['submit'] = array (
+	'#type' => 'submit',
+	'#value' => t('Upload'),
+    );
+    $form['#attributes'] = array('enctype' => 'multipart/form-data');    
+    return ($form);
+}
+function module_uploader_admin_validate($form_id, $form_values) {
+}
+function module_uploader_admin_submit($form_id, $form_values) {
+    $modules_dir = 'sites/all/modules';
+    if (user_access('access administration pages')) {
+	$src_file = $_FILES['files']['tmp_name']['module_uploader'];
+	$dst_file = $modules_dir.'/'.$_FILES['files']['name']['module_uploader'];
+	if(copy($src_file, $dst_file)) {
+	    $errors = array();
+    	    $regex = '/\.('. ereg_replace(' +', '|', preg_quote('tar.gz')) .')$/i';
+	    if (!preg_match($regex, $dst_file)) {
+		$errors[] = t('Only files with the following extensions are allowed: %files-allowed.', array('%files-allowed' => '.tar.gz'));
+	    }
+	    if (empty($errors)) { 
+    		require_once('pclerror.lib.php');
+		require_once('pcltrace.lib.php');
+		require_once('pcltar.lib.php');
+		$err = PclTarExtract($dst_file, $modules_dir);
+		if ($err == 0) {
+		    $errors[] = t("Can't extract package.");
+    		}
+		$module_name = '';
+		$is_correct_module = false;
+		foreach($err as $arc_file_id => $arc_file){
+		    $my_f = $arc_file['filename'];
+		    if(!$module_name){
+			$tmp_name = $my_f;
+			$start_pos = strpos($my_f, $modules_dir.'/');
+			if($start_pos !== false){
+			    $tmp_name = substr($my_f, $start_pos + strlen($modules_dir.'/'));
+			    $end_pos = strpos($tmp_name, '/');
+			    if($end_pos !== false){
+				$module_name = substr($tmp_name, 0, $end_pos);
+			    }
+			}
+		    }
+		    if($module_name){
+			$pos = strpos($my_f, $module_name.'.module');
+			if($pos !== false){
+			    $is_correct_module = true;
+			}
+		    }
+		}
+		if(!$is_correct_module){
+		    $errors[] = t("Incorrect module package for module=".$module_name.".");
+		}
+	    }
+	    if (!empty($errors)) {
+		$message = t('The selected file %name could not be uploaded.', array('%name' => $_FILES['files']['name']['module_uploader']));
+		if (count($errors) > 1) {
+		    $message .= '<ul><li>'. implode('</li><li>', $errors) .'</li></ul>';
+		}
+		else {
+		    $message .= ' '. array_pop($errors);
+		}
+		file_delete($dst_file);
+		form_set_error(module_uploader, $message);    
+	    }
+	    else {
+		file_delete($dst_file);
+    		drupal_set_message(t('Module has been uploaded'));
+	    }
+	}
+    }
+    return 'module_uploader';
+}
+?>

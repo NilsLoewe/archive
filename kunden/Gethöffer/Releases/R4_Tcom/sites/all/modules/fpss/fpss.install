@@ -1,0 +1,170 @@
+<?php
+// $Id: fpss.install,v 1.1.2.2 2009/02/27 01:57:25 wilco Exp $
+
+function fpss_schema() {
+  $schema['fpss_slideshows'] = array(
+    'fields' => array(
+      'nid'             => array('type' => 'int', 'unsigned' => TRUE, 'not null' => TRUE, 'default' => 0),
+      'vid'             => array('type' => 'int', 'unsigned' => TRUE, 'not null' => TRUE, 'default' => 0),
+      'template'        => array('type' => 'varchar', 'length' => 128, 'not null' => TRUE, 'default' => ''),
+      'show_nav'        => array('type' => 'int', 'unsigned' => TRUE, 'not null' => TRUE, 'default' => 1),
+      'width'           => array('type' => 'int', 'unsigned' => TRUE, 'not null' => TRUE, 'default' => 0),
+      'height'          => array('type' => 'int', 'unsigned' => TRUE, 'not null' => TRUE, 'default' => 0),
+      'sidebar_width'   => array('type' => 'int', 'unsigned' => TRUE, 'null' => TRUE),
+      'delay'           => array('type' => 'int', 'unsigned' => TRUE, 'not null' => TRUE, 'default' => '6000'),
+      'transition'      => array('type' => 'int', 'unsigned' => TRUE, 'not null' => TRUE, 'default' => '1000'),
+      'loading'         => array('type' => 'int', 'unsigned' => TRUE, 'not null' => TRUE, 'default' => '500'),
+      'rotate_action'   => array('type' => 'varchar', 'length' => 128, 'not null' => TRUE, 'default' => ''),
+      'show_title'      => array('type' => 'int', 'unsigned' => TRUE, 'not null' => TRUE, 'default' => 1),
+      'show_category'   => array('type' => 'int', 'unsigned' => TRUE, 'not null' => TRUE, 'default' => 1),
+      'show_tagline'    => array('type' => 'int', 'unsigned' => TRUE, 'not null' => TRUE, 'default' => 1),
+      'show_slidetext'  => array('type' => 'int', 'unsigned' => TRUE, 'not null' => TRUE, 'default' => 1),
+      'show_readmore'   => array('type' => 'int', 'unsigned' => TRUE, 'not null' => TRUE, 'default' => 1),
+      'maxwords'        => array('type' => 'int', 'unsigned' => TRUE, 'not null' => TRUE, 'default' => 0),
+      'maxchars'        => array('type' => 'int', 'unsigned' => TRUE, 'not null' => TRUE, 'default' => 0),
+      'strip'           => array('type' => 'int', 'unsigned' => TRUE, 'not null' => TRUE, 'default' => 1),
+      'links'           => array('type' => 'int', 'unsigned' => TRUE, 'not null' => TRUE, 'default' => 0),
+      'random_order'    => array('type' => 'int', 'unsigned' => TRUE, 'not null' => TRUE, 'default' => 0),
+      'limit_slides'    => array('type' => 'int', 'unsigned' => TRUE, 'not null' => TRUE, 'default' => 0)
+      ),
+    'unique keys' => array(
+      'nid'     => array('nid')
+      ),
+    'primary key' => array('vid')
+  );
+
+  $schema['fpss_slides'] = array(
+    'fields' => array(    
+      'nid'             => array('type' => 'int', 'unsigned' => TRUE, 'not null' => TRUE, 'default' => 0),
+      'vid'             => array('type' => 'int', 'unsigned' => TRUE, 'not null' => TRUE, 'default' => 0),
+      'ssid'            => array('type' => 'int', 'unsigned' => TRUE, 'not null' => TRUE, 'default' => 0),
+      'slide_url'       => array('type' => 'varchar', 'length' => 255, 'not null' => TRUE, 'default' => ''),
+      'slide_cat'       => array('type' => 'varchar', 'length' => 255, 'not null' => TRUE, 'default' => ''),
+      'slide_tag'       => array('type' => 'varchar', 'length' => 255, 'not null' => TRUE, 'default' => '')
+      ),
+    'unique keys' => array(
+      'nid'     => array('nid'),
+      ),
+    'primary key' => array('vid')
+  );
+
+  return $schema;
+}
+
+/**
+ * Implementation of hook_enable().
+ */
+/*
+function fpss_enable() {
+  // Make sure old data is emptied out of the caches, since it
+  // may no longer be valid since the module was last enabled,
+  // especially if not all the same field modules are enabled
+  // as before. Especially needed during updates.
+  cache_clear_all('*', 'cache_fpss', TRUE);
+}
+*/
+
+/**
+ * Implementation of hook_disable().
+ */
+/*
+function fpss_disable() {
+  // Make sure old data is emptied out of the caches, since it
+  // may no longer be valid when the module is re-enabled.
+  cache_clear_all('*', 'cache_fpss', TRUE);
+}
+*/
+
+/**
+ * Implementation of hook_install().
+ */
+function fpss_install() {
+  // Create tables.
+  drupal_install_schema('fpss');
+  // Add the node type.
+  //_fpss_install_type_create();
+}
+
+/*
+function _fpss_install_type_create() {
+  // Create an fpss slide node type
+  $fpss_slide_node_type = array(
+    'type' => 'fpss_slide',
+    'name' => t('Slide'),
+    'module' => 'fpss',
+    'description' => t('Add a new slide to a FPSS slideshow. Must have a slideshow set up first.'),
+    'custom' => TRUE,
+    'had_title' => TRUE,
+    'title_label' => t('Title'),
+    'had_body' => TRUE,
+    'body_label' => t('Slide Text'),
+    'min_word_count' => 3,    
+    'locked' => TRUE,
+  );
+
+  $fpss_slide_node_type = (object)_node_type_set_defaults($fpss_slide_node_type);
+  if (node_type_save($fpss_slide_node_type)) {
+    drupal_set_message(t('Successfully created new FPSS Slide content type.'));
+  } else {
+    drupal_set_message(t('Failed at creating new FPSS Slide content type.'));
+  }
+  
+  // Create an fpss slideshow node type
+  $fpss_slideshow_node_type = array(
+    'type' => 'fpss_slideshow',
+    'name' => t('Slideshow'),
+    'module' => 'fpss',
+    'description' => t('Add a new FPSS slideshow.'),
+    'custom' => TRUE,
+    'had_title' => TRUE,
+    'title_label' => t('Title'),
+    'had_body' => FALSE,
+    'min_word_count' => 0,    
+    'locked' => TRUE,
+  );
+
+  $fpss_slideshow_node_type = (object)_node_type_set_defaults($fpss_slideshow_node_type);
+  if (node_type_save($fpss_slideshow_node_type)) {
+    drupal_set_message(t('Successfully created new FPSS Slide content type.'));
+  } else {
+    drupal_set_message(t('Failed at creating new FPSS Slide content type.'));
+  }
+
+}
+*/
+
+/**
+ * Implemenation of hook_uninstall().
+ */
+function fpss_uninstall() {
+  drupal_uninstall_schema('fpss');
+  db_query("DELETE FROM {node_type} WHERE module = '%s'", 'fpss');
+  $sql = db_query("SELECT nid FROM {node} WHERE type = '%s' OR type = '%s'",'fpss_slideshow','fpss_slide');
+  while ($data = db_fetch_object($sql)) {
+    node_delete($data->nid);
+    $files = db_query("SELECT fid FROM {files} WHERE nid = %d", $data->nid);
+    while ($fids = db_fetch_object($files)) {
+      db_query("DELETE FROM {file_revisions} WHERE fid = %d", $fids->fid);
+      db_query("DELETE FROM {files} WHERE fid = %d", $fids->fid);
+    }
+  }
+  variable_del('fpss_template');
+  variable_del('fpss_disablelib');
+  variable_del('fpss_optimizejs');
+  variable_del('fpss_enginesfolder');
+  variable_del('fpss_languagesfolder');
+  variable_del('fpss_templatesfolder');
+  variable_del('fpss_language');
+  variable_del('fpss_jslocation');
+  variable_del('fpss_lang_more');
+  variable_del('fpss_lang_loading');
+  variable_del('fpss_lang_next');
+  variable_del('fpss_lang_prev');
+  variable_del('fpss_lang_play');
+  variable_del('fpss_lang_pause');
+  variable_del('fpss_lang_playpause');
+  variable_del('fpss_lang_clicknav');
+  variable_del('fpss_lang_imgalt');
+  drupal_set_message(t('The Front Page Slideshow module has been successfully removed.'));
+  drupal_set_message(t('All slides and slideshows have been deleted.'));
+}

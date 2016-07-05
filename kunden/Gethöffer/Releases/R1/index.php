@@ -1,0 +1,128 @@
+<?php
+
+include "html_functions.inc";
+include "gethoeffer.inc";
+
+$page = "";
+
+$page .= html_head("gethoeffer.css", "Gethoeffer-DAF      Willkommen!");
+
+$page .= "
+<div align=\"center\">
+
+<table class=\"maintable\" border=0>
+	<colgroup>
+		<col width=\"25%\">
+		<col width=\"75%\">
+	</colgroup>
+
+	<tr>
+		<td colspan=2>";
+		$page .= logos();
+		$page .= "
+		</td>
+	</tr>
+
+	<tr>
+		<td colspan=2 class=\"line\">";
+		$page .= hline();
+		$page .= "
+		</td>
+	</tr>
+
+	<tr>
+		<td colspan=2 class=\"slides\"> ";
+		$page .= slideshow();
+		$page .= "
+		</td>
+	</tr>
+
+	<tr>
+		<td colspan=2 class=\"line\">";
+		$page .= hline();
+		$page .= "
+		</td>
+	</tr>
+
+	<tr>
+		<td class=\"navi\"> ";
+		$page .= navi();
+		$page .= "
+		</td>
+
+		<td class=\"content\"> ";
+		$page .= content();
+		$page .= "
+		</td>
+	</tr>
+
+	<tr>
+	<td colspan=2 class=\"foot\"> ";
+		$page .= foot();
+		$page .= "
+		</td>
+	</tr>
+
+</table>
+</div>
+";
+
+/*
+$page .= "
+<table class=\"maintable\" cellspacing=0 cellpadding=0 border=1>
+	<colgroup>
+		<col width=\"25%\">
+		<col width=\"75%\">
+	</colgroup>
+
+	<tr>
+		<td colspan=2 class=\"logos\">";
+		$page .= logos();
+		$page .= "
+		</td>
+	</tr>
+
+	<tr>
+		<td colspan=2 class=\"line\">";
+		$page .= hline();
+		$page .= "
+		</td>
+	</tr>
+
+	<tr>
+		<td colspan=2 class=\"slideshow\" align=\"center\"> ";
+		$page .= slideshow();
+		$page .= "
+		</td>
+	</tr>
+
+	<tr>
+		<td colspan=2 class=\"line\">";
+		$page .= hline();
+		$page .= "
+		</td>
+	</tr>
+
+	<tr>
+		<td class=\"navi\"> ";
+		$page .= navi();
+		$page .= "
+		</td>
+		<td class=\"content\"> ";
+		$page .= content();
+		$page .= "
+		</td>
+	</tr>
+
+	<tr>
+	<td colspan=2 class=\"foot\"> ";
+		$page .= foot();
+		$page .= "
+		</td>
+	</tr>
+
+</table>";
+*/
+$page .= html_foot();
+
+echo $page;
